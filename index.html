@@ -13,7 +13,7 @@
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
 <link rel="preload" as="image" href="assets/agata-hero.webp"
-      imagesrcset="assets/agata-hero-mobile.webp 780w, assets/agata-hero.webp 1200w"
+      imagesrcset="assets/agata-hero-mobile.webp 720w, assets/agata-hero.webp 1000w"
       imagesizes="(max-width:900px) 100vw, 46vw" fetchpriority="high" />
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/cormorant-300.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/poppins-300.woff2" crossorigin />
@@ -49,6 +49,7 @@
   --ff-b:"Poppins",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   --ease:cubic-bezier(.22,1,.36,1);
   --maxw:1280px;
+  --h1:clamp(3rem,7.4vw,6.4rem);
   --pad:clamp(1.25rem,4vw,3rem);
 }
 *{margin:0;padding:0;box-sizing:border-box}
@@ -72,7 +73,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 /* ---------- type ---------- */
 .d{font-family:var(--ff-d);font-weight:300;line-height:1.02;letter-spacing:-.012em;color:var(--ink)}
 .d em{font-style:italic;font-weight:300;color:var(--bronze-deep)}
-h1.d{font-size:clamp(3rem,7.4vw,6.4rem)}
+h1.d{font-size:var(--h1)}
 h2.d{font-size:clamp(2.4rem,5.4vw,4.4rem)}
 h3.d{font-size:clamp(1.7rem,3vw,2.5rem);line-height:1.1}
 .lead{
@@ -206,12 +207,15 @@ h3.d{font-size:clamp(1.7rem,3vw,2.5rem);line-height:1.1}
 }
 .hero__meta .n em{font-style:italic;color:var(--bronze-deep)}
 .hero__meta .l{display:block;margin-top:.5rem;font-size:.63rem;letter-spacing:.19em;text-transform:uppercase;color:var(--ink-faint);line-height:1.5}
-.hero__fig{position:relative;align-self:end;height:clamp(24rem,62vh,38rem);min-height:0}
-.hero__fig img{
-  width:100%;height:100%;object-fit:cover;object-position:50% 12%;
+.hero__fig{position:relative;align-self:stretch;height:auto;min-height:0;overflow:hidden}
+/* the photo starts at the cap-height of the H1, not at the top of its line box,
+   so the top of her hair lines up with the top of "Permanent" */
+.hero__ph{
+  position:absolute;top:calc(var(--h1) * .41);left:0;right:0;
+  width:100%;height:calc(100% - var(--h1) * .41);object-fit:cover;object-position:50% 0;
   clip-path:inset(0 0 100% 0);
 }
-.ready .hero__fig img{animation:wipeDown 1.5s var(--ease) .12s forwards}
+.ready .hero__ph{animation:wipeDown 1.5s var(--ease) .12s forwards}
 @keyframes wipeDown{to{clip-path:inset(0 0 0 0)}}
 .hero__fig img.hero__sig{
   position:absolute;right:clamp(1rem,2vw,2rem);bottom:clamp(1.2rem,3vh,2.4rem);
@@ -256,6 +260,7 @@ h3.d{font-size:clamp(1.7rem,3vw,2.5rem);line-height:1.1}
 .head--split h2{margin-bottom:0}
 .head--center{max-width:52rem;margin-inline:auto;text-align:center}
 .head--center p{margin-inline:auto}
+.lead--two{max-width:40rem}
 
 /* reveal */
 .rv{opacity:0;transform:translateY(26px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
@@ -531,7 +536,8 @@ h3.d{font-size:clamp(1.7rem,3vw,2.5rem);line-height:1.1}
   .hero{padding-top:7rem}
   .hero__grid{grid-template-columns:1fr;gap:2.4rem}
   .hero__copy{padding-bottom:0;order:1}
-  .hero__fig{order:2;min-height:0;height:auto;aspect-ratio:4/5;margin-inline:calc(var(--pad) * -1);width:100vw}
+  .hero__fig{order:2;min-height:0;height:auto;aspect-ratio:2/3;margin-inline:calc(var(--pad) * -1);width:100vw}
+  .hero__ph{top:0;height:100%}
   .hero__meta{gap:1.3rem 2rem}
   .hero__meta div{max-width:9.5rem}
   .head--split{grid-template-columns:1fr;align-items:start;gap:1.4rem}
@@ -562,7 +568,7 @@ h3.d{font-size:clamp(1.7rem,3vw,2.5rem);line-height:1.1}
   html{scroll-behavior:auto}
   .rv{opacity:1;transform:none}
   .hero h1 .ln > span,.hero__lead,.hero__cta,.hero__meta,.hero__fig img.hero__sig{opacity:1;transform:none;animation:none}
-  .hero__fig img{clip-path:none}
+  .hero__ph{clip-path:none}
   .card__ph .veil{display:none}
 }
 </style>
@@ -626,10 +632,10 @@ h3.d{font-size:clamp(1.7rem,3vw,2.5rem);line-height:1.1}
       </div>
     </div>
     <figure class="hero__fig">
-      <img src="assets/agata-hero.webp"
-           srcset="assets/agata-hero-mobile.webp 780w, assets/agata-hero.webp 1200w"
+      <img src="assets/agata-hero.webp" class="hero__ph"
+           srcset="assets/agata-hero-mobile.webp 720w, assets/agata-hero.webp 1000w"
            sizes="(max-width:900px) 100vw, 46vw"
-           width="1200" height="1600" fetchpriority="high" decoding="async"
+           width="1000" height="1495" fetchpriority="high" decoding="async"
            alt="Agata Soldato, permanent makeup artist in Bee Cave, Texas" />
       <img src="assets/signature.webp" class="hero__sig" width="300" height="130" alt="" aria-hidden="true" loading="lazy" />
     </figure>
@@ -879,9 +885,9 @@ h3.d{font-size:clamp(1.7rem,3vw,2.5rem);line-height:1.1}
 <!-- BOOKING -->
 <section class="sec sec--sand" id="booking">
   <div class="wrap">
-    <div class="head rv">
-      <h2 class="d"><span data-i18n="bk.h2a">Tell me what you are</span> <em data-i18n="bk.h2b">thinking about.</em></h2>
-      <p class="lead" data-i18n="bk.lead">Send this and I will come back to you with availability, what your case needs and what it costs. No deposit is taken before we have spoken.</p>
+    <div class="head head--center rv">
+      <h2 class="d"><span data-i18n="bk.h2a">Tell me what you are</span><br/><em data-i18n="bk.h2b">thinking about.</em></h2>
+      <p class="lead lead--two" data-i18n="bk.lead">Send this and I will come back with availability, what your case needs and what it costs. No deposit before we talk.</p>
     </div>
     <div class="book">
       <form class="form rv" id="bookForm" novalidate>
@@ -1028,7 +1034,7 @@ pt:{
 "faq.q5":"E os cuidados depois?","faq.a5":"Você sai com as instruções por escrito e com o meu contato. Os dez primeiros dias são os que mais contam: nada de piscina, nada de suar muito, não cutucar, e protetor solar assim que a pele fechar.",
 "faq.q6":"Você atende quem é de fora de Austin?","faq.a6":"Direto. Vem gente de todo o Texas e de fora. Me diga suas datas quando escrever e a gente encaixa a primeira sessão e o aperfeiçoamento na sua viagem.",
 "bk.h2a":"Me conte o que","bk.h2b":"você está pensando.",
-"bk.lead":"Manda isso aqui que eu volto com disponibilidade, o que o seu caso precisa e quanto custa. Nenhum sinal é cobrado antes da gente conversar.",
+"bk.lead":"Manda isso aqui que eu volto com disponibilidade, o que o seu caso precisa e quanto custa. Nenhum sinal antes da gente conversar.",
 "bk.name":"Nome","bk.phone":"Telefone ou WhatsApp","bk.service":"O que te interessa",
 "bk.o1":"Sobrancelha (nano, powder ou microblading)","bk.o2":"Lip blush","bk.o3":"Delineado","bk.o4":"Reconstrução de aréola","bk.o5":"Couro cabeludo","bk.o6":"Corrigir trabalho antigo","bk.o7":"Curso para profissionais","bk.o8":"Ainda não sei",
 "bk.msg":"Algo que eu precise saber","bk.send":"Enviar meu pedido",
@@ -1097,7 +1103,7 @@ es:{
 "faq.q5":"¿Y los cuidados después?","faq.a5":"Sales con las instrucciones por escrito y con mi contacto. Los diez primeros días son los que más cuentan: nada de piscina, nada de sudar mucho, no rascar, y protector solar en cuanto la piel cierre.",
 "faq.q6":"¿Atiendes a gente de fuera de Austin?","faq.a6":"Seguido. Viene gente de todo Texas y de fuera. Dime tus fechas cuando escribas y encajamos la primera sesión y el perfeccionamiento en tu viaje.",
 "bk.h2a":"Cuéntame qué","bk.h2b":"tienes en mente.",
-"bk.lead":"Manda esto y te vuelvo con disponibilidad, lo que tu caso necesita y cuánto cuesta. No se cobra ninguna seña antes de hablar.",
+"bk.lead":"Manda esto y te vuelvo con disponibilidad, lo que tu caso necesita y cuánto cuesta. Ninguna seña antes de hablar.",
 "bk.name":"Nombre","bk.phone":"Teléfono o WhatsApp","bk.service":"Qué te interesa",
 "bk.o1":"Cejas (nano, powder o microblading)","bk.o2":"Lip blush","bk.o3":"Delineado","bk.o4":"Reconstrucción de areola","bk.o5":"Micropigmentación capilar","bk.o6":"Corregir trabajo antiguo","bk.o7":"Curso para profesionales","bk.o8":"Todavía no lo sé",
 "bk.msg":"Algo que deba saber","bk.send":"Enviar mi solicitud",
