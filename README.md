@@ -58,9 +58,10 @@ então é só trocar os cartões marcados como "photo coming soon" por pares rea
 | Serviços | Uma foto do **estúdio novo** (ambiente, cadeira, luz) |
 | Sobre | Uma segunda foto dela **trabalhando**, não posada, para não repetir o retrato do hero |
 
-Os assets atuais estão em `assets/` já otimizados em WebP. O retrato do hero teve o fundo
-ajustado para `#E3DED4`, que é a cor de fundo da seção hero, para a foto parecer sem
-moldura. Se trocar a foto do hero, casar a cor de fundo de novo (`--hero` no CSS).
+Os assets atuais estão em `assets/` já otimizados em WebP. Duas fotos tiveram o fundo casado com a cor da seção em que aparecem, para ficarem sem
+moldura: o retrato do hero em `#E3DED4` (`--hero`) e o retrato preto e branco do bloco
+Sobre em `#F7F3ED` (`--cream`). Se trocar qualquer uma das duas, refazer esse casamento de
+cor, senão volta a aparecer o retângulo da foto.
 
 ## Rastreio de conversão
 
@@ -81,7 +82,7 @@ Lighthouse local, throttling real (`--throttling-method=devtools`):
 
 | | Performance | Acessibilidade | Boas práticas | SEO |
 |---|---|---|---|---|
-| Mobile | 99 | 100 | 100 | 100 |
+| Mobile | 100 | 100 | 100 | 100 |
 | Desktop | 85–92 | 100 | 100 | 100 |
 
 O desktop oscila por causa do servidor local sem compressão. Vale remedir na URL da Vercel

@@ -175,12 +175,12 @@ h3.d{font-size:clamp(1.7rem,3vw,2.5rem);line-height:1.1}
 .burger.x span:nth-child(2){transform:translateY(-4px) rotate(-45deg)}
 
 /* ---------- hero ---------- */
-.hero{position:relative;padding:clamp(8rem,14vh,11rem) 0 0;overflow:hidden;background:var(--hero)}
+.hero{position:relative;padding:clamp(8rem,14vh,11rem) 0 clamp(2.5rem,6vh,4.5rem);overflow:hidden;background:var(--hero)}
 .hero__grid{
-  display:grid;grid-template-columns:1fr .82fr;
-  gap:clamp(2rem,5vw,5rem);align-items:end;
+  display:grid;grid-template-columns:1fr .72fr;
+  gap:clamp(2rem,5vw,4rem);align-items:end;
 }
-.hero__copy{padding-bottom:clamp(3rem,7vh,6rem)}
+.hero__copy{padding-bottom:0}
 .hero h1{margin-bottom:1.9rem}
 .hero h1 .ln{display:block;overflow:hidden}
 .hero h1 .ln > span{display:block;transform:translateY(105%);opacity:0}
@@ -206,11 +206,9 @@ h3.d{font-size:clamp(1.7rem,3vw,2.5rem);line-height:1.1}
 }
 .hero__meta .n em{font-style:italic;color:var(--bronze-deep)}
 .hero__meta .l{display:block;margin-top:.5rem;font-size:.63rem;letter-spacing:.19em;text-transform:uppercase;color:var(--ink-faint);line-height:1.5}
-.hero__fig{position:relative;align-self:stretch;min-height:clamp(26rem,64vh,44rem)}
-/* on wide screens the photo runs to the edge, so the matched ground reads as infinite */
-@media (min-width:1340px){.hero__fig{margin-right:calc((100vw - min(100% * 0 + var(--maxw), 100vw - var(--pad)*2)) / -2)}}
+.hero__fig{position:relative;align-self:end;height:clamp(24rem,62vh,38rem);min-height:0}
 .hero__fig img{
-  width:100%;height:100%;object-fit:cover;object-position:50% 18%;
+  width:100%;height:100%;object-fit:cover;object-position:50% 12%;
   clip-path:inset(0 0 100% 0);
 }
 .ready .hero__fig img{animation:wipeDown 1.5s var(--ease) .12s forwards}
@@ -224,7 +222,7 @@ h3.d{font-size:clamp(1.7rem,3vw,2.5rem);line-height:1.1}
 /* ---------- marquee ---------- */
 .marq{
   border-top:1px solid var(--line);border-bottom:1px solid var(--line);
-  padding:1.5rem 0;margin-top:clamp(3rem,7vh,5.5rem);overflow:hidden;
+  padding:1.5rem 0;margin-top:0;overflow:hidden;
   display:flex;user-select:none;
 }
 .marq__t{
@@ -393,7 +391,7 @@ h3.d{font-size:clamp(1.7rem,3vw,2.5rem);line-height:1.1}
 
 /* ---------- about ---------- */
 .ab{display:grid;grid-template-columns:.92fr 1.08fr;gap:clamp(2rem,6vw,5.5rem);align-items:center}
-.ab__fig{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--sand)}
+.ab__fig{position:relative;aspect-ratio:4/5;overflow:hidden;background:transparent}
 .ab__fig img{width:100%;height:100%;object-fit:cover;object-position:50% 22%}
 .ab__body p{color:var(--ink-soft);line-height:1.8;margin-bottom:1.2rem}
 .ab__body p:last-of-type{margin-bottom:0}
@@ -533,7 +531,7 @@ h3.d{font-size:clamp(1.7rem,3vw,2.5rem);line-height:1.1}
   .hero{padding-top:7rem}
   .hero__grid{grid-template-columns:1fr;gap:2.4rem}
   .hero__copy{padding-bottom:0;order:1}
-  .hero__fig{order:2;min-height:0;aspect-ratio:4/5;margin-inline:calc(var(--pad) * -1);width:100vw}
+  .hero__fig{order:2;min-height:0;height:auto;aspect-ratio:4/5;margin-inline:calc(var(--pad) * -1);width:100vw}
   .hero__meta{gap:1.3rem 2rem}
   .hero__meta div{max-width:9.5rem}
   .head--split{grid-template-columns:1fr;align-items:start;gap:1.4rem}
