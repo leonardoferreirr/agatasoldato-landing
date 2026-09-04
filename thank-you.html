@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex,nofollow" />
+<meta name="theme-color" content="#F7F3ED" />
+<title>Opening WhatsApp · Agata Soldato</title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<style>
+@font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:300;font-display:swap;src:url(assets/fonts/cormorant-300-i.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:300;font-display:swap;src:url(assets/fonts/cormorant-300.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:400;font-display:swap;src:url(assets/fonts/cormorant-400.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:300;font-display:swap;src:url(assets/fonts/poppins-300.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:400;font-display:swap;src:url(assets/fonts/poppins-400.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+
+:root{--cream:#F7F3ED;--ink:#2E2721;--ink-soft:#6F6357;--ink-faint:#9C9084;--bronze-deep:#7C6141;--line:rgba(46,39,33,.13)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:"Poppins",-apple-system,sans-serif;font-weight:300;
+  background:var(--cream);color:var(--ink);
+  min-height:100svh;display:grid;place-items:center;padding:2rem;text-align:center;
+}
+.brand b{display:block;font-family:"Cormorant Garamond",serif;font-weight:400;font-size:1.3rem;letter-spacing:.24em;text-transform:uppercase}
+.brand i{display:block;font-style:normal;font-size:.5rem;letter-spacing:.32em;text-transform:uppercase;color:var(--ink-faint);margin-top:.4rem}
+h1{font-family:"Cormorant Garamond",serif;font-weight:300;font-size:clamp(1.9rem,5vw,2.9rem);line-height:1.15;margin:2.6rem 0 .9rem}
+h1 em{font-style:italic;color:var(--bronze-deep)}
+p{color:var(--ink-soft);font-size:.94rem;line-height:1.7;max-width:26rem;margin-inline:auto}
+.dots{display:flex;gap:.45rem;justify-content:center;margin:2.2rem 0}
+.dots i{width:5px;height:5px;border-radius:50%;background:var(--bronze-deep);opacity:.25;animation:pulse 1.25s ease-in-out infinite}
+.dots i:nth-child(2){animation-delay:.16s}.dots i:nth-child(3){animation-delay:.32s}
+@keyframes pulse{0%,100%{opacity:.25;transform:scale(1)}45%{opacity:1;transform:scale(1.35)}}
+.btn{
+  display:inline-flex;align-items:center;gap:.7rem;margin-top:.6rem;
+  font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
+  padding:1.05rem 2rem;background:var(--ink);color:var(--cream);border-radius:2px;
+  text-decoration:none;transition:background .35s;
+}
+.btn:hover{background:var(--bronze-deep)}
+.back{display:block;margin-top:1.6rem;font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);text-decoration:none}
+.back:hover{color:var(--ink)}
+@media (prefers-reduced-motion:reduce){.dots i{animation:none;opacity:.6}}
+</style>
+</head>
+<body>
+<main>
+  <a class="brand" href="index.html"><b>Agata Soldato</b><i>Permanent Makeup · Austin, TX</i></a>
+  <h1 id="h">We are opening <em>your WhatsApp.</em></h1>
+  <p id="p">This takes a second. If nothing happens, use the button below.</p>
+  <div class="dots" aria-hidden="true"><i></i><i></i><i></i></div>
+  <a class="btn" id="go" href="#">Open WhatsApp</a>
+  <a class="back" id="back" href="index.html">Back to the site</a>
+</main>
+<script>
+/* keep this the same number as index.html */
+const PHONE='';
+
+const q=new URLSearchParams(location.search);
+const lang=(q.get('l')||'en').slice(0,2);
+const ctx=(q.get('c')||'unknown').replace(/[^a-z_-]/gi,'').slice(0,24);
+
+const T={
+  en:{h:'We are opening <em>your WhatsApp.</em>',p:'This takes a second. If nothing happens, use the button below.',b:'Open WhatsApp',k:'Back to the site'},
+  pt:{h:'Estamos abrindo <em>o seu WhatsApp.</em>',p:'Leva um segundo. Se não abrir sozinho, use o botão abaixo.',b:'Abrir o WhatsApp',k:'Voltar para o site'},
+  es:{h:'Estamos abriendo <em>tu WhatsApp.</em>',p:'Tarda un segundo. Si no se abre solo, usa el botón de abajo.',b:'Abrir WhatsApp',k:'Volver al sitio'}
+}[lang]||null;
+if(T){
+  document.documentElement.lang=lang;
+  document.getElementById('h').innerHTML=T.h;
+  document.getElementById('p').textContent=T.p;
+  document.getElementById('go').textContent=T.b;
+  document.getElementById('back').textContent=T.k;
+}
+
+let msg='';
+try{ msg=sessionStorage.getItem('as-msg')||''; sessionStorage.removeItem('as-msg'); }catch(e){}
+const dest = PHONE ? 'https://wa.me/'+PHONE+(msg?'?text='+encodeURIComponent(msg):'') : 'index.html#booking';
+document.getElementById('go').href=dest;
+
+window.dataLayer=window.dataLayer||[];
+dataLayer.push({event:'whatsapp_conversion',contexto:ctx,idioma:lang});
+
+setTimeout(()=>location.replace(dest),1800);
+</script>
+</body>
+</html>

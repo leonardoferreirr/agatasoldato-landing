@@ -1,0 +1,1321 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#F7F3ED" />
+<title>Agata Soldato · Permanent Makeup in Bee Cave, Austin TX</title>
+<meta name="description" content="Permanent makeup that never announces itself. Nano brows, powder brows, lip blush, eyeliner and areola restoration by Agata Soldato. Trained by James Olaya and Branko Babic. Bee Cave, Austin, Texas." />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Agata Soldato · Permanent Makeup, Austin TX" />
+<meta property="og:description" content="Brows, lip blush, eyeliner and areola restoration. Eleven years, ten thousand faces, one standard: it should look like you." />
+<meta property="og:image" content="assets/agata-portrait.webp" />
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+<link rel="preload" as="image" href="assets/agata-hero.webp"
+      imagesrcset="assets/agata-hero-mobile.webp 780w, assets/agata-hero.webp 1200w"
+      imagesizes="(max-width:900px) 100vw, 46vw" fetchpriority="high" />
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/cormorant-300.woff2" crossorigin />
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/poppins-300.woff2" crossorigin />
+<style>
+@font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:300;font-display:swap;src:url(assets/fonts/cormorant-300-i.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:300;font-display:swap;src:url(assets/fonts/cormorant-300.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:400;font-display:swap;src:url(assets/fonts/cormorant-400.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:300;font-display:swap;src:url(assets/fonts/poppins-300.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:400;font-display:swap;src:url(assets/fonts/poppins-400.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+
+/* ============================================================
+   AGATA SOLDATO — permanent makeup
+   Cream + sand + bronze. Cormorant display, Poppins body.
+   Single file. No framework. Mobile-first. i18n EN / PT / ES.
+   ============================================================ */
+:root{
+  --cream:#F7F3ED;
+  --hero:#E3DED4;
+  --cream-2:#FBF8F4;
+  --sand:#E9E3D8;
+  --sand-2:#E3DED4;
+  --taupe:#C9BFB2;
+  --bronze:#9A7A55;
+  --bronze-2:#B99A72;
+  --bronze-deep:#7C6141;
+  --ink:#2E2721;
+  --ink-2:#4A4038;
+  --ink-soft:#5E5348;
+  --ink-faint:#6A5E51;
+  --line:rgba(46,39,33,.13);
+  --line-soft:rgba(46,39,33,.07);
+  --ff-d:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+  --ff-b:"Poppins",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --maxw:1280px;
+  --pad:clamp(1.25rem,4vw,3rem);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--ff-b);
+  font-weight:300;
+  background:var(--cream);
+  color:var(--ink);
+  line-height:1.65;
+  overflow-x:hidden;
+  font-size:16px;
+}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+::selection{background:var(--bronze);color:var(--cream)}
+.wrap{width:min(100% - (var(--pad) * 2),var(--maxw));margin-inline:auto}
+
+/* ---------- type ---------- */
+.d{font-family:var(--ff-d);font-weight:300;line-height:1.02;letter-spacing:-.012em;color:var(--ink)}
+.d em{font-style:italic;font-weight:300;color:var(--bronze-deep)}
+h1.d{font-size:clamp(3rem,7.4vw,6.4rem)}
+h2.d{font-size:clamp(2.4rem,5.4vw,4.4rem)}
+h3.d{font-size:clamp(1.7rem,3vw,2.5rem);line-height:1.1}
+.lead{
+  font-size:clamp(.98rem,1.25vw,1.075rem);
+  font-weight:300;color:var(--ink-soft);line-height:1.75;
+  max-width:36rem;
+}
+.caps{
+  font-size:.66rem;font-weight:400;letter-spacing:.26em;text-transform:uppercase;
+  color:var(--ink-faint);
+}
+.rule{height:1px;background:var(--line);border:0;width:100%}
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;gap:.7rem;
+  font-family:var(--ff-b);font-size:.72rem;font-weight:400;
+  letter-spacing:.2em;text-transform:uppercase;
+  padding:1.05rem 2rem;
+  background:var(--ink);color:var(--cream);
+  border-radius:2px;
+  transition:background .4s var(--ease),transform .4s var(--ease),color .4s;
+  white-space:nowrap;
+}
+.btn:hover{background:var(--bronze-deep);transform:translateY(-2px)}
+.btn svg{width:13px;height:13px;transition:transform .4s var(--ease)}
+.btn:hover svg{transform:translateX(5px)}
+.btn--line{
+  background:transparent;color:var(--ink);
+  border:1px solid var(--line);padding:1.04rem 1.9rem;
+}
+.btn--line:hover{background:transparent;border-color:var(--ink);color:var(--ink)}
+.btn--light{background:var(--cream);color:var(--ink)}
+.btn--light:hover{background:var(--sand);color:var(--ink)}
+.link-u{
+  display:inline-flex;align-items:center;gap:.55rem;
+  font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);
+  padding-bottom:.35rem;border-bottom:1px solid var(--taupe);
+  transition:border-color .35s,color .35s,gap .35s var(--ease);
+}
+.link-u:hover{border-color:var(--bronze-deep);color:var(--bronze-deep);gap:.85rem}
+
+/* ---------- nav ---------- */
+.nav{
+  position:fixed;inset:0 0 auto 0;z-index:90;
+  padding:1.5rem 0;
+  transition:padding .45s var(--ease),background .45s var(--ease),box-shadow .45s;
+}
+.nav.stuck{
+  padding:.75rem 0;background:rgba(227,222,212,.9);
+  backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%);
+  box-shadow:0 1px 0 var(--line-soft);
+}
+.nav.stuck.past-hero{background:rgba(247,243,237,.88)}
+.nav__in{display:flex;align-items:center;justify-content:space-between;gap:1.4rem}
+.brand{display:block;line-height:1;flex-shrink:0}
+.brand b{
+  display:block;font-family:var(--ff-d);font-weight:400;
+  font-size:clamp(1.05rem,1.7vw,1.35rem);letter-spacing:.24em;text-transform:uppercase;
+}
+.brand i{
+  display:block;font-style:normal;font-size:.5rem;letter-spacing:.32em;text-transform:uppercase;
+  color:var(--ink-faint);margin-top:.35rem;padding-left:.16em;
+}
+.nav__links{display:flex;gap:2.1rem}
+.nav__links a{
+  font-size:.68rem;letter-spacing:.17em;text-transform:uppercase;color:var(--ink-2);
+  position:relative;padding:.3rem 0;transition:color .3s;
+}
+.nav__links a::after{
+  content:"";position:absolute;left:0;bottom:0;height:1px;width:0;
+  background:var(--bronze);transition:width .4s var(--ease);
+}
+.nav__links a:hover{color:var(--ink)}
+.nav__links a:hover::after{width:100%}
+.nav__end{display:flex;align-items:center;gap:1rem}
+
+/* language flags */
+.lang{display:flex;align-items:center;gap:.3rem}
+.lang button{
+  width:30px;height:22px;border-radius:2px;overflow:hidden;
+  display:grid;place-items:center;position:relative;
+  opacity:.34;filter:saturate(.55);
+  transition:opacity .3s,filter .3s,transform .3s var(--ease);
+}
+.lang button:hover{opacity:.75;filter:saturate(.9);transform:translateY(-1px)}
+.lang button.on{opacity:1;filter:none}
+.lang button.on::after{
+  content:"";position:absolute;inset:auto 0 -5px 0;height:1px;background:var(--bronze-deep);
+}
+.lang svg{width:26px;height:19px;display:block;border-radius:2px}
+.burger{display:none;width:34px;height:34px;position:relative}
+.burger span{
+  position:absolute;left:6px;right:6px;height:1px;background:var(--ink);
+  transition:transform .4s var(--ease),opacity .3s;
+}
+.burger span:nth-child(1){top:13px}
+.burger span:nth-child(2){bottom:13px}
+.burger.x span:nth-child(1){transform:translateY(4px) rotate(45deg)}
+.burger.x span:nth-child(2){transform:translateY(-4px) rotate(-45deg)}
+
+/* ---------- hero ---------- */
+.hero{position:relative;padding:clamp(8rem,14vh,11rem) 0 0;overflow:hidden;background:var(--hero)}
+.hero__grid{
+  display:grid;grid-template-columns:1fr .82fr;
+  gap:clamp(2rem,5vw,5rem);align-items:end;
+}
+.hero__copy{padding-bottom:clamp(3rem,7vh,6rem)}
+.hero h1{margin-bottom:1.9rem}
+.hero h1 .ln{display:block;overflow:hidden}
+.hero h1 .ln > span{display:block;transform:translateY(105%);opacity:0}
+.ready .hero h1 .ln > span{
+  animation:riseIn 1.15s var(--ease) forwards;
+}
+.hero h1 .ln:nth-child(2) > span{animation-delay:.1s}
+.hero h1 .ln:nth-child(3) > span{animation-delay:.2s}
+@keyframes riseIn{to{transform:translateY(0);opacity:1}}
+.hero__lead{margin-bottom:2.6rem;opacity:0}
+.ready .hero__lead{animation:fadeUp .9s var(--ease) .5s forwards}
+.hero__cta{display:flex;gap:.9rem;flex-wrap:wrap;margin-bottom:3rem;opacity:0}
+.ready .hero__cta{animation:fadeUp .9s var(--ease) .62s forwards}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.hero__meta{
+  display:flex;flex-wrap:wrap;gap:1.6rem 2.6rem;
+  padding-top:1.5rem;border-top:1px solid var(--line);opacity:0;
+}
+.ready .hero__meta{animation:fadeUp .9s var(--ease) .74s forwards}
+.hero__meta div{max-width:12rem}
+.hero__meta .n{
+  font-family:var(--ff-d);font-size:1.9rem;line-height:1;color:var(--ink);display:block;
+}
+.hero__meta .n em{font-style:italic;color:var(--bronze-deep)}
+.hero__meta .l{display:block;margin-top:.5rem;font-size:.63rem;letter-spacing:.19em;text-transform:uppercase;color:var(--ink-faint);line-height:1.5}
+.hero__fig{position:relative;align-self:stretch;min-height:clamp(26rem,64vh,44rem)}
+/* on wide screens the photo runs to the edge, so the matched ground reads as infinite */
+@media (min-width:1340px){.hero__fig{margin-right:calc((100vw - min(100% * 0 + var(--maxw), 100vw - var(--pad)*2)) / -2)}}
+.hero__fig img{
+  width:100%;height:100%;object-fit:cover;object-position:50% 18%;
+  clip-path:inset(0 0 100% 0);
+}
+.ready .hero__fig img{animation:wipeDown 1.5s var(--ease) .12s forwards}
+@keyframes wipeDown{to{clip-path:inset(0 0 0 0)}}
+.hero__fig img.hero__sig{
+  position:absolute;right:clamp(1rem,2vw,2rem);bottom:clamp(1.2rem,3vh,2.4rem);
+  width:clamp(78px,7.5vw,112px);height:auto;opacity:0;mix-blend-mode:multiply;
+}
+.ready .hero__fig img.hero__sig{animation:fadeUp 1s var(--ease) 1.3s forwards}
+
+/* ---------- marquee ---------- */
+.marq{
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:1.5rem 0;margin-top:clamp(3rem,7vh,5.5rem);overflow:hidden;
+  display:flex;user-select:none;
+}
+.marq__t{
+  display:flex;flex-shrink:0;gap:3.2rem;padding-right:3.2rem;
+  animation:slide 42s linear infinite;
+}
+.marq span{
+  font-family:var(--ff-d);font-size:clamp(1.15rem,2vw,1.7rem);font-style:italic;
+  font-weight:300;color:var(--ink-2);white-space:nowrap;
+  display:inline-flex;align-items:center;gap:3.2rem;
+}
+.marq span::after{content:"";width:4px;height:4px;border-radius:50%;background:var(--bronze-2);flex-shrink:0}
+@keyframes slide{to{transform:translateX(-100%)}}
+
+/* ---------- sections ---------- */
+.sec{padding:clamp(5rem,12vh,9rem) 0;position:relative;scroll-margin-top:5rem}
+#top{scroll-margin-top:0}
+.sec--sand{background:var(--sand)}
+.sec--ink{background:var(--ink);color:var(--cream)}
+.sec--ink .d,.sec--ink h2,.sec--ink h3{color:var(--cream)}
+.sec--ink .d em{color:var(--bronze-2)}
+.sec--ink .lead,.sec--ink p{color:rgba(247,243,237,.68)}
+.sec--ink .caps{color:rgba(247,243,237,.6)}
+.sec--ink .rule,.sec--ink hr{background:rgba(247,243,237,.16)}
+.head{max-width:44rem;margin-bottom:clamp(2.6rem,6vh,4.4rem)}
+.head h2{margin-bottom:1.4rem}
+.head--split{
+  max-width:none;display:grid;grid-template-columns:1fr .9fr;
+  gap:clamp(1.5rem,5vw,5rem);align-items:end;
+}
+.head--split h2{margin-bottom:0}
+.head--center{max-width:52rem;margin-inline:auto;text-align:center}
+.head--center p{margin-inline:auto}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(26px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.rv[data-d="1"]{transition-delay:.09s}
+.rv[data-d="2"]{transition-delay:.18s}
+.rv[data-d="3"]{transition-delay:.27s}
+.rv[data-d="4"]{transition-delay:.36s}
+
+/* ---------- manifesto ---------- */
+.mani{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,6vw,6rem);align-items:start}
+.mani__body p{color:var(--ink-soft);margin-bottom:1.3rem;font-size:1.02rem;line-height:1.8}
+.mani__body p:last-child{margin-bottom:0}
+.mani__body strong{font-weight:400;color:var(--ink)}
+.mani__sig{margin-top:2.4rem;display:flex;align-items:center;gap:1.2rem}
+.mani__sig img{width:104px;height:auto;mix-blend-mode:multiply}
+.mani__sig span{font-size:.63rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-faint);line-height:1.7}
+
+/* ---------- services ---------- */
+.srv{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(2rem,5vw,4.5rem);align-items:start}
+.srv__list{border-top:1px solid var(--line)}
+.srv__row{
+  display:block;width:100%;text-align:left;
+  border-bottom:1px solid var(--line);
+  padding:clamp(1.1rem,2.2vh,1.6rem) 0;
+  transition:padding-left .5s var(--ease);
+  position:relative;
+}
+.srv__row::before{
+  content:"";position:absolute;left:0;top:50%;width:0;height:1px;
+  background:var(--bronze);transition:width .5s var(--ease);
+}
+.srv__head{display:flex;align-items:baseline;gap:1.1rem}
+.srv__row .nm{
+  font-family:var(--ff-d);font-weight:300;
+  font-size:clamp(1.5rem,2.9vw,2.2rem);line-height:1.1;
+  transition:color .4s;
+}
+.srv__row .ix{font-size:.6rem;letter-spacing:.18em;color:var(--ink-faint);flex-shrink:0}
+.srv__row .ds{
+  color:var(--ink-soft);font-size:.9rem;line-height:1.6;
+  max-width:32rem;margin-top:.45rem;
+}
+@media (hover:hover) and (min-width:901px){
+  .srv__row .ds{
+    max-height:0;opacity:0;margin-top:0;overflow:hidden;
+    transition:max-height .55s var(--ease),opacity .45s,margin-top .55s var(--ease);
+  }
+  .srv__row.on{padding-left:1.5rem}
+  .srv__row.on::before{width:.9rem}
+  .srv__row.on .nm{color:var(--bronze-deep)}
+  .srv__row.on .ds{max-height:6rem;opacity:1;margin-top:.6rem}
+}
+.srv__aside{position:sticky;top:7rem}
+.panel{
+  border:1px solid var(--line);background:var(--cream-2);
+  padding:clamp(1.6rem,2.6vw,2.4rem);min-height:24rem;
+  display:flex;flex-direction:column;
+}
+.panel__n{
+  font-family:var(--ff-d);font-weight:300;font-size:clamp(1.8rem,2.6vw,2.3rem);
+  line-height:1.1;margin-bottom:1rem;
+}
+.panel__d{color:var(--ink-soft);font-size:.94rem;line-height:1.75;margin-bottom:1.8rem}
+.panel__specs{list-style:none;margin-top:auto;border-top:1px solid var(--line)}
+.panel__specs li{
+  display:flex;justify-content:space-between;align-items:baseline;gap:1rem;
+  padding:.85rem 0;border-bottom:1px solid var(--line);
+}
+.panel__specs .k{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-faint)}
+.panel__specs .v{font-family:var(--ff-d);font-size:1.1rem;color:var(--ink);text-align:right}
+.panel__sig{display:flex;align-items:center;gap:.9rem;margin-top:1.5rem}
+.panel__sig img{width:66px;height:auto;mix-blend-mode:multiply;opacity:.9}
+.panel__sig span{font-size:.58rem;letter-spacing:.19em;text-transform:uppercase;color:var(--ink-faint);line-height:1.7}
+.panel__fade{animation:panelIn .5s var(--ease)}
+@keyframes panelIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.srv__more{
+  margin-top:clamp(2.4rem,5vh,3.6rem);padding-top:2rem;border-top:1px solid var(--line);
+  display:flex;flex-wrap:wrap;gap:.5rem .7rem;align-items:center;
+}
+.srv__more p{font-size:.86rem;color:var(--ink-soft);max-width:40rem;line-height:1.8}
+.srv__more p b{font-weight:400;color:var(--ink)}
+
+/* ---------- results / drag track ---------- */
+.res__top{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap;margin-bottom:2.6rem}
+.track{
+  display:flex;gap:clamp(1rem,2vw,1.6rem);
+  overflow-x:auto;scroll-snap-type:x mandatory;
+  padding-bottom:1.4rem;margin-bottom:.4rem;
+  cursor:grab;scrollbar-width:none;-ms-overflow-style:none;
+  padding-inline:max(var(--pad),calc(50vw - var(--maxw)/2));
+}
+.track::-webkit-scrollbar{display:none}
+.track.grabbing{cursor:grabbing;scroll-snap-type:none}
+.track.grabbing *{pointer-events:none}
+.card{flex:0 0 min(80vw,440px);scroll-snap-align:center}
+.card__pair{display:grid;gap:2px;background:var(--taupe)}
+.card__ph{position:relative;aspect-ratio:12/5;overflow:hidden;background:var(--sand-2)}
+.card__ph img{width:100%;height:100%;object-fit:cover;object-position:50% 50%}
+.card__ph:first-child img{filter:saturate(.8) brightness(1.02)}
+.card__ph b{
+  position:absolute;left:.75rem;bottom:.55rem;
+  font-family:var(--ff-b);font-size:.55rem;font-weight:400;letter-spacing:.22em;text-transform:uppercase;
+  color:#fff;text-shadow:0 1px 7px rgba(0,0,0,.55);
+}
+.card__ph .veil{position:absolute;inset:0;background:var(--sand-2);transform-origin:left;transition:transform 1.1s var(--ease)}
+.card.in .card__ph .veil{transform:scaleX(0)}
+.card.in .card__ph:last-child .veil{transition-delay:.24s}
+.card__t{margin-top:1.1rem;font-family:var(--ff-d);font-size:1.4rem;line-height:1.2}
+.card__m{margin-top:.35rem;font-size:.7rem;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-faint)}
+.card--soon .card__pair{
+  aspect-ratio:6/5;background:var(--cream-2);
+  border:1px solid var(--line);place-items:center;padding:2rem;text-align:center;
+}
+.sec--sand .card--soon .card__pair{background:rgba(251,248,244,.55)}
+.card--soon p{font-family:var(--ff-d);font-style:italic;font-size:1.3rem;color:var(--ink-faint);line-height:1.45}
+.track__hint{
+  display:flex;align-items:center;gap:.6rem;
+  font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-faint);
+}
+.track__hint svg{width:26px;height:8px}
+
+/* ---------- process ---------- */
+.proc{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line)}
+.proc__s{padding:2.2rem 1.6rem 0 0;border-right:1px solid var(--line)}
+.proc__s:last-child{border-right:0;padding-right:0}
+.proc__s .n{
+  font-family:var(--ff-d);font-size:2.6rem;line-height:1;color:var(--taupe);display:block;margin-bottom:1.1rem;
+}
+.sec--ink .proc__s .n{color:rgba(247,243,237,.38)}
+.proc__s h3{font-family:var(--ff-d);font-weight:300;font-size:1.45rem;line-height:1.15;margin-bottom:.6rem}
+.proc__s p{font-size:.87rem;line-height:1.7;color:var(--ink-soft)}
+
+/* ---------- about ---------- */
+.ab{display:grid;grid-template-columns:.92fr 1.08fr;gap:clamp(2rem,6vw,5.5rem);align-items:center}
+.ab__fig{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--sand)}
+.ab__fig img{width:100%;height:100%;object-fit:cover;object-position:50% 22%}
+.ab__body p{color:var(--ink-soft);line-height:1.8;margin-bottom:1.2rem}
+.ab__body p:last-of-type{margin-bottom:0}
+.cred{
+  margin-top:2.4rem;display:grid;grid-template-columns:repeat(2,1fr);
+  gap:1px;background:var(--line);border:1px solid var(--line);
+}
+.cred div{background:var(--cream);padding:1.3rem 1.4rem}
+.sec--sand .cred div{background:var(--sand)}
+.cred .k{display:block;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:.45rem}
+.cred .v{font-family:var(--ff-d);font-size:1.15rem;line-height:1.3;color:var(--ink)}
+
+/* ---------- training ---------- */
+.tr{display:grid;grid-template-columns:1fr .92fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+.tr__fig{aspect-ratio:3/4;overflow:hidden;background:rgba(247,243,237,.06)}
+.tr__fig img{width:100%;height:100%;object-fit:cover;object-position:50% 20%}
+.tr__mods{margin:2.2rem 0 0;list-style:none;border-top:1px solid rgba(247,243,237,.16)}
+.tr__mods li{
+  padding:.95rem 0;border-bottom:1px solid rgba(247,243,237,.16);
+  display:flex;align-items:baseline;justify-content:space-between;gap:1.2rem;
+}
+.tr__mods .m{font-family:var(--ff-d);font-size:1.35rem;color:var(--cream)}
+.tr__mods .s{font-size:.63rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(247,243,237,.62);text-align:right}
+.tr__price{display:flex;align-items:baseline;gap:.9rem;margin-top:2.2rem;flex-wrap:wrap}
+.tr__price .p{font-family:var(--ff-d);font-size:3.2rem;line-height:1;color:var(--cream)}
+.tr__price .p sup{font-size:1.2rem;vertical-align:super;color:var(--bronze-2)}
+.tr__price .c{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(247,243,237,.66);line-height:1.7}
+.tr__cta{margin-top:2.2rem;display:flex;gap:.9rem;flex-wrap:wrap}
+
+/* ---------- testimonials ---------- */
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.4rem,3vw,2.6rem)}
+.q{border-top:1px solid var(--line);padding-top:1.7rem}
+.q blockquote{
+  font-family:var(--ff-d);font-size:clamp(1.15rem,1.8vw,1.45rem);font-style:italic;
+  font-weight:300;line-height:1.45;color:var(--ink);margin-bottom:1.2rem;
+}
+.q cite{font-style:normal;font-size:.63rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-faint)}
+
+/* ---------- faq ---------- */
+.faq{border-top:1px solid var(--line);max-width:54rem;margin-inline:auto}
+.faq__i{border-bottom:1px solid var(--line)}
+.faq__q{
+  width:100%;display:flex;align-items:flex-start;justify-content:space-between;gap:1.5rem;
+  padding:1.5rem 0;text-align:left;
+  font-family:var(--ff-d);font-size:clamp(1.15rem,2vw,1.5rem);font-weight:300;line-height:1.3;
+  transition:color .35s;
+}
+.faq__q:hover{color:var(--bronze-deep)}
+.faq__q .ic{position:relative;width:13px;height:13px;flex-shrink:0;margin-top:.55rem}
+.faq__q .ic::before,.faq__q .ic::after{
+  content:"";position:absolute;background:var(--ink);transition:transform .45s var(--ease),background .35s;
+}
+.faq__q .ic::before{left:0;right:0;top:6px;height:1px}
+.faq__q .ic::after{top:0;bottom:0;left:6px;width:1px}
+.faq__i.open .ic::after{transform:rotate(90deg)}
+.faq__i.open .ic::before,.faq__i.open .ic::after{background:var(--bronze-deep)}
+.faq__a{max-height:0;overflow:hidden;transition:max-height .55s var(--ease)}
+.faq__a p{padding:0 0 1.6rem;color:var(--ink-soft);max-width:44rem;line-height:1.8;font-size:.94rem}
+.faq__i.open .faq__a{max-height:26rem}
+
+/* ---------- booking ---------- */
+.book{display:grid;grid-template-columns:1fr .95fr;gap:clamp(2rem,6vw,5rem);align-items:start}
+.form{display:grid;gap:1.1rem}
+.f{position:relative}
+.f label{
+  display:block;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ink-faint);margin-bottom:.5rem;
+}
+.f input,.f select,.f textarea{
+  width:100%;font-family:var(--ff-b);font-size:.94rem;font-weight:300;color:var(--ink);
+  background:transparent;border:0;border-bottom:1px solid var(--line);
+  padding:.6rem 0;transition:border-color .35s;
+}
+.f input:focus,.f select:focus,.f textarea:focus{outline:none;border-color:var(--bronze)}
+.f textarea{resize:vertical;min-height:3.4rem}
+.f select{appearance:none;cursor:pointer;border-radius:0}
+.f--sel::after{
+  content:"";position:absolute;right:2px;bottom:1.1rem;pointer-events:none;
+  width:6px;height:6px;border-right:1px solid var(--ink-faint);border-bottom:1px solid var(--ink-faint);
+  transform:rotate(45deg);
+}
+.form .btn{justify-content:center;margin-top:.6rem}
+.form__note{font-size:.68rem;color:var(--ink-faint);line-height:1.7}
+.contact{display:grid;gap:1.6rem}
+.contact__b{border-top:1px solid var(--line);padding-top:1.1rem}
+.contact__b .k{display:block;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:.5rem}
+.contact__b .v{font-family:var(--ff-d);font-size:1.3rem;line-height:1.4;color:var(--ink)}
+.contact__b a.v:hover{color:var(--bronze-deep)}
+.contact__b .v small{display:block;font-family:var(--ff-b);font-size:.82rem;color:var(--ink-soft);margin-top:.25rem;letter-spacing:0}
+
+/* ---------- footer ---------- */
+.foot{background:var(--ink);color:rgba(247,243,237,.6);padding:clamp(3.5rem,8vh,5.5rem) 0 2.2rem}
+.foot__top{display:flex;justify-content:space-between;gap:2.5rem;flex-wrap:wrap;margin-bottom:3rem}
+.foot .brand b{color:var(--cream)}
+.foot .brand i{color:rgba(247,243,237,.6)}
+.foot__nav{display:flex;gap:1.8rem;flex-wrap:wrap}
+.foot__nav a{font-size:.68rem;letter-spacing:.17em;text-transform:uppercase;color:rgba(247,243,237,.62);transition:color .3s}
+.foot__nav a:hover{color:var(--cream)}
+.foot__bot{
+  border-top:1px solid rgba(247,243,237,.14);padding-top:1.6rem;
+  hyphens:none;overflow-wrap:normal;
+  display:flex;justify-content:space-between;gap:1.2rem;flex-wrap:wrap;
+  font-size:.66rem;letter-spacing:.06em;color:rgba(247,243,237,.6);
+}
+.foot__bot a:hover{color:var(--cream)}
+
+/* ---------- floating contact ---------- */
+.float{
+  position:fixed;right:clamp(1rem,2.4vw,2rem);bottom:clamp(1rem,2.4vw,2rem);z-index:70;
+  width:52px;height:52px;border-radius:50%;
+  background:var(--ink);color:var(--cream);
+  display:grid;place-items:center;
+  box-shadow:0 14px 32px -12px rgba(46,39,33,.6);
+  transform:translateY(20px) scale(.8);opacity:0;pointer-events:none;
+  transition:transform .5s var(--ease),opacity .4s,background .35s;
+}
+.float.show{transform:none;opacity:1;pointer-events:auto}
+.float:hover{background:var(--bronze-deep)}
+.float svg{width:22px;height:22px}
+
+/* ---------- responsive ---------- */
+@media (max-width:1080px){
+  .nav__links{gap:1.4rem}
+  .nav__links a{font-size:.64rem}
+}
+@media (max-width:900px){
+  .nav__links{
+    position:fixed;inset:0 0 auto 0;top:0;padding:6rem var(--pad) 2.5rem;
+    background:var(--cream);flex-direction:column;gap:1.4rem;
+    transform:translateY(-102%);transition:transform .6s var(--ease);
+    box-shadow:0 20px 50px -30px rgba(46,39,33,.4);z-index:-1;
+  }
+  .nav__links.open{transform:none}
+  .nav__links a{font-size:1.5rem;font-family:var(--ff-d);letter-spacing:.04em;text-transform:none;color:var(--ink)}
+  .burger{display:block}
+  .nav__end .btn{display:none}
+  .hero{padding-top:7rem}
+  .hero__grid{grid-template-columns:1fr;gap:2.4rem}
+  .hero__copy{padding-bottom:0;order:1}
+  .hero__fig{order:2;min-height:0;aspect-ratio:4/5;margin-inline:calc(var(--pad) * -1);width:100vw}
+  .hero__meta{gap:1.3rem 2rem}
+  .hero__meta div{max-width:9.5rem}
+  .head--split{grid-template-columns:1fr;align-items:start;gap:1.4rem}
+  .mani,.srv,.ab,.tr,.book{grid-template-columns:1fr}
+  .srv__aside{position:static;display:none}
+  .proc{grid-template-columns:1fr 1fr}
+  .proc__s{padding:1.8rem 1.3rem 1.8rem 0;border-bottom:1px solid var(--line)}
+  .proc__s:nth-child(2n){border-right:0;padding-right:0}
+  .proc__s:nth-last-child(-n+2){border-bottom:0}
+  .quotes{grid-template-columns:1fr}
+  .ab__fig{max-width:26rem;margin-inline:auto;width:100%}
+  .tr__fig{order:2;max-width:22rem}
+  .cred{grid-template-columns:1fr 1fr}
+}
+@media (max-width:560px){
+  .hero__meta div{max-width:none;flex:1 1 100%}
+  .hero__meta{gap:1.1rem}
+  .hero__meta .n{font-size:1.5rem}
+  .proc{grid-template-columns:1fr}
+  .proc__s{border-right:0;padding-right:0}
+  .proc__s:nth-last-child(-n+2){border-bottom:1px solid var(--line)}
+  .proc__s:last-child{border-bottom:0}
+  .cred{grid-template-columns:1fr}
+  .card{flex:0 0 86vw}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important}
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none}
+  .hero h1 .ln > span,.hero__lead,.hero__cta,.hero__meta,.hero__fig img.hero__sig{opacity:1;transform:none;animation:none}
+  .hero__fig img{clip-path:none}
+  .card__ph .veil{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav" id="nav">
+  <div class="wrap nav__in">
+    <a href="#top" class="brand">
+      <b>Agata Soldato</b>
+      <i data-i18n="brand.sub">Permanent Makeup · Austin, TX</i>
+    </a>
+    <nav class="nav__links" id="navLinks">
+      <a href="#work" data-i18n="nav.work">Work</a>
+      <a href="#services" data-i18n="nav.services">Services</a>
+      <a href="#process" data-i18n="nav.process">Process</a>
+      <a href="#about" data-i18n="nav.about">About</a>
+      <a href="#training" data-i18n="nav.training">Training</a>
+      <a href="#booking" data-i18n="nav.contact">Contact</a>
+    </nav>
+    <div class="nav__end">
+      <div class="lang" role="group" aria-label="Language">
+        <button data-lang="en" class="on" aria-label="English" title="English">
+          <svg viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#f3f4f6"/><g fill="#b22234"><rect y="0" width="30" height="1.54"/><rect y="3.08" width="30" height="1.54"/><rect y="6.15" width="30" height="1.54"/><rect y="9.23" width="30" height="1.54"/><rect y="12.31" width="30" height="1.54"/><rect y="15.38" width="30" height="1.54"/><rect y="18.46" width="30" height="1.54"/></g><rect width="13" height="10.77" fill="#3c3b6e"/><g fill="#fff"><circle cx="2.2" cy="1.9" r=".7"/><circle cx="5.5" cy="1.9" r=".7"/><circle cx="8.8" cy="1.9" r=".7"/><circle cx="3.8" cy="4" r=".7"/><circle cx="7.1" cy="4" r=".7"/><circle cx="10.4" cy="4" r=".7"/><circle cx="2.2" cy="6.1" r=".7"/><circle cx="5.5" cy="6.1" r=".7"/><circle cx="8.8" cy="6.1" r=".7"/><circle cx="3.8" cy="8.3" r=".7"/><circle cx="7.1" cy="8.3" r=".7"/><circle cx="10.4" cy="8.3" r=".7"/></g></svg>
+        </button>
+        <button data-lang="pt" aria-label="Português" title="Português">
+          <svg viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#009b3a"/><path d="M15 2.4 27.8 10 15 17.6 2.2 10Z" fill="#fedf00"/><circle cx="15" cy="10" r="4.4" fill="#002776"/><path d="M10.9 8.3a10 10 0 0 1 8.3 2.6" stroke="#fff" stroke-width="1.15" fill="none"/></svg>
+        </button>
+        <button data-lang="es" aria-label="Español" title="Español">
+          <svg viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#c60b1e"/><rect y="5" width="30" height="10" fill="#ffc400"/><rect x="5.4" y="8" width="3.4" height="4.4" fill="#c60b1e" opacity=".85" rx=".4"/></svg>
+        </button>
+      </div>
+      <a href="#booking" class="btn" data-i18n="nav.cta">Book</a>
+      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="wrap hero__grid">
+    <div class="hero__copy">
+      <h1 class="d">
+        <span class="ln"><span data-i18n="hero.h1a">Permanent makeup</span></span>
+        <span class="ln"><span data-i18n="hero.h1b">that never</span></span>
+        <span class="ln"><span data-i18n="hero.h1c"><em>announces itself.</em></span></span>
+      </h1>
+      <p class="lead hero__lead" data-i18n="hero.lead">Eleven years, ten thousand faces, one standard: it should look like you, on your best morning. Brows, lip blush, eyeliner and areola restoration in Bee Cave, Texas.</p>
+      <div class="hero__cta">
+        <a href="#booking" class="btn" data-cta="hero"><span data-i18n="hero.cta1">Book a consultation</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="#work" class="btn btn--line" data-i18n="hero.cta2">See the work</a>
+      </div>
+      <div class="hero__meta">
+        <div><span class="n">2015</span><span class="l" data-i18n="hero.m1">First studio opened</span></div>
+        <div><span class="n">10,000<em>+</em></span><span class="l" data-i18n="hero.m2">Clients since then</span></div>
+        <div><span class="n">1:1</span><span class="l" data-i18n="hero.m3">Private artist training</span></div>
+      </div>
+    </div>
+    <figure class="hero__fig">
+      <img src="assets/agata-hero.webp"
+           srcset="assets/agata-hero-mobile.webp 780w, assets/agata-hero.webp 1200w"
+           sizes="(max-width:900px) 100vw, 46vw"
+           width="1200" height="1600" fetchpriority="high" decoding="async"
+           alt="Agata Soldato, permanent makeup artist in Bee Cave, Texas" />
+      <img src="assets/signature.webp" class="hero__sig" width="300" height="130" alt="" aria-hidden="true" loading="lazy" />
+    </figure>
+  </div>
+  <div class="wrap">
+    <div class="marq" aria-hidden="true">
+      <div class="marq__t" id="marqA">
+        <span>Nano brows</span><span>Powder brows</span><span>Microblading</span><span>Lip blush</span><span>Eyeliner</span><span>Areola restoration</span><span>Scalp micropigmentation</span><span>Scar camouflage</span><span>Correction &amp; removal</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<section class="sec">
+  <div class="wrap mani">
+    <h2 class="d rv" data-i18n="mani.h2">A new name.<br/><em>The same hands.</em></h2>
+    <div class="mani__body rv" data-d="1">
+      <p data-i18n="mani.p1">For eleven years my work carried a studio's name. From now on it carries mine. Nothing else changed: the same pigments, the same mapping, the same slow and careful pass that made people drive across Texas to sit in this chair.</p>
+      <p data-i18n="mani.p2">If someone sent you here, they were sending you to <strong>me</strong>. Same hands, same standard, one less name in the way.</p>
+      <div class="mani__sig">
+        <img src="assets/signature.webp" width="300" height="130" alt="Agata Soldato signature" loading="lazy" />
+        <span data-i18n="mani.sig">Agata Soldato<br/>Bee Cave, Texas</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK / RESULTS -->
+<section class="sec sec--sand" id="work">
+  <div class="wrap">
+    <div class="head head--split rv">
+      <h2 class="d"><span data-i18n="work.h2a">Healed work,</span><br/><em data-i18n="work.h2b">not fresh work.</em></h2>
+      <p class="lead" data-i18n="work.lead">Anyone can photograph a brow the minute it leaves the chair. What matters is how it looks weeks later, once the colour has settled and the skin has done its part.</p>
+    </div>
+  </div>
+  <div class="track" id="track">
+    <article class="card rv">
+      <div class="card__pair">
+        <div class="card__ph"><img src="assets/brows-before.webp" width="760" height="268" loading="lazy" decoding="async" alt="Sparse natural brows before permanent makeup, with pre-procedure mapping" /><span class="veil"></span><b data-i18n="work.before">Before</b></div>
+        <div class="card__ph"><img src="assets/brows-after.webp" width="760" height="268" loading="lazy" decoding="async" alt="Defined healed brows after nano and powder permanent makeup" /><span class="veil"></span><b data-i18n="work.after">After</b></div>
+      </div>
+      <h3 class="card__t" data-i18n="work.t1">Nano brows, healed</h3>
+      <p class="card__m" data-i18n="work.m1">Mapping to healed result · Fine natural hair</p>
+    </article>
+    <article class="card card--soon rv" data-d="1">
+      <div class="card__pair"><p data-i18n="work.soon1">Lip blush,<br/>eight weeks healed</p></div>
+      <h3 class="card__t" data-i18n="work.t2">Lip blush</h3>
+      <p class="card__m" data-i18n="work.soon_m">Photo coming soon</p>
+    </article>
+    <article class="card card--soon rv" data-d="2">
+      <div class="card__pair"><p data-i18n="work.soon2">Eyeliner,<br/>invisible lash line</p></div>
+      <h3 class="card__t" data-i18n="work.t3">Eyeliner</h3>
+      <p class="card__m" data-i18n="work.soon_m">Photo coming soon</p>
+    </article>
+    <article class="card card--soon rv" data-d="3">
+      <div class="card__pair"><p data-i18n="work.soon3">Areola restoration,<br/>after reconstruction</p></div>
+      <h3 class="card__t" data-i18n="work.t4">Areola restoration</h3>
+      <p class="card__m" data-i18n="work.soon_m">Photo coming soon</p>
+    </article>
+  </div>
+  <div class="wrap">
+    <div class="track__hint">
+      <svg viewBox="0 0 40 10" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M0 5h37M32 1l5 4-5 4"/></svg>
+      <span data-i18n="work.hint">Drag to see more</span>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="sec" id="services">
+  <div class="wrap">
+    <div class="head head--split rv">
+      <h2 class="d"><span data-i18n="srv.h2a">Everything I did before.</span> <em data-i18n="srv.h2b">Nothing lost in the move.</em></h2>
+      <p class="lead" data-i18n="srv.lead">The full menu stays open, from a first brow to correcting somebody else's work. Prices are given after we look at your skin, because the same procedure is not the same job on every face.</p>
+    </div>
+    <div class="srv">
+      <div class="srv__list" id="srvList">
+        <button class="srv__row on" data-i="0" type="button">
+          <span class="srv__head"><span class="ix">01</span><span class="nm" data-i18n="srv.n1">Nano brows</span></span>
+          <span class="ds" data-i18n="srv.d1">Hair by hair, drawn with a single fine needle. For brows that need structure without weight.</span>
+        </button>
+        <button class="srv__row" data-i="1" type="button">
+          <span class="srv__head"><span class="ix">02</span><span class="nm" data-i18n="srv.n2">Powder brows</span></span>
+          <span class="ds" data-i18n="srv.d2">A soft gradient, lighter at the head, defined at the tail. The one that survives sweat, sunscreen and the shower.</span>
+        </button>
+        <button class="srv__row" data-i="2" type="button">
+          <span class="srv__head"><span class="ix">03</span><span class="nm" data-i18n="srv.n3">Microblading</span></span>
+          <span class="ds" data-i18n="srv.d3">The classic stroke technique, still the right answer for dry skin and brows that only need filling in.</span>
+        </button>
+        <button class="srv__row" data-i="3" type="button">
+          <span class="srv__head"><span class="ix">04</span><span class="nm" data-i18n="srv.n4">Lip blush</span></span>
+          <span class="ds" data-i18n="srv.d4">Your own lip colour, one shade more awake, with the border redrawn where time took it.</span>
+        </button>
+        <button class="srv__row" data-i="4" type="button">
+          <span class="srv__head"><span class="ix">05</span><span class="nm" data-i18n="srv.n5">Eyeliner</span></span>
+          <span class="ds" data-i18n="srv.d5">From an invisible lash line that only makes the lashes look thicker, to a defined wing.</span>
+        </button>
+        <button class="srv__row" data-i="5" type="button">
+          <span class="srv__head"><span class="ix">06</span><span class="nm" data-i18n="srv.n6">Areola restoration</span></span>
+          <span class="ds" data-i18n="srv.d6">The last step after breast surgery. Areola and nipple rebuilt in three dimensions, colour matched to you.</span>
+        </button>
+        <button class="srv__row" data-i="6" type="button">
+          <span class="srv__head"><span class="ix">07</span><span class="nm" data-i18n="srv.n7">Scalp micropigmentation</span></span>
+          <span class="ds" data-i18n="srv.d7">Density where the hairline gave up, built one point at a time until the scalp stops showing through.</span>
+        </button>
+        <button class="srv__row" data-i="7" type="button">
+          <span class="srv__head"><span class="ix">08</span><span class="nm" data-i18n="srv.n8">Correction and removal</span></span>
+          <span class="ds" data-i18n="srv.d8">Old work gone grey, a shape that never suited you, colour sitting too warm. Corrected, lightened or removed.</span>
+        </button>
+      </div>
+      <aside class="srv__aside">
+        <div class="panel" id="panel" aria-live="polite">
+          <h3 class="panel__n" id="pName">Nano brows</h3>
+          <p class="panel__d" id="pDesc">Hair by hair, drawn with a single fine needle. For brows that need structure without weight.</p>
+          <ul class="panel__specs">
+            <li><span class="k" data-i18n="srv.k1">In the chair</span><span class="v" id="pTime">2 to 3 hours</span></li>
+            <li><span class="k" data-i18n="srv.k2">Sessions</span><span class="v" id="pSess">2, including perfecting</span></li>
+            <li><span class="k" data-i18n="srv.k3">Holds for</span><span class="v" id="pLast">1 to 3 years</span></li>
+          </ul>
+          <div class="panel__sig">
+            <img src="assets/signature.webp" width="300" height="130" alt="" aria-hidden="true" loading="lazy" />
+            <span data-i18n="srv.cap">Bee Cave, Texas<br/>By appointment</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="srv__more rv">
+      <p data-i18n="srv.more"><b>Also available:</b> scar camouflage, stretch mark camouflage, brow and lip touch ups from other artists, and piercings. If you are not sure which procedure you need, come in for the consultation first, it is the part that decides everything else.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="sec sec--ink" id="process">
+  <div class="wrap">
+    <div class="head head--split rv">
+      <h2 class="d"><span data-i18n="proc.h2a">Four steps,</span> <em data-i18n="proc.h2b">and none of them rushed.</em></h2>
+      <p class="lead" data-i18n="proc.lead">Most of the work happens before the machine is ever switched on. By the time we start, you have already approved the shape in the mirror.</p>
+    </div>
+    <div class="proc">
+      <div class="proc__s rv"><span class="n">01</span><h3 data-i18n="proc.t1">Consultation</h3><p data-i18n="proc.p1">Skin type, medical history, the shape you have and the one you want. We also test colour against your undertone.</p></div>
+      <div class="proc__s rv" data-d="1"><span class="n">02</span><h3 data-i18n="proc.t2">Mapping</h3><p data-i18n="proc.p2">The design is drawn on your face and measured against your bone structure. Nothing begins until you say yes to the mirror.</p></div>
+      <div class="proc__s rv" data-d="2"><span class="n">03</span><h3 data-i18n="proc.t3">The session</h3><p data-i18n="proc.p3">Numbing first, then pigment in slow passes. Two to three hours, and you go home with written aftercare.</p></div>
+      <div class="proc__s rv" data-d="3"><span class="n">04</span><h3 data-i18n="proc.t4">Perfecting</h3><p data-i18n="proc.p4">Six to eight weeks later we look at how your skin healed and adjust colour and density. That visit is part of the price.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="sec" id="about">
+  <div class="wrap ab">
+    <figure class="ab__fig rv">
+      <img src="assets/agata-editorial.webp" width="980" height="1225" loading="lazy" decoding="async" alt="Portrait of Agata Soldato" />
+    </figure>
+    <div class="ab__body rv" data-d="1">
+      <h2 class="d" style="margin-bottom:1.6rem"><span data-i18n="ab.h2a">Trained by the people</span> <em data-i18n="ab.h2b">who wrote the techniques.</em></h2>
+      <p data-i18n="ab.p1">I studied under James Olaya and Branko Babic, two of the names the rest of this industry learns from, and I hold certifications in Brazil, Europe and the United States.</p>
+      <p data-i18n="ab.p2">I opened my first studio in Austin in 2015. Since then more than ten thousand people have sat in my chair, and a good part of my week is still spent teaching other artists how to do this properly.</p>
+      <p data-i18n="ab.p3">What I care about has not moved in eleven years: a brow that suits the face it is on, colour that heals the way I promised, and skin I treat as if it were my own.</p>
+      <div class="cred">
+        <div><span class="k" data-i18n="ab.k1">Trained by</span><span class="v">James Olaya · Branko Babic</span></div>
+        <div><span class="k" data-i18n="ab.k2">Certified in</span><span class="v" data-i18n="ab.v2">Brazil · Europe · United States</span></div>
+        <div><span class="k" data-i18n="ab.k3">Practising since</span><span class="v">2015</span></div>
+        <div><span class="k" data-i18n="ab.k4">Languages</span><span class="v" data-i18n="ab.v4">English · Portuguese · Spanish</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRAINING -->
+<section class="sec sec--ink" id="training">
+  <div class="wrap tr">
+    <div class="rv">
+      <h2 class="d" style="margin-bottom:1.4rem"><span data-i18n="tr.h2a">If I can teach it,</span> <em data-i18n="tr.h2b">I can do it.</em></h2>
+      <p class="lead" data-i18n="tr.lead">Artists fly in to learn these techniques from me one to one. No group rooms, no watching from the back. You train on a live model, with a full kit, and you keep my number afterwards.</p>
+      <ul class="tr__mods">
+        <li><span class="m" data-i18n="tr.m1">Nano brows</span><span class="s" data-i18n="tr.priv">Private 1:1 · Live model</span></li>
+        <li><span class="m" data-i18n="tr.m2">Powder brows</span><span class="s" data-i18n="tr.priv">Private 1:1 · Live model</span></li>
+        <li><span class="m" data-i18n="tr.m3">Lip blush</span><span class="s" data-i18n="tr.priv">Private 1:1 · Live model</span></li>
+        <li><span class="m" data-i18n="tr.m4">Eyeliner</span><span class="s" data-i18n="tr.priv">Private 1:1 · Live model</span></li>
+        <li><span class="m" data-i18n="tr.m5">Areola tattoo</span><span class="s" data-i18n="tr.priv">Private 1:1 · Live model</span></li>
+      </ul>
+      <div class="tr__price">
+        <span class="p"><sup>$</sup>3,000</span>
+        <span class="c" data-i18n="tr.price">All five trainings<br/>Full kit, live model, online modules and after course support</span>
+      </div>
+      <div class="tr__cta">
+        <a href="#booking" class="btn btn--light" data-cta="training"><span data-i18n="tr.cta1">Ask for the next dates</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+    <figure class="tr__fig rv" data-d="1">
+      <img src="assets/agata-studio.webp" width="1126" height="1620" loading="lazy" decoding="async" alt="Agata Soldato in the training studio" />
+    </figure>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="sec sec--sand">
+  <div class="wrap">
+    <div class="head head--center rv">
+      <h2 class="d"><span data-i18n="tq.h2a">What people say</span> <em data-i18n="tq.h2b">when the swelling is gone.</em></h2>
+    </div>
+    <div class="quotes">
+      <div class="q rv"><blockquote data-i18n="tq.q1">“I stopped filling my brows in the morning and nobody at work noticed anything had changed. That was the whole point.”</blockquote><cite data-i18n="tq.c1">Client · Austin, TX</cite></div>
+      <div class="q rv" data-d="1"><blockquote data-i18n="tq.q2">“She fixed brows another artist left too warm and too high. I had almost given up on them.”</blockquote><cite data-i18n="tq.c2">Client · Correction</cite></div>
+      <div class="q rv" data-d="2"><blockquote data-i18n="tq.q3">“Careful, honest about what my skin would hold, and the healed colour is exactly what she said it would be.”</blockquote><cite data-i18n="tq.c3">Client · Lip blush</cite></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec">
+  <div class="wrap">
+    <div class="head head--center rv"><h2 class="d"><span data-i18n="faq.h2a">Before you</span> <em data-i18n="faq.h2b">book.</em></h2></div>
+    <div class="faq rv" id="faq">
+      <div class="faq__i">
+        <button class="faq__q" type="button"><span data-i18n="faq.q1">How long does it last?</span><span class="ic" aria-hidden="true"></span></button>
+        <div class="faq__a"><p data-i18n="faq.a1">One to three years, depending on your skin, your sun exposure and the technique used. Oily skin fades faster and needs a refresh sooner. It fades softly, so it never leaves you with a hard line to explain.</p></div>
+      </div>
+      <div class="faq__i">
+        <button class="faq__q" type="button"><span data-i18n="faq.q2">Does it hurt?</span><span class="ic" aria-hidden="true"></span></button>
+        <div class="faq__a"><p data-i18n="faq.a2">Less than most people expect. The area is numbed before we start and topped up during the session. Most clients describe it as light scratching, and plenty fall asleep in the chair.</p></div>
+      </div>
+      <div class="faq__i">
+        <button class="faq__q" type="button"><span data-i18n="faq.q3">How many sessions do I need?</span><span class="ic" aria-hidden="true"></span></button>
+        <div class="faq__a"><p data-i18n="faq.a3">Two. The first session builds the shape and the base colour, and the perfecting visit six to eight weeks later adjusts what your skin kept. Both are included in the price.</p></div>
+      </div>
+      <div class="faq__i">
+        <button class="faq__q" type="button"><span data-i18n="faq.q4">Can you fix work done by someone else?</span><span class="ic" aria-hidden="true"></span></button>
+        <div class="faq__a"><p data-i18n="faq.a4">Often yes. Send a clear photo in daylight, with no makeup, before you book. Some cases need lightening or removal first, and I will tell you that upfront instead of pigmenting over a problem.</p></div>
+      </div>
+      <div class="faq__i">
+        <button class="faq__q" type="button"><span data-i18n="faq.q5">What about aftercare?</span><span class="ic" aria-hidden="true"></span></button>
+        <div class="faq__a"><p data-i18n="faq.a5">You leave with written instructions and my number. The first ten days matter most: no swimming, no sweating heavily, no picking, and sunscreen once the skin has closed.</p></div>
+      </div>
+      <div class="faq__i">
+        <button class="faq__q" type="button"><span data-i18n="faq.q6">Do you take clients from outside Austin?</span><span class="ic" aria-hidden="true"></span></button>
+        <div class="faq__a"><p data-i18n="faq.a6">Regularly. People come from all over Texas and beyond. Tell me your dates when you write and we will fit the first session and the perfecting visit around your travel.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="sec sec--sand" id="booking">
+  <div class="wrap">
+    <div class="head rv">
+      <h2 class="d"><span data-i18n="bk.h2a">Tell me what you are</span> <em data-i18n="bk.h2b">thinking about.</em></h2>
+      <p class="lead" data-i18n="bk.lead">Send this and I will come back to you with availability, what your case needs and what it costs. No deposit is taken before we have spoken.</p>
+    </div>
+    <div class="book">
+      <form class="form rv" id="bookForm" novalidate>
+        <div class="f"><label for="fName" data-i18n="bk.name">Name</label><input id="fName" name="name" type="text" autocomplete="name" required /></div>
+        <div class="f"><label for="fPhone" data-i18n="bk.phone">Phone or WhatsApp</label><input id="fPhone" name="phone" type="tel" autocomplete="tel" required /></div>
+        <div class="f f--sel"><label for="fSrv" data-i18n="bk.service">What are you interested in</label>
+          <select id="fSrv" name="service">
+            <option data-i18n="bk.o1">Brows (nano, powder or microblading)</option>
+            <option data-i18n="bk.o2">Lip blush</option>
+            <option data-i18n="bk.o3">Eyeliner</option>
+            <option data-i18n="bk.o4">Areola restoration</option>
+            <option data-i18n="bk.o5">Scalp micropigmentation</option>
+            <option data-i18n="bk.o6">Correcting older work</option>
+            <option data-i18n="bk.o7">Artist training</option>
+            <option data-i18n="bk.o8">Not sure yet</option>
+          </select>
+        </div>
+        <div class="f"><label for="fMsg" data-i18n="bk.msg">Anything I should know</label><textarea id="fMsg" name="message" rows="2"></textarea></div>
+        <button class="btn" type="submit" data-i18n="bk.send">Send my request</button>
+        <p class="form__note" data-i18n="bk.note">Your message opens in WhatsApp with these details already filled in. Nothing is stored on this page.</p>
+      </form>
+      <div class="contact rv" data-d="1">
+        <div class="contact__b">
+          <span class="k" data-i18n="bk.k1">Studio</span>
+          <a class="v" id="mapsLink" href="#booking"><span id="studioLine">[A PREENCHER: endereço]</span><small data-i18n="bk.v1">Bee Cave, Austin, Texas</small></a>
+        </div>
+        <div class="contact__b">
+          <span class="k" data-i18n="bk.k2">WhatsApp</span>
+          <a class="v" href="#booking" data-cta="contact" id="waLink">[A PREENCHER: telefone]</a>
+        </div>
+        <div class="contact__b">
+          <span class="k" data-i18n="bk.k3">Instagram</span>
+          <a class="v" href="#" id="igLink">[A PREENCHER: @perfil]</a>
+        </div>
+        <div class="contact__b">
+          <span class="k" data-i18n="bk.k4">Hours</span>
+          <span class="v" data-i18n="bk.v4">Monday to Friday, 9 to 6<small data-i18n="bk.v4b">Saturday, 9 to 5. By appointment only.</small></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__top">
+      <a href="#top" class="brand"><b>Agata Soldato</b><i data-i18n="brand.sub">Permanent Makeup · Austin, TX</i></a>
+      <nav class="foot__nav">
+        <a href="#work" data-i18n="nav.work">Work</a>
+        <a href="#services" data-i18n="nav.services">Services</a>
+        <a href="#process" data-i18n="nav.process">Process</a>
+        <a href="#about" data-i18n="nav.about">About</a>
+        <a href="#training" data-i18n="nav.training">Training</a>
+        <a href="#booking" data-i18n="nav.contact">Contact</a>
+      </nav>
+    </div>
+    <div class="foot__bot">
+      <span>© <span id="yr">2026</span> Agata Soldato</span>
+      <span data-i18n="foot.note">Permanent makeup and micropigmentation · Bee Cave, Texas</span>
+    </div>
+  </div>
+</footer>
+
+<a class="float" id="float" href="#booking" data-cta="float" aria-label="Message Agata">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.9 8.9 0 0 1-3.9-.9L3 20.5l1.6-4.8A8.3 8.3 0 0 1 3.6 11.5a8.4 8.4 0 0 1 8.8-8.4 8.4 8.4 0 0 1 8.6 8.4z"/></svg>
+</a>
+
+<script>
+/* ============================================================
+   CONTACT — fill these two and every CTA starts working.
+   PHONE: digits only, with country code. e.g. '15122514170'
+   IG:    instagram handle without the @
+   ============================================================ */
+const PHONE   = '';                       // e.g. '15125550100'
+const IG      = '';                       // e.g. 'agatasoldato'
+const STUDIO  = '';                       // e.g. '11719 RM 2244, Ste 101'
+const MAPS    = '';                       // full google maps link, optional
+
+/* ============================================================
+   i18n — EN / PT / ES
+   ============================================================ */
+const I18N = {
+en:{},
+pt:{
+"brand.sub":"Micropigmentação · Austin, TX",
+"nav.work":"Trabalhos","nav.services":"Serviços","nav.process":"Processo","nav.about":"Sobre","nav.training":"Cursos","nav.contact":"Contato","nav.cta":"Agendar",
+"hero.h1a":"Micropigmentação","hero.h1b":"que ninguém","hero.h1c":"<em>precisa notar.</em>",
+"hero.lead":"Onze anos, dez mil rostos, um só critério: tem que parecer você num dia bom. Sobrancelha, lip blush, delineado e reconstrução de aréola em Bee Cave, Texas.",
+"hero.cta1":"Agendar avaliação","hero.cta2":"Ver os trabalhos",
+"hero.m1":"Primeiro estúdio aberto","hero.m2":"Clientes desde então","hero.m3":"Curso particular",
+"mani.h2":"Nome novo.<br/><em>As mesmas mãos.</em>",
+"mani.p1":"Por onze anos meu trabalho levou o nome de um estúdio. A partir de agora leva o meu. O resto continua igual: os mesmos pigmentos, o mesmo mapeamento, a mesma passada devagar que fez gente atravessar o Texas pra sentar nessa cadeira.",
+"mani.p2":"Se te indicaram pra cá, estavam te indicando pra <strong>mim</strong>. Mesmas mãos, mesmo padrão, um nome a menos no caminho.",
+"mani.sig":"Agata Soldato<br/>Bee Cave, Texas",
+"work.h2a":"Resultado cicatrizado,","work.h2b":"não recém-feito.",
+"work.lead":"Qualquer um fotografa uma sobrancelha no minuto em que ela sai da cadeira. O que importa é como ela fica semanas depois, quando a cor assentou e a pele fez a parte dela.",
+"work.before":"Antes","work.after":"Depois",
+"work.t1":"Nano brows cicatrizada","work.m1":"Do mapeamento ao resultado · Fio natural fino",
+"work.soon1":"Lip blush,<br/>oito semanas depois","work.t2":"Lip blush",
+"work.soon2":"Delineado,<br/>linha invisível de cílios","work.t3":"Delineado",
+"work.soon3":"Reconstrução de aréola,<br/>depois da cirurgia","work.t4":"Reconstrução de aréola",
+"work.soon_m":"Foto em breve","work.hint":"Arraste para ver mais",
+"srv.h2a":"Tudo que eu já fazia.","srv.h2b":"Nada ficou pra trás.",
+"srv.lead":"O cardápio continua inteiro, da primeira sobrancelha à correção do trabalho de outra pessoa. O preço sai depois de olhar a sua pele, porque o mesmo procedimento não dá o mesmo trabalho em todo rosto.",
+"srv.n1":"Nano brows","srv.d1":"Fio a fio, desenhado com uma agulha única bem fina. Para sobrancelha que precisa de estrutura sem ficar pesada.",
+"srv.n2":"Powder brows","srv.d2":"Um esfumado suave, mais claro no começo e definido no rabinho. É o que aguenta suor, protetor solar e banho.",
+"srv.n3":"Microblading","srv.d3":"A técnica clássica de fio, ainda a resposta certa para pele seca e sobrancelha que só precisa de preenchimento.",
+"srv.n4":"Lip blush","srv.d4":"A cor do seu próprio lábio, um tom mais desperta, com o contorno redesenhado onde o tempo levou.",
+"srv.n5":"Delineado","srv.d5":"Da linha invisível entre os cílios, que só deixa o olhar mais cheio, até o gatinho definido.",
+"srv.n6":"Reconstrução de aréola","srv.d6":"O último passo depois da cirurgia de mama. Aréola e mamilo reconstruídos em três dimensões, na sua cor.",
+"srv.n7":"Micropigmentação de couro cabeludo","srv.d7":"Densidade onde a linha do cabelo cedeu, ponto a ponto, até o couro parar de aparecer.",
+"srv.n8":"Correção e remoção","srv.d8":"Trabalho antigo que virou cinza, formato que nunca combinou, cor puxando pro alaranjado. Corrijo, clareio ou removo.",
+"srv.k1":"Na cadeira","srv.k2":"Sessões","srv.k3":"Dura","srv.cap":"Bee Cave, Texas<br/>Com hora marcada",
+"srv.more":"<b>Também faço:</b> camuflagem de cicatriz, camuflagem de estria, retoque de trabalho feito por outra profissional e piercings. Se você não sabe qual procedimento precisa, venha para a avaliação primeiro, é ela que define todo o resto.",
+"proc.h2a":"Quatro etapas,","proc.h2b":"e nenhuma com pressa.",
+"proc.lead":"A maior parte do trabalho acontece antes de ligar a máquina. Quando começamos, você já aprovou o formato no espelho.",
+"proc.t1":"Avaliação","proc.p1":"Tipo de pele, histórico de saúde, o formato que você tem e o que você quer. A gente também testa a cor no seu subtom.",
+"proc.t2":"Mapeamento","proc.p2":"O desenho é feito no seu rosto e medido pela sua estrutura óssea. Nada começa antes de você dizer sim para o espelho.",
+"proc.t3":"A sessão","proc.p3":"Anestésico primeiro, depois o pigmento em passadas lentas. De duas a três horas, e você vai embora com os cuidados por escrito.",
+"proc.t4":"Aperfeiçoamento","proc.p4":"De seis a oito semanas depois a gente olha como sua pele cicatrizou e ajusta cor e densidade. Essa visita já está no preço.",
+"ab.h2a":"Formada com quem","ab.h2b":"escreveu as técnicas.",
+"ab.p1":"Estudei com James Olaya e Branko Babic, dois dos nomes com quem o resto do mercado aprende, e tenho certificação no Brasil, na Europa e nos Estados Unidos.",
+"ab.p2":"Abri meu primeiro estúdio em Austin em 2015. De lá pra cá mais de dez mil pessoas sentaram na minha cadeira, e boa parte da minha semana ainda é ensinar outras profissionais a fazer isso direito.",
+"ab.p3":"O que me importa não mudou em onze anos: sobrancelha que combina com o rosto em que ela está, cor que cicatriza do jeito que eu prometi, e pele que eu trato como se fosse a minha.",
+"ab.k1":"Formação","ab.k2":"Certificação","ab.v2":"Brasil · Europa · Estados Unidos","ab.k3":"Atuando desde","ab.k4":"Idiomas","ab.v4":"Inglês · Português · Espanhol",
+"tr.h2a":"Se eu ensino,","tr.h2b":"é porque eu faço.",
+"tr.lead":"Profissionais viajam pra aprender essas técnicas comigo, uma a uma. Sem turma, sem assistir de longe. Você treina em modelo real, com kit completo, e fica com o meu contato depois.",
+"tr.m1":"Nano brows","tr.m2":"Powder brows","tr.m3":"Lip blush","tr.m4":"Delineado","tr.m5":"Aréola",
+"tr.priv":"Particular 1:1 · Modelo real",
+"tr.price":"Os cinco cursos<br/>Kit completo, modelo real, módulos online e suporte depois do curso",
+"tr.cta1":"Pedir as próximas datas",
+"tq.h2a":"O que dizem","tq.h2b":"quando o inchaço passa.",
+"tq.q1":"“Parei de preencher a sobrancelha de manhã e ninguém no trabalho percebeu que algo tinha mudado. Era exatamente esse o objetivo.”","tq.c1":"Cliente · Austin, TX",
+"tq.q2":"“Ela consertou uma sobrancelha que outra profissional deixou alaranjada e alta demais. Eu já tinha quase desistido.”","tq.c2":"Cliente · Correção",
+"tq.q3":"“Cuidadosa, honesta sobre o que a minha pele ia segurar, e a cor cicatrizada ficou exatamente como ela disse.”","tq.c3":"Cliente · Lip blush",
+"faq.h2a":"Antes de","faq.h2b":"agendar.",
+"faq.q1":"Quanto tempo dura?","faq.a1":"De um a três anos, dependendo da sua pele, da exposição ao sol e da técnica. Pele oleosa desbota mais rápido e pede retoque antes. O desbote é suave, então nunca sobra uma linha dura pra explicar.",
+"faq.q2":"Dói?","faq.a2":"Menos do que quase todo mundo espera. A região é anestesiada antes de começar e reforçada durante a sessão. A maioria descreve como um arranhãozinho, e tem gente que dorme na cadeira.",
+"faq.q3":"Quantas sessões preciso?","faq.a3":"Duas. A primeira constrói o formato e a cor base, e o aperfeiçoamento de seis a oito semanas depois ajusta o que a sua pele segurou. As duas já estão no preço.",
+"faq.q4":"Você corrige trabalho de outra pessoa?","faq.a4":"Na maioria das vezes sim. Me mande uma foto na luz do dia, sem maquiagem, antes de agendar. Alguns casos precisam de clareamento ou remoção primeiro, e eu falo isso na hora em vez de pigmentar por cima do problema.",
+"faq.q5":"E os cuidados depois?","faq.a5":"Você sai com as instruções por escrito e com o meu contato. Os dez primeiros dias são os que mais contam: nada de piscina, nada de suar muito, não cutucar, e protetor solar assim que a pele fechar.",
+"faq.q6":"Você atende quem é de fora de Austin?","faq.a6":"Direto. Vem gente de todo o Texas e de fora. Me diga suas datas quando escrever e a gente encaixa a primeira sessão e o aperfeiçoamento na sua viagem.",
+"bk.h2a":"Me conte o que","bk.h2b":"você está pensando.",
+"bk.lead":"Manda isso aqui que eu volto com disponibilidade, o que o seu caso precisa e quanto custa. Nenhum sinal é cobrado antes da gente conversar.",
+"bk.name":"Nome","bk.phone":"Telefone ou WhatsApp","bk.service":"O que te interessa",
+"bk.o1":"Sobrancelha (nano, powder ou microblading)","bk.o2":"Lip blush","bk.o3":"Delineado","bk.o4":"Reconstrução de aréola","bk.o5":"Couro cabeludo","bk.o6":"Corrigir trabalho antigo","bk.o7":"Curso para profissionais","bk.o8":"Ainda não sei",
+"bk.msg":"Algo que eu precise saber","bk.send":"Enviar meu pedido",
+"bk.note":"Sua mensagem abre no WhatsApp já preenchida com esses dados. Nada fica guardado nesta página.",
+"bk.k1":"Estúdio","bk.v1":"Bee Cave, Austin, Texas","bk.k2":"WhatsApp","bk.k3":"Instagram","bk.k4":"Horários",
+"bk.v4":"Segunda a sexta, 9h às 18h","bk.v4b":"Sábado, 9h às 17h. Só com hora marcada.",
+"foot.note":"Micropigmentação e maquiagem definitiva · Bee Cave, Texas"
+},
+es:{
+"brand.sub":"Micropigmentación · Austin, TX",
+"nav.work":"Trabajos","nav.services":"Servicios","nav.process":"Proceso","nav.about":"Sobre mí","nav.training":"Cursos","nav.contact":"Contacto","nav.cta":"Reservar",
+"hero.h1a":"Micropigmentación","hero.h1b":"que nadie","hero.h1c":"<em>tiene que notar.</em>",
+"hero.lead":"Once años, diez mil rostros, un solo criterio: tiene que parecerse a ti en un buen día. Cejas, lip blush, delineado y reconstrucción de areola en Bee Cave, Texas.",
+"hero.cta1":"Reservar una consulta","hero.cta2":"Ver los trabajos",
+"hero.m1":"Primer estudio abierto","hero.m2":"Clientas desde entonces","hero.m3":"Curso privado",
+"mani.h2":"Nombre nuevo.<br/><em>Las mismas manos.</em>",
+"mani.p1":"Durante once años mi trabajo llevó el nombre de un estudio. A partir de ahora lleva el mío. Lo demás sigue igual: los mismos pigmentos, el mismo mapeo, la misma pasada lenta que hizo que la gente cruzara Texas para sentarse en esta silla.",
+"mani.p2":"Si alguien te mandó aquí, te estaba mandando a <strong>mí</strong>. Las mismas manos, el mismo estándar, un nombre menos en el medio.",
+"mani.sig":"Agata Soldato<br/>Bee Cave, Texas",
+"work.h2a":"Resultado cicatrizado,","work.h2b":"no recién hecho.",
+"work.lead":"Cualquiera fotografía una ceja en el minuto en que sale de la silla. Lo que importa es cómo se ve semanas después, cuando el color se asentó y la piel hizo su parte.",
+"work.before":"Antes","work.after":"Después",
+"work.t1":"Nano brows cicatrizada","work.m1":"Del mapeo al resultado · Pelo natural fino",
+"work.soon1":"Lip blush,<br/>ocho semanas después","work.t2":"Lip blush",
+"work.soon2":"Delineado,<br/>línea invisible de pestañas","work.t3":"Delineado",
+"work.soon3":"Reconstrucción de areola,<br/>después de la cirugía","work.t4":"Reconstrucción de areola",
+"work.soon_m":"Foto próximamente","work.hint":"Arrastra para ver más",
+"srv.h2a":"Todo lo que ya hacía.","srv.h2b":"Nada quedó atrás.",
+"srv.lead":"El menú sigue completo, desde una primera ceja hasta corregir el trabajo de otra persona. El precio sale después de mirar tu piel, porque el mismo procedimiento no es el mismo trabajo en cada rostro.",
+"srv.n1":"Nano brows","srv.d1":"Pelo a pelo, dibujado con una aguja única muy fina. Para cejas que necesitan estructura sin quedar pesadas.",
+"srv.n2":"Powder brows","srv.d2":"Un degradado suave, más claro al inicio y definido en la cola. Es el que aguanta sudor, protector solar y ducha.",
+"srv.n3":"Microblading","srv.d3":"La técnica clásica de pelo, todavía la respuesta correcta para piel seca y cejas que solo necesitan relleno.",
+"srv.n4":"Lip blush","srv.d4":"El color de tu propio labio, un tono más despierto, con el contorno redibujado donde el tiempo se lo llevó.",
+"srv.n5":"Delineado","srv.d5":"Desde la línea invisible entre las pestañas, que solo hace la mirada más llena, hasta el rabillo definido.",
+"srv.n6":"Reconstrucción de areola","srv.d6":"El último paso después de la cirugía de mama. Areola y pezón reconstruidos en tres dimensiones, en tu color.",
+"srv.n7":"Micropigmentación capilar","srv.d7":"Densidad donde la línea del pelo cedió, punto a punto, hasta que el cuero cabelludo deja de verse.",
+"srv.n8":"Corrección y remoción","srv.d8":"Trabajo antiguo que se puso gris, forma que nunca te quedó, color tirando a naranja. Lo corrijo, lo aclaro o lo quito.",
+"srv.k1":"En la silla","srv.k2":"Sesiones","srv.k3":"Dura","srv.cap":"Bee Cave, Texas<br/>Solo con cita",
+"srv.more":"<b>También hago:</b> camuflaje de cicatriz, camuflaje de estrías, retoque de trabajo hecho por otra profesional y piercings. Si no sabes qué procedimiento necesitas, ven primero a la consulta, es la que define todo lo demás.",
+"proc.h2a":"Cuatro pasos,","proc.h2b":"y ninguno con prisa.",
+"proc.lead":"La mayor parte del trabajo pasa antes de encender la máquina. Cuando empezamos, ya aprobaste la forma en el espejo.",
+"proc.t1":"Consulta","proc.p1":"Tipo de piel, historial médico, la forma que tienes y la que quieres. También probamos el color contra tu subtono.",
+"proc.t2":"Mapeo","proc.p2":"El diseño se dibuja en tu rostro y se mide según tu estructura ósea. Nada empieza antes de que le digas que sí al espejo.",
+"proc.t3":"La sesión","proc.p3":"Primero anestesia, después el pigmento en pasadas lentas. De dos a tres horas, y te vas con los cuidados por escrito.",
+"proc.t4":"Perfeccionamiento","proc.p4":"De seis a ocho semanas después miramos cómo cicatrizó tu piel y ajustamos color y densidad. Esa visita ya está en el precio.",
+"ab.h2a":"Formada con quienes","ab.h2b":"escribieron las técnicas.",
+"ab.p1":"Estudié con James Olaya y Branko Babic, dos de los nombres con los que aprende el resto del sector, y tengo certificación en Brasil, Europa y Estados Unidos.",
+"ab.p2":"Abrí mi primer estudio en Austin en 2015. Desde entonces más de diez mil personas se sentaron en mi silla, y buena parte de mi semana sigue siendo enseñar a otras profesionales a hacer esto bien.",
+"ab.p3":"Lo que me importa no cambió en once años: una ceja que le quede al rostro donde está, color que cicatriza como prometí, y piel que trato como si fuera la mía.",
+"ab.k1":"Formación","ab.k2":"Certificación","ab.v2":"Brasil · Europa · Estados Unidos","ab.k3":"Trabajando desde","ab.k4":"Idiomas","ab.v4":"Inglés · Portugués · Español",
+"tr.h2a":"Si lo enseño,","tr.h2b":"es porque lo hago.",
+"tr.lead":"Profesionales viajan para aprender estas técnicas conmigo, una a una. Sin grupos, sin mirar de lejos. Entrenas en modelo real, con kit completo, y te quedas con mi contacto después.",
+"tr.m1":"Nano brows","tr.m2":"Powder brows","tr.m3":"Lip blush","tr.m4":"Delineado","tr.m5":"Areola",
+"tr.priv":"Privado 1:1 · Modelo real",
+"tr.price":"Los cinco cursos<br/>Kit completo, modelo real, módulos online y soporte después del curso",
+"tr.cta1":"Pedir las próximas fechas",
+"tq.h2a":"Lo que dicen","tq.h2b":"cuando baja la hinchazón.",
+"tq.q1":"“Dejé de rellenarme las cejas por la mañana y nadie en el trabajo notó que algo había cambiado. Ese era justo el objetivo.”","tq.c1":"Clienta · Austin, TX",
+"tq.q2":"“Arregló unas cejas que otra profesional dejó naranjas y demasiado altas. Yo ya casi había desistido.”","tq.c2":"Clienta · Corrección",
+"tq.q3":"“Cuidadosa, honesta sobre lo que mi piel iba a retener, y el color cicatrizado quedó exactamente como dijo.”","tq.c3":"Clienta · Lip blush",
+"faq.h2a":"Antes de","faq.h2b":"reservar.",
+"faq.q1":"¿Cuánto dura?","faq.a1":"De uno a tres años, según tu piel, tu exposición al sol y la técnica. La piel grasa se aclara más rápido y pide retoque antes. Se va difuminando, así que nunca te deja una línea dura que explicar.",
+"faq.q2":"¿Duele?","faq.a2":"Menos de lo que casi todo el mundo espera. La zona se anestesia antes de empezar y se refuerza durante la sesión. La mayoría lo describe como un rasguño ligero, y hay quien se duerme en la silla.",
+"faq.q3":"¿Cuántas sesiones necesito?","faq.a3":"Dos. La primera construye la forma y el color base, y el perfeccionamiento de seis a ocho semanas después ajusta lo que tu piel retuvo. Las dos están en el precio.",
+"faq.q4":"¿Corriges trabajo de otra persona?","faq.a4":"Casi siempre sí. Mándame una foto con luz de día, sin maquillaje, antes de reservar. Algunos casos necesitan aclarado o remoción primero, y te lo digo de entrada en vez de pigmentar encima del problema.",
+"faq.q5":"¿Y los cuidados después?","faq.a5":"Sales con las instrucciones por escrito y con mi contacto. Los diez primeros días son los que más cuentan: nada de piscina, nada de sudar mucho, no rascar, y protector solar en cuanto la piel cierre.",
+"faq.q6":"¿Atiendes a gente de fuera de Austin?","faq.a6":"Seguido. Viene gente de todo Texas y de fuera. Dime tus fechas cuando escribas y encajamos la primera sesión y el perfeccionamiento en tu viaje.",
+"bk.h2a":"Cuéntame qué","bk.h2b":"tienes en mente.",
+"bk.lead":"Manda esto y te vuelvo con disponibilidad, lo que tu caso necesita y cuánto cuesta. No se cobra ninguna seña antes de hablar.",
+"bk.name":"Nombre","bk.phone":"Teléfono o WhatsApp","bk.service":"Qué te interesa",
+"bk.o1":"Cejas (nano, powder o microblading)","bk.o2":"Lip blush","bk.o3":"Delineado","bk.o4":"Reconstrucción de areola","bk.o5":"Micropigmentación capilar","bk.o6":"Corregir trabajo antiguo","bk.o7":"Curso para profesionales","bk.o8":"Todavía no lo sé",
+"bk.msg":"Algo que deba saber","bk.send":"Enviar mi solicitud",
+"bk.note":"Tu mensaje se abre en WhatsApp ya con estos datos. Nada se guarda en esta página.",
+"bk.k1":"Estudio","bk.v1":"Bee Cave, Austin, Texas","bk.k2":"WhatsApp","bk.k3":"Instagram","bk.k4":"Horarios",
+"bk.v4":"De lunes a viernes, 9 a 18","bk.v4b":"Sábado, 9 a 17. Solo con cita previa.",
+"foot.note":"Micropigmentación y maquillaje permanente · Bee Cave, Texas"
+}
+};
+
+/* keep the English source of truth straight from the markup */
+document.querySelectorAll('[data-i18n]').forEach(el=>{
+  const k=el.getAttribute('data-i18n');
+  if(I18N.en[k]===undefined) I18N.en[k]=el.innerHTML;
+});
+
+const HELLO={
+  en:"Hi Agata, I found your site and I would like to book.",
+  pt:"Oi Agata, achei seu site e queria agendar.",
+  es:"Hola Agata, encontré tu sitio y quería reservar."
+};
+let LANG='en';
+
+function waHref(text){
+  const t=encodeURIComponent(text);
+  return PHONE ? 'https://wa.me/'+PHONE+'?text='+t : '#booking';
+}
+
+function applyLang(lang){
+  if(!I18N[lang]) lang='en';
+  LANG=lang;
+  document.documentElement.lang=lang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const v=I18N[lang][el.getAttribute('data-i18n')];
+    if(v!==undefined) el.innerHTML=v;
+  });
+  document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('on',b.dataset.lang===lang));
+  if(typeof paintPanel==='function') paintPanel(srvIndex);
+  const wa=document.getElementById('waLink');
+  if(wa && PHONE){
+    wa.href=waHref(HELLO[lang]);
+    wa.textContent='+'+PHONE.replace(/^(\d{1,2})(\d{3})(\d{3})(\d+)$/,'$1 $2 $3 $4');
+  }
+  const fl=document.getElementById('float');
+  if(fl && PHONE) fl.href=waHref(HELLO[lang]);
+  try{ localStorage.setItem('as-lang',lang); }catch(e){}
+}
+
+(function(){
+  let s=null; try{ s=localStorage.getItem('as-lang'); }catch(e){}
+  const n=(navigator.language||'en').toLowerCase();
+  applyLang(s || (n.startsWith('pt')?'pt' : n.startsWith('es')?'es' : 'en'));
+  document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',()=>applyLang(b.dataset.lang)));
+  const ig=document.getElementById('igLink');
+  if(ig && IG){ ig.href='https://instagram.com/'+IG; ig.textContent='@'+IG; }
+  const st=document.getElementById('studioLine');
+  if(st && STUDIO) st.textContent=STUDIO;
+  const mp=document.getElementById('mapsLink');
+  if(mp && MAPS){ mp.href=MAPS; mp.target='_blank'; mp.rel='noopener'; }
+  document.getElementById('yr').textContent=new Date().getFullYear();
+  requestAnimationFrame(()=>document.body.classList.add('ready'));
+})();
+
+/* nav */
+const nav=document.getElementById('nav');
+const burger=document.getElementById('burger');
+const navLinks=document.getElementById('navLinks');
+const heroEl=document.getElementById('top');
+addEventListener('scroll',()=>{
+  nav.classList.toggle('stuck',scrollY>20);
+  nav.classList.toggle('past-hero',scrollY>heroEl.offsetHeight-90);
+  document.getElementById('float').classList.toggle('show',scrollY>innerHeight*.7);
+},{passive:true});
+burger.addEventListener('click',()=>{
+  const open=navLinks.classList.toggle('open');
+  burger.classList.toggle('x',open);
+  burger.setAttribute('aria-expanded',open);
+});
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+  navLinks.classList.remove('open'); burger.classList.remove('x'); burger.setAttribute('aria-expanded','false');
+}));
+
+/* reveal */
+const io=new IntersectionObserver(es=>{
+  es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+},{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+const tr=document.getElementById('track');
+if(tr){ new IntersectionObserver((es,o)=>{es.forEach(e=>{ if(e.isIntersecting){ tr.querySelectorAll('.card').forEach(c=>c.classList.add('in','rv','in')); o.disconnect(); }});},{threshold:.05}).observe(tr); }
+
+/* marquee — duplicate the track so the loop is seamless */
+(function(){
+  const t=document.getElementById('marqA');
+  if(!t) return;
+  const c=t.cloneNode(true); c.removeAttribute('id'); c.setAttribute('aria-hidden','true');
+  t.parentNode.appendChild(c);
+})();
+
+/* services list → detail panel
+   Times and durations are industry ranges. Confirm them with Agata before launch. */
+const SPECS={
+  en:[["2 to 3 hours","2, including perfecting","1 to 3 years"],
+      ["2 to 3 hours","2, including perfecting","2 to 3 years"],
+      ["2 to 2.5 hours","2, including perfecting","1 to 2 years"],
+      ["2 to 2.5 hours","2, including perfecting","2 to 4 years"],
+      ["1.5 to 2 hours","2, including perfecting","3 to 5 years"],
+      ["1.5 to 3 hours","2, including perfecting","3 to 5 years"],
+      ["3 to 4 hours","3 on average","3 to 5 years"],
+      ["Depends on the case","Assessed at the consultation","Permanent once corrected"]],
+  pt:[["2 a 3 horas","2, com o aperfeiçoamento","1 a 3 anos"],
+      ["2 a 3 horas","2, com o aperfeiçoamento","2 a 3 anos"],
+      ["2 a 2h30","2, com o aperfeiçoamento","1 a 2 anos"],
+      ["2 a 2h30","2, com o aperfeiçoamento","2 a 4 anos"],
+      ["1h30 a 2 horas","2, com o aperfeiçoamento","3 a 5 anos"],
+      ["1h30 a 3 horas","2, com o aperfeiçoamento","3 a 5 anos"],
+      ["3 a 4 horas","3 em média","3 a 5 anos"],
+      ["Depende do caso","Definido na avaliação","Definitivo depois de corrigido"]],
+  es:[["2 a 3 horas","2, con el perfeccionamiento","1 a 3 años"],
+      ["2 a 3 horas","2, con el perfeccionamiento","2 a 3 años"],
+      ["2 a 2.5 horas","2, con el perfeccionamiento","1 a 2 años"],
+      ["2 a 2.5 horas","2, con el perfeccionamiento","2 a 4 años"],
+      ["1.5 a 2 horas","2, con el perfeccionamiento","3 a 5 años"],
+      ["1.5 a 3 horas","2, con el perfeccionamiento","3 a 5 años"],
+      ["3 a 4 horas","3 de media","3 a 5 años"],
+      ["Depende del caso","Se define en la consulta","Definitivo una vez corregido"]]
+};
+var srvIndex=0;
+function paintPanel(i){
+  srvIndex=i;
+  const row=document.querySelector(`#srvList .srv__row[data-i="${i}"]`);
+  if(!row) return;
+  const p=document.getElementById('panel');
+  document.getElementById('pName').innerHTML=row.querySelector('.nm').innerHTML;
+  document.getElementById('pDesc').innerHTML=row.querySelector('.ds').innerHTML;
+  const sp=(SPECS[LANG]||SPECS.en)[i]||SPECS.en[i];
+  document.getElementById('pTime').textContent=sp[0];
+  document.getElementById('pSess').textContent=sp[1];
+  document.getElementById('pLast').textContent=sp[2];
+  p.classList.remove('panel__fade'); void p.offsetWidth; p.classList.add('panel__fade');
+}
+(function(){
+  const rows=document.querySelectorAll('#srvList .srv__row');
+  const pick=r=>{
+    rows.forEach(x=>x.classList.toggle('on',x===r));
+    paintPanel(+r.dataset.i||0);
+  };
+  rows.forEach(r=>{
+    r.addEventListener('mouseenter',()=>{ if(matchMedia('(hover:hover)').matches) pick(r); });
+    r.addEventListener('focus',()=>pick(r));
+    r.addEventListener('click',()=>{
+      if(matchMedia('(hover:hover)').matches) document.getElementById('booking').scrollIntoView({behavior:'smooth'});
+      else pick(r);
+    });
+  });
+  paintPanel(0);
+})();
+
+/* drag-to-scroll track */
+(function(){
+  const t=document.getElementById('track');
+  if(!t) return;
+  let down=false,x0=0,l0=0,moved=0;
+  t.addEventListener('pointerdown',e=>{
+    if(e.pointerType==='touch') return;
+    down=true; moved=0; x0=e.clientX; l0=t.scrollLeft; t.classList.add('grabbing'); t.setPointerCapture(e.pointerId);
+  });
+  t.addEventListener('pointermove',e=>{
+    if(!down) return;
+    const d=e.clientX-x0; moved=Math.abs(d); t.scrollLeft=l0-d;
+  });
+  const up=e=>{
+    if(!down) return;
+    down=false; t.classList.remove('grabbing');
+    try{ t.releasePointerCapture(e.pointerId); }catch(_){}
+  };
+  t.addEventListener('pointerup',up); t.addEventListener('pointercancel',up);
+  t.addEventListener('click',e=>{ if(moved>6) e.preventDefault(); },true);
+})();
+
+/* faq */
+document.querySelectorAll('.faq__i').forEach(item=>{
+  item.querySelector('.faq__q').addEventListener('click',()=>{
+    const open=item.classList.contains('open');
+    document.querySelectorAll('.faq__i.open').forEach(i=>i.classList.remove('open'));
+    if(!open) item.classList.add('open');
+  });
+});
+
+/* booking form → whatsapp, through the thank-you bridge */
+document.getElementById('bookForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  const f=e.target;
+  const L={en:['Name','Phone','Interested in','Notes'],pt:['Nome','Telefone','Interesse','Observações'],es:['Nombre','Teléfono','Interés','Notas']}[LANG];
+  const body=[
+    HELLO[LANG],'',
+    L[0]+': '+f.name.value.trim(),
+    L[1]+': '+f.phone.value.trim(),
+    L[2]+': '+f.service.value,
+    f.message.value.trim() ? L[3]+': '+f.message.value.trim() : ''
+  ].filter(Boolean).join('\n');
+  if(!f.name.value.trim() || !f.phone.value.trim()){
+    (f.name.value.trim()?f.phone:f.name).focus(); return;
+  }
+  try{ sessionStorage.setItem('as-msg',body); }catch(_){}
+  location.href='thank-you.html?c=form&l='+LANG;
+});
+
+/* every CTA goes through the bridge so the conversion is counted before the jump */
+document.querySelectorAll('[data-cta]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    if(!PHONE) return;                       // no number yet: keep scrolling to the form
+    e.preventDefault();
+    try{ sessionStorage.setItem('as-msg',HELLO[LANG]); }catch(_){}
+    location.href='thank-you.html?c='+a.dataset.cta+'&l='+LANG;
+  });
+});
+</script>
+</body>
+</html>
