@@ -72,6 +72,7 @@ os outros quatro cartões estão marcados como "photo coming soon" e são só tr
 | Resultados | Pares no **mesmo enquadramento, distância e luz**, como o próprio documento dela pede |
 | Serviços | Foto do **estúdio novo** |
 | Artistas | Uma foto de cada uma **trabalhando**, não posada |
+| Hero | O hero hoje é só tipografia. Se entrar foto ali, tem que casar o fundo com `--hero` `#F1E7DA` |
 
 ## Assets, e a armadilha do fundo
 
@@ -80,7 +81,6 @@ que a foto aparece, o que evita halo no cabelo:
 
 | Arquivo | Fundo casado com |
 |---|---|
-| `agata-hero.webp` e `agata-hero-mobile.webp` | `--hero` `#F1E7DA` |
 | `agata-editorial.webp` (bloco Artistas) | `--ivory` `#F8F3EB` |
 | `lanie.webp` (bloco Artistas) | `--ivory` `#F8F3EB` |
 
@@ -143,7 +143,26 @@ Lighthouse mobile, throttling real (`--throttling-method=devtools`):
 |---|---|---|---|
 | 100 | 100 | 100 | 100 |
 
-LCP 0,8s · CLS 0,001 · TBT 0ms
+LCP 1,0s · CLS 0,004 · TBT 0ms
+
+## Decisões de layout que não devem ser desfeitas
+
+**Sem tag acima de título.** Nenhuma seção tem kicker em caixa alta. Foi removido
+de propósito, é o que dá cara de template.
+
+**Hero sem foto.** Só tipografia centrada, título em duas linhas. O `max-width`
+do H1 é `41ch` e **não pode levar `text-wrap:balance`**: com balance o navegador
+reequilibra e devolve a terceira linha.
+
+**Pacotes em linhas horizontais, não em cards.** Quatro linhas de
+`nome | descrição e itens | preço | CTA`. Os itens de cada pacote são uma lista
+inline separada por losango, não uma lista vertical. Isso cortou a seção de
+1.759px para 1.572px e alinhou os preços numa coluna, que é o que permite
+comparar. Sticky stack foi considerado e descartado: o efeito é bonito mas cada
+card passa a exigir uma tela de rolagem, ou seja, faz o oposto de compactar.
+
+**Artistas sem cargo abaixo do nome** e sem "Master" antes de Agata Soldato. Os
+anos de experiência continuam no primeiro parágrafo de cada uma.
 
 **Não devolver o hero para `flex-wrap`.** Os dois botões do hero e o bloco de
 números ficavam exatamente no limite de caber lado a lado em 412px. Qualquer
