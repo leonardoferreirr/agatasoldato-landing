@@ -1,74 +1,133 @@
-# Agata Soldato — Permanent Makeup
+# Agata Medical Aesthetics
 
-Landing da nova marca pessoal da Agata Soldato, que sai da Posh Permanent Makeup e passa a
-atender com o próprio nome. Mesmos serviços, marca nova.
+Site da nova marca da Agata Soldato, montado a partir do documento de conteúdo e
+de marca que ela enviou (`Agata_Medical_Aesthetics_Website_Content_WITH_PACKAGES.docx`).
+
+A marca **não** é mais "Agata Soldato". É **Agata Medical Aesthetics**, selo AMA,
+assinatura "Cosmetic & Paramedical Tattooing". A Agata aparece como fundadora e
+master artist, ao lado da Lanie Stein, artista sênior.
 
 - HTML/CSS/JS puro, arquivo único, sem framework
 - Idiomas EN (principal) / PT-BR / ES por bandeirinha, guardado no localStorage
-- Fontes self-hosted (Cormorant Garamond + Poppins, subset latin)
+- Fontes self-hosted (Cormorant Garamond + Montserrat, subset latin)
 - Deploy estático na Vercel
 
 ## Antes de publicar: o que falta preencher
 
-Tudo o que é dado real da Agata está concentrado no topo do `<script>` do `index.html`.
-Preencha as quatro constantes e o site inteiro passa a funcionar (CTAs, WhatsApp, formulário):
+Tudo o que é dado real está no topo do `<script>` do `index.html`:
 
 ```js
 const PHONE   = '';   // só dígitos com código do país, ex: '15125550100'
-const IG      = '';   // handle sem o @, ex: 'agatasoldato'
-const STUDIO  = '';   // endereço do novo estúdio
+const IG      = '';   // handle sem o @
+const EMAIL   = '';   // e-mail da empresa nova
+const STUDIO  = '';   // endereço do estúdio novo
 const MAPS    = '';   // link do Google Maps (opcional)
+const HOURS   = '';   // ex: 'Mon to Fri, 9am to 6pm'
+const BOOKING = '';   // link do sistema de agendamento (opcional)
 ```
 
-O mesmo `PHONE` precisa ser repetido no topo do `thank-you.html`.
-Enquanto `PHONE` estiver vazio, todo CTA rola até o formulário em vez de abrir o WhatsApp,
-então o site não quebra se for ao ar incompleto. Os campos ainda não preenchidos aparecem
-como `[A PREENCHER: ...]` na seção de contato.
+`PHONE` e `BOOKING` também precisam ser repetidos no topo do `thank-you.html`.
+
+Enquanto os dois estiverem vazios, todo CTA rola até o formulário em vez de sair
+da página, então o site não quebra se for ao ar incompleto. Os campos vazios
+aparecem como "To be confirmed" na seção de contato.
+
+O próprio documento dela avisa, e vale repetir: **não reaproveitar o telefone,
+o endereço nem o e-mail da Posh** (11719 RM 2244 #101, Bee Cave, TX 78738,
++1 512 251-4170, info@poshpermanentmakeup.com) a menos que continuem válidos
+para a empresa nova.
 
 ## Confirmar com a Agata
 
-1. **Nome da marca.** Assumi `AGATA SOLDATO` como marca, com a assinatura `Ael` dela
-   (extraída do material de treinamento) como selo. É o movimento natural de quem perde a
-   marca compartilhada: a marca passa a ser a pessoa. Se ela já tem outro nome em mente, o
-   wordmark está em um único lugar no HTML (`.brand`).
-2. **Números do histórico.** O site diz "desde 2015", "mais de dez mil clientes" e cita
-   formação com James Olaya e Branko Babic. Isso vem de fontes públicas ligadas à Posh
-   (Yelp, Nextdoor, LinkedIn). **Verificar se o acordo do divórcio permite reivindicar esse
-   histórico**, principalmente cláusula de não concorrência ou de não solicitação de
-   clientes. Se houver restrição, é só cortar os três números do hero e o bloco de
-   credenciais, o resto da página se sustenta sozinho.
-3. **Duração e sessões por procedimento.** O painel lateral da seção de serviços mostra
-   tempo de cadeira, número de sessões e durabilidade. Usei faixas padrão do setor, estão
-   no array `SPECS` do script. Ela precisa confirmar ou corrigir os valores dela.
-4. **Endereço, horário e telefone novos.** Os que estão no site antigo são da Posh.
-5. **Piercing.** O site antigo oferecia piercing. Mantive só na linha de "também
-   disponível", sem destaque, porque piercing não sustenta o tom premium do resto. Se ela
-   quiser vender piercing de verdade, vale uma seção própria.
+1. **Financiamento.** A seção existe e explica o processo, mas sem provedor. O
+   documento dela manda só publicar provedor, link, APR promocional, compra
+   mínima e disclosures depois de confirmar a conta merchant da empresa nova, e
+   proíbe herdar a conta de financiamento da Posh. Hoje o CTA leva ao formulário.
+2. **Retrato da Lanie.** Os dois arquivos vieram nomeados `ChatGPT Image`, um com
+   jaleco branco e outro preto, mesma pose e mesma luz. Parece retoque de
+   guarda-roupa sobre uma foto real, o que é normal. Se for imagem gerada, não
+   pode ir ao ar como foto de uma pessoa nomeada. Confirmar com ela.
+3. **Histórico.** O site diz 12 anos e mais de 10 mil procedimentos, números que
+   vieram do documento dela. Como parte desse histórico foi construída sob a
+   marca Posh, **confirmar se o acordo do divórcio permite reivindicá-lo**,
+   principalmente cláusula de não concorrência ou de não solicitação.
+4. **Preços dos pacotes.** Estão publicados exatamente como no documento: economia
+   de US$ 500 no Complete Look, US$ 500 no PMU Reset, US$ 749 no Tummy, US$ 949
+   no Breast. Conferir antes de ir ao ar, preço em página pública é promessa.
+5. **Sessões e tempo de cadeira** na tabela de serviços usam faixas padrão do
+   setor. Estão no array `SERVICES` do script, um por idioma. Ela precisa
+   confirmar ou corrigir.
+6. **Consentimento de SMS.** O texto do formulário é o que ela mandou. O próprio
+   documento pede revisão jurídica da política de privacidade, do texto de SMS e
+   dos termos de uso antes do lançamento.
 
 ## Fotos que faltam
 
-Trabalhei com o material que veio na pasta: o retrato dela, a peça de treinamento e um par
-antes/depois de sobrancelha. A seção de resultados já está montada em carrossel arrastável,
-então é só trocar os cartões marcados como "photo coming soon" por pares reais:
+A seção de resultados é um carrossel arrastável. Só o par de sobrancelha é real,
+os outros quatro cartões estão marcados como "photo coming soon" e são só trocar:
 
 | Onde | O que pedir |
 |---|---|
-| Resultados | Antes/depois de **lip blush**, **eyeliner** e **areola**, já cicatrizados |
-| Resultados | Se possível, pares no **mesmo enquadramento e mesma luz**, aí dá pra ligar um comparador com arraste em cima da foto |
-| Serviços | Uma foto do **estúdio novo** (ambiente, cadeira, luz) |
-| Sobre | Uma segunda foto dela **trabalhando**, não posada, para não repetir o retrato do hero |
+| Resultados | Antes/depois de **lip blush**, **eyeliner**, **aréola** e **camuflagem de cicatriz**, já cicatrizados |
+| Resultados | Pares no **mesmo enquadramento, distância e luz**, como o próprio documento dela pede |
+| Serviços | Foto do **estúdio novo** |
+| Artistas | Uma foto de cada uma **trabalhando**, não posada |
 
-Os assets atuais estão em `assets/` já otimizados em WebP. Duas fotos tiveram o fundo casado com a cor da seção em que aparecem, para ficarem sem
-moldura: o retrato do hero em `#E3DED4` (`--hero`) e o retrato preto e branco do bloco
-Sobre em `#F7F3ED` (`--cream`). Se trocar qualquer uma das duas, refazer esse casamento de
-cor, senão volta a aparecer o retângulo da foto.
+## Assets, e a armadilha do fundo
+
+Os retratos **não** têm fundo recortado. O fundo foi casado com a cor da seção em
+que a foto aparece, o que evita halo no cabelo:
+
+| Arquivo | Fundo casado com |
+|---|---|
+| `agata-hero.webp` e `agata-hero-mobile.webp` | `--hero` `#F1E7DA` |
+| `agata-editorial.webp` (bloco Artistas) | `--ivory` `#F8F3EB` |
+| `lanie.webp` (bloco Artistas) | `--ivory` `#F8F3EB` |
+
+Se trocar qualquer uma dessas fotos, ou mudar a cor da seção, refazer o
+casamento, senão volta a aparecer o retângulo da foto. A técnica está nos
+scripts: máscara do fundo cinza do estúdio por distância de cor mais teste de
+temperatura (o fundo é frio, o jaleco creme é quente), blur de 1.5px na borda, e
+balanço quente aplicado só ao sujeito.
+
+As duas logos (`logo-ama.webp` vinho e `logo-ama-white.webp` branca) mantêm alpha
+de verdade e podem ir sobre qualquer fundo.
+
+## Marca
+
+Do documento da cliente, resumido:
+
+| Papel | Cor |
+|---|---|
+| Pomegranate | `#751D32` |
+| Desert Rose | `#B86F78` |
+| Warm Blush | `#E5C4BF` |
+| Antique Gold | `#B58A52` |
+| Warm Sand | `#D8C4A8` |
+| Ivory | `#F8F3EB` |
+| Espresso | `#30231F` |
+
+Equilíbrio pedido: 50% marfim, 20% vinho, 10% rosa, 10% blush e areia, 5%
+espresso, 5% dourado. **Dourado é detalhe, nunca cor dominante.**
+
+O dourado dos rótulos pequenos é `--gold-ink` `#7A5A30`, não o `#B58A52` do
+documento: o tom original dá 4,1:1 sobre o fundo areia e reprova em contraste.
+O `#B58A52` continua em uso onde é só traço e ícone, que não precisam passar.
+
+Cormorant Garamond nos títulos, em peso 500 e 600, nunca nos pesos finos, como o
+documento pede. Montserrat em navegação, corpo, botões, preço, formulário e FAQ.
+Sem fonte manuscrita em lugar nenhum.
+
+O motivo do arco (moldura das fotos das artistas, losango dourado dos separadores)
+é a leitura discreta da influência que ela descreve. Sem lanterna, sem mosaico.
 
 ## Rastreio de conversão
 
-Nenhum CTA aponta direto para o `wa.me`. Todos passam por `thank-you.html?c=<contexto>`,
-que dispara `dataLayer.push({event:'whatsapp_conversion', contexto, idioma})` e só depois
-redireciona. Basta pendurar a tag de conversão no GTM em cima desse evento. O formulário
-leva a mensagem montada por `sessionStorage`, nunca pela URL.
+Nenhum CTA aponta direto para fora. Todos passam por `thank-you.html?c=<contexto>`,
+que dispara `dataLayer.push({event:'booking_conversion', contexto, idioma})` e só
+depois redireciona. Quando `BOOKING` e `PHONE` estiverem preenchidos, o link de
+agendamento ganha do WhatsApp. O formulário leva a mensagem montada por
+`sessionStorage`, nunca pela URL.
 
 ## Rodar local
 
@@ -78,12 +137,17 @@ npx serve -l 8877 .
 
 ## Performance
 
-Lighthouse local, throttling real (`--throttling-method=devtools`):
+Lighthouse mobile, throttling real (`--throttling-method=devtools`):
 
-| | Performance | Acessibilidade | Boas práticas | SEO |
-|---|---|---|---|---|
-| Mobile | 100 | 100 | 100 | 100 |
-| Desktop | 85–92 | 100 | 100 | 100 |
+| Performance | Acessibilidade | Boas práticas | SEO |
+|---|---|---|---|
+| 100 | 100 | 100 | 100 |
 
-O desktop oscila por causa do servidor local sem compressão. Vale remedir na URL da Vercel
-depois do deploy, que é onde entra brotli e CDN.
+LCP 0,8s · CLS 0,001 · TBT 0ms
+
+**Não devolver o hero para `flex-wrap`.** Os dois botões do hero e o bloco de
+números ficavam exatamente no limite de caber lado a lado em 412px. Qualquer
+mudança de largura do texto, inclusive a troca da fonte de fallback para a real,
+desempilhava a linha e puxava 66px de tudo abaixo. Isso sozinho valia CLS 0,12.
+Hoje os botões empilham em largura total abaixo de 560px e as métricas são grid
+de colunas fixas, as duas coisas deterministas.
