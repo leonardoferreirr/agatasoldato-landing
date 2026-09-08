@@ -72,7 +72,7 @@ os outros quatro cartões estão marcados como "photo coming soon" e são só tr
 | Resultados | Pares no **mesmo enquadramento, distância e luz**, como o próprio documento dela pede |
 | Serviços | Foto do **estúdio novo** |
 | Artistas | Uma foto de cada uma **trabalhando**, não posada |
-| Hero | O hero hoje é só tipografia. Se entrar foto ali, tem que casar o fundo com `--hero` `#F1E7DA` |
+
 
 ## Assets, e a armadilha do fundo
 
@@ -143,16 +143,35 @@ Lighthouse mobile, throttling real (`--throttling-method=devtools`):
 |---|---|---|---|
 | 100 | 100 | 100 | 100 |
 
-LCP 1,0s · CLS 0,004 · TBT 0ms
+LCP 1,9s · CLS 0 · TBT 0ms
+
+O LCP subiu de 0,8s para 1,9s quando a foto entrou no hero, porque ela passou a
+ser o maior elemento visível. Continua na faixa verde e o CLS zerou.
 
 ## Decisões de layout que não devem ser desfeitas
 
 **Sem tag acima de título.** Nenhuma seção tem kicker em caixa alta. Foi removido
 de propósito, é o que dá cara de template.
 
-**Hero sem foto.** Só tipografia centrada, título em duas linhas. O `max-width`
-do H1 é `41ch` e **não pode levar `text-wrap:balance`**: com balance o navegador
-reequilibra e devolve a terceira linha.
+**Hero com foto e texto à esquerda.** A foto do lip blush é fundo full-bleed e o
+texto ocupa a metade esquerda, onde a própria foto já tem área vazia. O véu são
+três degradês empilhados em `.hero__veil`: um de cima para baixo, que segura a
+legibilidade da navegação sobre a luva escura; um da esquerda para a direita, que
+sustenta o texto; e um diagonal fraco no canto inferior esquerdo, que disfarça a
+luva de baixo. Nenhum tem parada dura, é isso que evita a emenda visível entre o
+véu e a foto.
+
+**No mobile a foto não fica atrás do texto.** Vira uma faixa no pé do hero
+(`.hero__bg` e `.hero__veil` com `top:auto;bottom:0`). Cobrir um bloco alto e
+estreito com a mesma foto dava zoom absurdo, só aparecia um lábio gigante.
+
+O mobile usa o mesmo recorte horizontal (`hero-lips-1000.webp`, 25KB), não o
+retrato: na faixa larga ele entra sem zoom e pesa menos. O retrato que a cliente
+mandou continua disponível, mas fora do repositório.
+
+**Título do hero em 2 ou 3 linhas.** O `<br/>` antes de "in Austin, TX" é
+intencional. **Não colocar `text-wrap:balance`**: com balance o navegador
+reequilibra o primeiro segmento e devolve uma linha a mais.
 
 **Pacotes em linhas horizontais, não em cards.** Quatro linhas de
 `nome | descrição e itens | preço | CTA`. Os itens de cada pacote são uma lista
@@ -160,6 +179,12 @@ inline separada por losango, não uma lista vertical. Isso cortou a seção de
 1.759px para 1.572px e alinhou os preços numa coluna, que é o que permite
 comparar. Sticky stack foi considerado e descartado: o efeito é bonito mas cada
 card passa a exigir uma tela de rolagem, ou seja, faz o oposto de compactar.
+
+**Toda seção termina com um CTA.** `Book Your Consultation`, classe `.sec__cta`,
+em intro, serviços, resultados, artistas, processo e dúvidas. Pacotes, cursos e
+parcelamento têm CTA próprio e específico, e a seção de agendamento é o próprio
+formulário. Todos passam pela ponte de conversão, então quando o link de
+agendamento definitivo chegar é só preencher `BOOKING` e todos apontam para lá.
 
 **Artistas sem cargo abaixo do nome** e sem "Master" antes de Agata Soldato. Os
 anos de experiência continuam no primeiro parágrafo de cada uma.
