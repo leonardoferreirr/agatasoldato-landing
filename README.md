@@ -23,14 +23,18 @@ const EMAIL   = '';   // e-mail da empresa nova
 const STUDIO  = '';   // endereço do estúdio novo
 const MAPS    = '';   // link do Google Maps (opcional)
 const HOURS   = '';   // ex: 'Mon to Fri, 9am to 6pm'
-const BOOKING = '';   // link do sistema de agendamento (opcional)
+const BOOKING = 'https://book.mypatientnow.com/practice/47U2Ts';  // PREENCHIDO
 ```
 
 `PHONE` e `BOOKING` também precisam ser repetidos no topo do `thank-you.html`.
 
-Enquanto os dois estiverem vazios, todo CTA rola até o formulário em vez de sair
-da página, então o site não quebra se for ao ar incompleto. Os campos vazios
-aparecem como "To be confirmed" na seção de contato.
+`BOOKING` já está preenchido com o link do PatientNow, então os 15 CTAs e o
+formulário saem da página pela ponte de conversão e caem no agendamento. O que a
+pessoa digita no formulário não viaja junto, porque o site não tem backend.
+
+Enquanto `PHONE` e `BOOKING` estiverem os dois vazios, todo CTA rola até o
+formulário em vez de sair da página, então o site não quebra se for ao ar
+incompleto. Os campos vazios aparecem como "To be confirmed" na seção de contato.
 
 O próprio documento dela avisa, e vale repetir: **não reaproveitar o telefone,
 o endereço nem o e-mail da Posh** (11719 RM 2244 #101, Bee Cave, TX 78738,
