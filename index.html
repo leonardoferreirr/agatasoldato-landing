@@ -268,23 +268,6 @@ strong{font-weight:600;color:var(--esp)}
 .faq__a{max-height:0;overflow:hidden;transition:max-height .45s var(--ease)}
 .faq__a p{padding:0 3rem 1.5rem .2rem;font-size:.92rem;color:var(--esp-soft);line-height:1.85}
 
-/* ---------- booking ---------- */
-.bk{display:grid;grid-template-columns:.8fr 1fr;gap:clamp(2rem,5vw,4.5rem);align-items:start}
-.f{display:grid;gap:1.05rem}
-.f label{display:block;font-size:.6rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--gold-ink);margin-bottom:.45rem}
-.f input,.f select,.f textarea{width:100%;font-family:inherit;font-size:.94rem;color:var(--esp);background:var(--ivory-2);border:1px solid var(--line);border-radius:3px;padding:.85rem .95rem;transition:border-color .3s}
-.f input:focus,.f select:focus,.f textarea:focus{border-color:var(--pom);outline:none}
-.f textarea{min-height:6.5rem;resize:vertical}
-.f select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%237A5A30' stroke-width='1.4'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .95rem center;background-size:11px;padding-right:2.4rem}
-.f .btn{width:100%;margin-top:.3rem}
-.f__consent{font-size:.72rem;color:var(--esp-soft);line-height:1.7}
-.bk__side dl{display:grid;gap:1.3rem}
-.bk__side dt{font-size:.6rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--gold-ink)}
-.bk__side dd{font-size:.95rem;color:var(--esp-2);margin-top:.3rem}
-.bk__side dd a{border-bottom:1px solid var(--gold-line);transition:border-color .3s}
-.bk__side dd a:hover{border-color:var(--pom);color:var(--pom)}
-.todo{color:var(--rose);font-weight:600;font-size:.85rem}
-
 /* ---------- footer ---------- */
 .foot{background:var(--esp);color:var(--ivory);padding:clamp(3rem,6vw,4.5rem) 0 2rem}
 .foot__in{display:flex;flex-wrap:wrap;gap:2rem;align-items:center;justify-content:space-between}
@@ -313,7 +296,7 @@ strong{font-weight:600;color:var(--esp)}
   .art__tx{order:-1;padding:clamp(4rem,12vw,5rem) var(--pad) 0}
   .art__ph{overflow:hidden}
   .art__ph img{position:relative;inset:auto;left:50%;transform:translateX(-50%);width:min(128%,700px);max-width:none;height:auto;margin-top:2.2rem}
-  .fin,.bk{grid-template-columns:1fr}
+  .fin{grid-template-columns:1fr}
 }
 @media (max-width:860px){
   /* no mobile a foto nao fica atras do texto, vira faixa no pe do hero:
@@ -354,7 +337,6 @@ strong{font-weight:600;color:var(--esp)}
 .fin__how{font-size:1.2rem;margin-bottom:1rem}
 .tr__note{font-size:.8rem;color:rgba(248,243,235,.66);line-height:1.7;margin:0 0 1.4rem}
 .tr__end h3{margin-bottom:.6rem}
-.bk__brand{font-size:clamp(1.9rem,3.4vw,2.7rem);margin-bottom:1.6rem}
 .foot{border-top:1px solid rgba(208,172,128,.24)}
 </style>
 </head>
@@ -372,7 +354,6 @@ strong{font-weight:600;color:var(--esp)}
       <a href="#packages" data-i18n="nav.packages">Packages</a>
       <a href="#faq" data-i18n="nav.faq">FAQ</a>
       <a href="#training" data-i18n="nav.training">Training</a>
-      <a href="#contact" data-i18n="nav.contact">Contact</a>
     </nav>
     <div class="nav__end">
       <div class="lang" role="group" aria-label="Language">
@@ -380,7 +361,7 @@ strong{font-weight:600;color:var(--esp)}
         <button type="button" data-lang="pt" aria-pressed="false" aria-label="Português" title="Português"><svg viewBox="0 0 60 40" aria-hidden="true"><rect width="60" height="40" fill="#009B3A"/><path d="M30 5 55 20 30 35 5 20Z" fill="#FEDF00"/><circle cx="30" cy="20" r="8" fill="#002776"/></svg></button>
         <button type="button" data-lang="es" aria-pressed="false" aria-label="Español" title="Español"><svg viewBox="0 0 60 40" aria-hidden="true"><rect width="60" height="40" fill="#AA151B"/><rect y="10" width="60" height="20" fill="#F1BF00"/></svg></button>
       </div>
-      <a class="btn" href="#contact" data-cta="nav" data-i18n="nav.cta">Book Now</a>
+      <a class="btn" href="#booking" data-cta="nav" data-i18n="nav.cta">Book Now</a>
       <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="navLinks"><i></i><i></i></button>
     </div>
   </div>
@@ -402,7 +383,7 @@ strong{font-weight:600;color:var(--esp)}
     <h1 class="d">Agata<br/><em>Medical Aesthetics</em></h1>
     <p class="lead" data-i18n="hero.lead">Medical Aesthetic Tattooing designed to enhance your natural features with refined, personalized results.</p>
     <div class="hero__cta">
-      <a class="btn" href="#contact" data-cta="hero">
+      <a class="btn" href="#booking" data-cta="hero">
         <span data-i18n="hero.cta1">Book Now</span>
         <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.4"/></svg>
       </a>
@@ -418,7 +399,7 @@ strong{font-weight:600;color:var(--esp)}
     <p style="margin-top:1.6rem" data-i18n="intro.p1">At AMAesthetics, beauty is personal. Our approach combines advanced cosmetic tattoo techniques, detailed facial design, premium pigments, and years of hands-on experience to create results that feel polished, balanced, and uniquely yours.</p>
     <p data-i18n="intro.p2">From brows, lips, and eyeliner to cleft lip reconstruction, areola tattooing, scar and stretch mark camouflage, laser tattoo removal, permanent makeup removal, and piercing, every service begins with a personalized consultation and a focus on precision, comfort, and long-term results.</p>
     <div class="sec__cta rv">
-      <a class="btn" href="#contact" data-cta="intro" data-i18n="cta.book">Book a Consultation</a>
+      <a class="btn" href="#booking" data-cta="intro" data-i18n="cta.book">Book a Consultation</a>
     </div>
   </div>
 </section>
@@ -476,7 +457,7 @@ strong{font-weight:600;color:var(--esp)}
     </div>
     <p class="svc__hint" data-i18n="res.hint">Drag to see more</p>
     <div class="sec__cta rv">
-      <a class="btn" href="#contact" data-cta="services" data-i18n="cta.book">Book a Consultation</a>
+      <a class="btn" href="#booking" data-cta="services" data-i18n="cta.book">Book a Consultation</a>
     </div>
   </div>
 </section>
@@ -501,7 +482,7 @@ strong{font-weight:600;color:var(--esp)}
       <p data-i18n="team.p1c">Throughout her career, Agata has worked with a diverse clientele, including <strong>well-known celebrities and public figures</strong>, while maintaining the same personalized attention and discretion for every client.</p>
       <p data-i18n="team.p1d">She is especially experienced in <strong>correcting previous permanent makeup</strong>, including challenging shapes, colors, asymmetry, and unwanted results.</p>
       <div class="art__cta">
-        <a class="btn" href="#contact" data-cta="artists" data-i18n="cta.book">Book a Consultation</a>
+        <a class="btn" href="#booking" data-cta="artists" data-i18n="cta.book">Book a Consultation</a>
       </div>
     </div>
   </div>
@@ -520,7 +501,7 @@ strong{font-weight:600;color:var(--esp)}
       <div class="proc__s"><span class="proc__n">04</span><h3 class="d" data-i18n="proc.t4">Aftercare &amp; Follow-Up</h3><p data-i18n="proc.p4">You’ll receive an <strong>aftercare kit with everything you need for proper healing</strong>, along with simple instructions and follow-up recommendations.</p></div>
     </div>
     <div class="sec__cta rv">
-      <a class="btn" href="#contact" data-cta="process" data-i18n="cta.book">Book a Consultation</a>
+      <a class="btn" href="#booking" data-cta="process" data-i18n="cta.book">Book a Consultation</a>
     </div>
   </div>
 </section>
@@ -553,7 +534,7 @@ strong{font-weight:600;color:var(--esp)}
           <b data-i18n="pkg.p1">Package Benefit: Save $500</b>
           <span data-i18n="pkg.pv1">All three treatments must be performed on the same day to receive the package savings.</span>
         </div>
-        <a class="btn btn--light" href="#contact" data-cta="pkg-complete" data-i18n="pkg.c1">Book the Complete Look</a>
+        <a class="btn btn--light" href="#booking" data-cta="pkg-complete" data-i18n="pkg.c1">Book the Complete Look</a>
       </article>
 
       <article class="pk">
@@ -576,7 +557,7 @@ strong{font-weight:600;color:var(--esp)}
           <b data-i18n="pkg.p2">3-Session Removal Package: $500</b>
           <span data-i18n="pkg.pv2">Brows or Lips<br/>Single session: $200 | Package savings: $100</span>
         </div>
-        <a class="btn btn--light" href="#contact" data-cta="pkg-reset" data-i18n="pkg.c2">Start Your PMU Correction</a>
+        <a class="btn btn--light" href="#booking" data-cta="pkg-reset" data-i18n="pkg.c2">Start Your PMU Correction</a>
       </article>
 
       <article class="pk">
@@ -599,7 +580,7 @@ strong{font-weight:600;color:var(--esp)}
           <b data-i18n="pkg.p3">3 Sessions: $749</b>
           <span data-i18n="pkg.pv3">Regularly $1,200 | Save $451</span>
         </div>
-        <a class="btn btn--light" href="#contact" data-cta="pkg-tummy" data-i18n="pkg.c3">Book Tummy Restoration</a>
+        <a class="btn btn--light" href="#booking" data-cta="pkg-tummy" data-i18n="pkg.c3">Book Tummy Restoration</a>
       </article>
 
       <article class="pk">
@@ -624,14 +605,14 @@ strong{font-weight:600;color:var(--esp)}
           <b data-i18n="pkg.p4">3 Sessions: $949</b>
           <span data-i18n="pkg.pv4">Regularly $1,650 | Save $701</span>
         </div>
-        <a class="btn btn--light" href="#contact" data-cta="pkg-breast" data-i18n="pkg.c4">Book Breast Restoration</a>
+        <a class="btn btn--light" href="#booking" data-cta="pkg-breast" data-i18n="pkg.c4">Book Breast Restoration</a>
       </article>
     </div>
 
     <div class="pkg__end rv">
       <h3 class="d" data-i18n="pkg.eh">Not Sure Which Package Is Right for You?</h3>
       <p data-i18n="pkg.ep">We’ll help you choose the best treatment based on your skin, previous work, and desired results.</p>
-      <a class="btn btn--light" href="#contact" data-cta="pkg-help" data-i18n="pkg.ec">Book a Consultation</a>
+      <a class="btn btn--light" href="#booking" data-cta="pkg-help" data-i18n="pkg.ec">Book a Consultation</a>
       <p class="pkg__disc" data-i18n="pkg.disc">Results vary. Scar and stretch mark treatments require fully healed tissue. Additional sessions may be recommended.</p>
     </div>
   </div>
@@ -645,7 +626,7 @@ strong{font-weight:600;color:var(--esp)}
     </div>
     <div class="faq rv" id="faqList"></div>
     <div class="sec__cta rv">
-      <a class="btn" href="#contact" data-cta="faq" data-i18n="cta.book">Book a Consultation</a>
+      <a class="btn" href="#booking" data-cta="faq" data-i18n="cta.book">Book a Consultation</a>
     </div>
   </div>
 </section>
@@ -672,7 +653,7 @@ strong{font-weight:600;color:var(--esp)}
       <div class="fin__box">
         <h3 class="d" data-i18n="fin.bh">Important Financing Policy</h3>
         <p data-i18n="fin.bp">Financed services may be subject to separate cancellation, refund, rescheduling, and provider terms. Clients should review and agree to the applicable financing agreement and Agata Medical Aesthetics policies before completing a financed purchase. Financing approval and terms are determined by the financing provider.</p>
-        <a class="btn" href="#contact" data-cta="financing" data-i18n="fin.bc">Explore Payment Options</a>
+        <a class="btn" href="#booking" data-cta="financing" data-i18n="fin.bc">Explore Payment Options</a>
       </div>
     </div>
   </div>
@@ -685,7 +666,7 @@ strong{font-weight:600;color:var(--esp)}
       <h2 class="d" data-i18n="bk.h2">Ready for <em>Your Next Look?</em></h2>
       <p class="lead" data-i18n="bk.lead">Whether you already know which service you want or need help deciding, our team will guide you through the options and create a personalized plan.</p>
       <div class="sec__cta">
-        <a class="btn" href="#contact" data-cta="booking" data-i18n="bk.send">Request a Consultation</a>
+        <a class="btn" href="#booking" data-cta="booking" data-i18n="bk.send">Request a Consultation</a>
       </div>
     </div>
   </div>
@@ -717,7 +698,7 @@ strong{font-weight:600;color:var(--esp)}
           <li data-i18n="tr.a10">Pricing, sales, customer service, marketing, and business development</li>
         </ul>
         <p class="tr__note" data-i18n="tr.note">Training techniques may include Nano Brows, Ombre Brows, Lip Blush, Lip Neutralization, touch-ups, corrections, and permanent makeup removal, depending on the selected mentorship program.</p>
-        <a class="btn btn--gold" href="#contact" data-cta="training-1on1" data-i18n="tr.c1">Book Private 1:1 Mentorship</a>
+        <a class="btn btn--gold" href="#booking" data-cta="training-1on1" data-i18n="tr.c1">Book Private 1:1 Mentorship</a>
       </article>
       <article class="tr__c">
         <h3 class="d" data-i18n="tr.n2">Online PMU Training</h3>
@@ -738,63 +719,12 @@ strong{font-weight:600;color:var(--esp)}
           <li data-i18n="tr.e13">Marketing funnels and advertising</li>
           <li data-i18n="tr.e14">Business growth, scaling, recruiting, and team development</li>
         </ul>
-        <a class="btn btn--gold" href="#contact" data-cta="training-online" data-i18n="tr.c2">Start Online Training</a>
+        <a class="btn btn--gold" href="#booking" data-cta="training-online" data-i18n="tr.c2">Start Online Training</a>
       </article>
     </div>
     <div class="tr__end rv">
       <h3 class="d" data-i18n="tr.endh">More Than a PMU Course</h3>
       <p data-i18n="tr.end">Agata's mentorship is designed to help students understand both the artistry and the business behind permanent makeup. The goal is to develop technical confidence while also learning how to attract clients, deliver a professional experience, price services, market effectively, and build a sustainable business.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== CONTACT ===================== -->
-<section class="sec sec--ivory2" id="contact">
-  <div class="wrap">
-    <div class="bk rv">
-      <div class="bk__side">
-        <h2 class="d bk__brand">Agata Medical Aesthetics</h2>
-        <dl>
-          <div><dt data-i18n="bk.k2">Phone</dt><dd id="cPhone"></dd></div>
-          <div><dt data-i18n="bk.k3">Email</dt><dd id="cEmail"></dd></div>
-          <div><dt data-i18n="bk.k1">Address</dt><dd id="cStudio"></dd></div>
-          <div><dt data-i18n="bk.k5">Hours</dt><dd id="cHours"></dd></div>
-          <div><dt data-i18n="bk.k4">Instagram</dt><dd id="cIG"></dd></div>
-          <div><dt data-i18n="bk.k6">Booking Link</dt><dd id="cBooking"></dd></div>
-        </dl>
-      </div>
-      <form class="f" id="bookForm" novalidate>
-        <div>
-          <label for="fName" data-i18n="bk.name">Name</label>
-          <input id="fName" name="name" type="text" autocomplete="name" required />
-        </div>
-        <div>
-          <label for="fPhone" data-i18n="bk.phone">Phone</label>
-          <input id="fPhone" name="phone" type="tel" autocomplete="tel" required />
-        </div>
-        <div>
-          <label for="fService" data-i18n="bk.service">What are you interested in</label>
-          <select id="fService" name="service">
-            <option data-i18n="bk.o1">Nano Brows &amp; Ombre Brows</option>
-            <option data-i18n="bk.o2">Lip Blush &amp; Cleft Lip Reconstruction</option>
-            <option data-i18n="bk.o3">Eyeliner Tattoo</option>
-            <option data-i18n="bk.o4">Areola Tattoo</option>
-            <option data-i18n="bk.o5">Stretch Mark Camouflage</option>
-            <option data-i18n="bk.o6">Scar Camouflage</option>
-            <option data-i18n="bk.o7">Laser Tattoo Removal &amp; Permanent Makeup Removal</option>
-            <option data-i18n="bk.o8">Professional Piercing</option>
-            <option data-i18n="bk.o9">Signature Packages</option>
-            <option data-i18n="bk.o10">PMU Training &amp; Private Mentorship</option>
-            <option data-i18n="bk.o11">Not sure yet</option>
-          </select>
-        </div>
-        <div>
-          <label for="fMsg" data-i18n="bk.msg">Anything we should know</label>
-          <textarea id="fMsg" name="message"></textarea>
-        </div>
-        <button class="btn" type="submit" data-i18n="bk.send">Request a Consultation</button>
-        <p class="f__consent" data-i18n="bk.consent">By providing your phone number and submitting this form, you agree to receive appointment-related and marketing communications from Agata Medical Aesthetics at the number provided. Message and data rates may apply. Consent is not a condition of purchase. You may opt out of SMS marketing at any time by replying STOP.</p>
-      </form>
     </div>
   </div>
 </section>
@@ -812,7 +742,6 @@ strong{font-weight:600;color:var(--esp)}
         <a href="#packages" data-i18n="nav.packages">Packages</a>
         <a href="#financing" data-i18n="nav.financing">Financing</a>
         <a href="#training" data-i18n="nav.training">Training</a>
-        <a href="#contact" data-i18n="nav.contact">Contact</a>
       </nav>
     </div>
     <div class="foot__bot">
@@ -830,11 +759,6 @@ strong{font-weight:600;color:var(--esp)}
    remain valid for Agata Medical Aesthetics.
    ============================================================ */
 const PHONE   = '';                 // e.g. '15125550100'
-const IG      = '';                 // handle without the @
-const EMAIL   = '';                 // e.g. 'info@agatamedicalaesthetics.com'
-const STUDIO  = '';                 // full street address
-const MAPS    = '';                 // google maps link, optional
-const HOURS   = '';                 // e.g. 'Mon to Fri, 9am to 6pm'
 const BOOKING = 'https://book.mypatientnow.com/practice/47U2Ts'; // external booking link, optional
 
 /* ============================================================
@@ -844,7 +768,7 @@ const I18N = {
 en:{},
 pt:{
 "cta.book":"Agendar uma avaliação",
-"nav.services":"Serviços","nav.packages":"Pacotes","nav.artists":"Artistas","nav.training":"Cursos","nav.faq":"Dúvidas","nav.contact":"Contato","nav.financing":"Parcelamento","nav.cta":"Agendar",
+"nav.services":"Serviços","nav.packages":"Pacotes","nav.artists":"Artistas","nav.training":"Cursos","nav.faq":"Dúvidas","nav.financing":"Parcelamento","nav.cta":"Agendar",
 "hero.lead":"Tatuagem Estética Médica feita para realçar seus traços naturais, com resultado refinado e personalizado.",
 "hero.cta1":"Agendar",
 "intro.p1":"Na AMAesthetics, beleza é pessoal. Nosso trabalho combina técnicas avançadas de tatuagem cosmética, desenho facial detalhado, pigmentos premium e anos de prática para criar resultados polidos, equilibrados e só seus.",
@@ -912,10 +836,7 @@ pt:{
 "fin.bc":"Ver opções de pagamento",
 "bk.h2":"Pronta para <em>o seu próximo look?</em>",
 "bk.lead":"Se você já sabe qual serviço quer ou precisa de ajuda para decidir, nossa equipe apresenta as opções e monta um plano personalizado.",
-"bk.name":"Nome","bk.phone":"Telefone","bk.service":"O que te interessa","bk.msg":"Algo que a gente precise saber","bk.send":"Pedir uma avaliação",
-"bk.o1":"Nano brows e ombre brows","bk.o2":"Lip blush e reconstrução de lábio leporino","bk.o3":"Delineado","bk.o4":"Tatuagem de aréola","bk.o5":"Camuflagem de estrias","bk.o6":"Camuflagem de cicatriz","bk.o7":"Remoção de tatuagem a laser e remoção de micropigmentação","bk.o8":"Piercing profissional","bk.o9":"Pacotes exclusivos","bk.o10":"Cursos e mentoria particular","bk.o11":"Ainda não sei",
-"bk.consent":"Ao informar seu telefone e enviar este formulário, você concorda em receber comunicações de agendamento e de marketing da Agata Medical Aesthetics no número informado. Podem incidir tarifas de mensagem e de dados. O consentimento não é condição de compra. Você pode sair do marketing por SMS a qualquer momento respondendo STOP.",
-"bk.k1":"Endereço","bk.k2":"Telefone","bk.k3":"E-mail","bk.k4":"Instagram","bk.k5":"Horários","bk.k6":"Link de agendamento",
+"bk.send":"Pedir uma avaliação",
 "tr.h2":"Cursos de micropigmentação e mentoria particular","tr.tag":"Aprenda a técnica. Domine o negócio. <em>Construa sua carreira.</em>",
 "tr.lead":"Estude com a Master Agata Soldato em uma formação personalizada, pensada para artistas que querem mais do que um curso básico de micropigmentação. As alunas podem escolher mentoria particular 1:1 presencial ou formação online flexível.",
 "tr.n1":"Mentoria particular 1:1 presencial","tr.k1":"Uma aluna. Uma mentora. Atenção personalizada.",
@@ -933,7 +854,7 @@ pt:{
 },
 es:{
 "cta.book":"Reservar una consulta",
-"nav.services":"Servicios","nav.packages":"Paquetes","nav.artists":"Artistas","nav.training":"Formación","nav.faq":"Preguntas","nav.contact":"Contacto","nav.financing":"Financiación","nav.cta":"Reservar",
+"nav.services":"Servicios","nav.packages":"Paquetes","nav.artists":"Artistas","nav.training":"Formación","nav.faq":"Preguntas","nav.financing":"Financiación","nav.cta":"Reservar",
 "hero.lead":"Tatuaje Estético Médico diseñado para realzar tus rasgos naturales, con resultados refinados y personalizados.",
 "hero.cta1":"Reservar",
 "intro.p1":"En AMAesthetics, la belleza es personal. Nuestro enfoque combina técnicas avanzadas de tatuaje cosmético, diseño facial detallado, pigmentos premium y años de experiencia práctica para crear resultados pulidos, equilibrados y únicamente tuyos.",
@@ -1001,10 +922,7 @@ es:{
 "fin.bc":"Ver opciones de pago",
 "bk.h2":"¿Lista para <em>tu próximo look?</em>",
 "bk.lead":"Ya sea que sepas qué servicio quieres o necesites ayuda para decidir, nuestro equipo te guía por las opciones y crea un plan personalizado.",
-"bk.name":"Nombre","bk.phone":"Teléfono","bk.service":"Qué te interesa","bk.msg":"Algo que debamos saber","bk.send":"Solicitar una consulta",
-"bk.o1":"Nano brows y ombre brows","bk.o2":"Lip blush y reconstrucción de labio leporino","bk.o3":"Delineado","bk.o4":"Tatuaje de areola","bk.o5":"Camuflaje de estrías","bk.o6":"Camuflaje de cicatrices","bk.o7":"Eliminación láser de tatuajes y eliminación de micropigmentación","bk.o8":"Piercing profesional","bk.o9":"Paquetes exclusivos","bk.o10":"Formación y mentoría privada","bk.o11":"Todavía no sé",
-"bk.consent":"Al facilitar tu número de teléfono y enviar este formulario, aceptas recibir comunicaciones de citas y de marketing de Agata Medical Aesthetics en el número indicado. Pueden aplicarse tarifas de mensajes y datos. El consentimiento no es condición de compra. Puedes darte de baja del marketing por SMS en cualquier momento respondiendo STOP.",
-"bk.k1":"Dirección","bk.k2":"Teléfono","bk.k3":"Correo","bk.k4":"Instagram","bk.k5":"Horarios","bk.k6":"Enlace de reserva",
+"bk.send":"Solicitar una consulta",
 "tr.h2":"Formación en micropigmentación y mentoría privada","tr.tag":"Aprende la técnica. Domina el negocio. <em>Construye tu carrera.</em>",
 "tr.lead":"Fórmate con la Master Agata Soldato en una experiencia educativa personalizada, pensada para artistas que quieren más que un curso básico de micropigmentación. Las alumnas pueden elegir mentoría privada 1:1 presencial o formación online flexible.",
 "tr.n1":"Mentoría privada 1:1 presencial","tr.k1":"Una alumna. Una mentora. Atención personalizada.",
@@ -1081,7 +999,7 @@ function applyLang(l){
   });
   $$('.lang button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === l)));
   try{ localStorage.setItem('ama-lang', l); }catch(e){}
-  buildFaq(); paintContact();
+  buildFaq();
 }
 
 /* ============================================================
@@ -1105,53 +1023,19 @@ function buildFaq(){
 }
 
 /* ============================================================
-   Contact block — only shows what is actually filled in
-   ============================================================ */
-const TODO = {
-  en:'To be confirmed', pt:'A confirmar', es:'Por confirmar'
-};
-function paintContact(){
-  const todo = `<span class="todo">${TODO[lang]}</span>`;
-  const fmt = p => p ? `+${p.slice(0,1)} (${p.slice(1,4)}) ${p.slice(4,7)}-${p.slice(7)}` : '';
-  $('#cStudio').innerHTML = STUDIO ? (MAPS ? `<a href="${MAPS}" target="_blank" rel="noopener">${STUDIO}</a>` : STUDIO) : todo;
-  $('#cPhone').innerHTML  = PHONE ? `<a href="tel:+${PHONE}">${fmt(PHONE)}</a>` : todo;
-  $('#cEmail').innerHTML  = EMAIL ? `<a href="mailto:${EMAIL}">${EMAIL}</a>` : todo;
-  $('#cIG').innerHTML     = IG ? `<a href="https://instagram.com/${IG}" target="_blank" rel="noopener">@${IG}</a>` : todo;
-  $('#cHours').innerHTML  = HOURS || todo;
-  $('#cBooking').innerHTML = BOOKING ? `<a href="${BOOKING}" target="_blank" rel="noopener">${BOOKING.replace(/^https?:\/\//,'')}</a>` : todo;
-}
-
-/* ============================================================
    Conversion bridge — no CTA points straight at wa.me
    ============================================================ */
-function goBridge(context, text){
-  if(text) { try{ sessionStorage.setItem('ama-msg', text); }catch(e){} }
+function goBridge(context){
   location.href = `thank-you.html?c=${encodeURIComponent(context)}&l=${lang}`;
 }
 $$('[data-cta]').forEach(a => {
   a.addEventListener('click', e => {
-    if(!PHONE && !BOOKING) return;              // no destination yet, let it scroll to the form
+    if(!PHONE && !BOOKING) return;              // no destination yet, let it scroll to the booking block
     e.preventDefault();
     goBridge(a.dataset.cta);
   });
 });
 
-$('#bookForm').addEventListener('submit', e => {
-  e.preventDefault();
-  const f = e.target;
-  if(!f.name.value.trim() || !f.phone.value.trim()){
-    (!f.name.value.trim() ? f.name : f.phone).focus();
-    return;
-  }
-  const L = {
-    en:['New consultation request','Name','Phone','Interested in','Notes'],
-    pt:['Novo pedido de avaliação','Nome','Telefone','Interesse','Observações'],
-    es:['Nueva solicitud de consulta','Nombre','Teléfono','Interés','Notas']
-  }[lang];
-  const msg = `${L[0]}\n${L[1]}: ${f.name.value.trim()}\n${L[2]}: ${f.phone.value.trim()}\n${L[3]}: ${f.service.value}` +
-              (f.message.value.trim() ? `\n${L[4]}: ${f.message.value.trim()}` : '');
-  goBridge('form', msg);
-});
 
 /* ============================================================
    Nav, reveal

@@ -16,27 +16,25 @@ fundadora e master artist. A Lanie Stein saiu do documento e do site.
 
 ## Antes de publicar: o que falta preencher
 
-Tudo o que é dado real está no topo do `<script>` do `index.html`:
+O destino dos botões está no topo do `<script>` do `index.html` e precisa ser
+repetido no topo do `thank-you.html`:
 
 ```js
 const PHONE   = '';   // só dígitos com código do país, ex: '15125550100'
-const IG      = '';   // handle sem o @
-const EMAIL   = '';   // e-mail da empresa nova
-const STUDIO  = '';   // endereço do estúdio novo
-const MAPS    = '';   // link do Google Maps (opcional)
-const HOURS   = '';   // ex: 'Mon to Fri, 9am to 6pm'
 const BOOKING = 'https://book.mypatientnow.com/practice/47U2Ts';  // PREENCHIDO
 ```
 
-`PHONE` e `BOOKING` também precisam ser repetidos no topo do `thank-you.html`.
+`BOOKING` já está preenchido com o link do PatientNow, então os 16 CTAs saem da
+página pela ponte de conversão e caem no agendamento.
 
-`BOOKING` já está preenchido com o link do PatientNow, então os 15 CTAs e o
-formulário saem da página pela ponte de conversão e caem no agendamento. O que a
-pessoa digita no formulário não viaja junto, porque o site não tem backend.
+**Não há seção de contato nem formulário.** Saíram em 18/09 a pedido do Leonardo:
+todo botão já leva ao PatientNow, e o bloco de contato só mostrava "To be
+confirmed". As seções 15 (Contact Page) e 16 (Contact Form Consent Copy) do
+documento ficam de fora por isso. Quando ela confirmar telefone, endereço,
+horário e Instagram, o lugar natural é o rodapé.
 
-Enquanto `PHONE` e `BOOKING` estiverem os dois vazios, todo CTA rola até o
-formulário em vez de sair da página, então o site não quebra se for ao ar
-incompleto. Os campos vazios aparecem como "To be confirmed" na seção de contato.
+Se `PHONE` e `BOOKING` ficarem os dois vazios, todo CTA rola até o bloco "Ready
+for your next look?" em vez de sair da página.
 
 O próprio documento dela avisa, e vale repetir: **não reaproveitar o telefone,
 o endereço nem o e-mail da Posh** (11719 RM 2244 #101, Bee Cave, TX 78738,
@@ -48,7 +46,7 @@ para a empresa nova.
 1. **Financiamento.** A seção existe e explica o processo, mas sem provedor. O
    documento dela manda só publicar provedor, link, APR promocional, compra
    mínima e disclosures depois de confirmar a conta merchant da empresa nova, e
-   proíbe herdar a conta de financiamento da Posh. Hoje o CTA leva ao formulário.
+   proíbe herdar a conta de financiamento da Posh. Hoje o CTA leva ao agendamento.
 2. **Histórico.** O site diz 12 anos e mais de 10 mil procedimentos, números que
    vieram do documento dela. Como parte desse histórico foi construída sob a
    marca Posh, **confirmar se o acordo do divórcio permite reivindicá-lo**,
@@ -56,9 +54,10 @@ para a empresa nova.
 3. **Preços dos pacotes.** Estão publicados exatamente como no documento: economia
    de US$ 500 no Complete Look, US$ 500 no PMU Reset, US$ 749 no Tummy, US$ 949
    no Breast. Conferir antes de ir ao ar, preço em página pública é promessa.
-4. **Consentimento de SMS.** O texto do formulário é o que ela mandou. O próprio
-   documento pede revisão jurídica da política de privacidade, do texto de SMS e
-   dos termos de uso antes do lançamento.
+4. **Política de privacidade e termos.** O documento pede revisão jurídica da
+   política de privacidade, do texto de SMS e dos termos de uso antes do
+   lançamento. Sem formulário no site, quem coleta telefone é o PatientNow, nos
+   termos dele. Se um formulário voltar, o texto de consentimento está no documento.
 
 ## Fotos que faltam
 
@@ -125,7 +124,7 @@ documento: o tom original dá 4,1:1 sobre o fundo areia e reprova em contraste.
 O `#B58A52` continua em uso onde é só traço e ícone, que não precisam passar.
 
 Cormorant Garamond nos títulos, em peso 500 e 600, nunca nos pesos finos, como o
-documento pede. Montserrat em navegação, corpo, botões, preço, formulário e FAQ.
+documento pede. Montserrat em navegação, corpo, botões, preço e FAQ.
 Sem fonte manuscrita em lugar nenhum.
 
 O motivo do arco (moldura das fotos das artistas, losango dourado dos separadores)
@@ -136,8 +135,7 @@ O motivo do arco (moldura das fotos das artistas, losango dourado dos separadore
 Nenhum CTA aponta direto para fora. Todos passam por `thank-you.html?c=<contexto>`,
 que dispara `dataLayer.push({event:'booking_conversion', contexto, idioma})` e só
 depois redireciona. Quando `BOOKING` e `PHONE` estiverem preenchidos, o link de
-agendamento ganha do WhatsApp. O formulário leva a mensagem montada por
-`sessionStorage`, nunca pela URL.
+agendamento ganha do WhatsApp.
 
 ## Rodar local
 
@@ -188,9 +186,8 @@ seguem o texto de SEO do documento, que é onde pesa mais.
 
 **Ordem das seções igual à do documento.** Hero, intro, serviços, artista,
 processo, pacotes, dúvidas, parcelamento, "Ready for your next look?" (só título,
-texto e botão), cursos e, por último, contato com o formulário e o texto de
-consentimento. O formulário mora em `#contact`, e é para lá que os CTAs caem
-quando não há link de agendamento.
+texto e botão) e cursos. As seções 15 e 16 do documento (contato e texto de
+consentimento do formulário) foram tiradas a pedido do Leonardo, ver acima.
 
 **Pacotes em linhas horizontais, não em cards.** Quatro linhas de
 `nome | descrição e itens | preço | CTA`. Os itens de cada pacote são uma lista
@@ -200,9 +197,9 @@ comparar. Sticky stack foi considerado e descartado: o efeito é bonito mas cada
 card passa a exigir uma tela de rolagem, ou seja, faz o oposto de compactar.
 
 **Toda seção termina com um CTA.** `Book Your Consultation`, classe `.sec__cta`,
-em intro, serviços, resultados, artistas, processo e dúvidas. Pacotes, cursos e
-parcelamento têm CTA próprio e específico, o "Ready for your next look?" leva o
-`Request a Consultation` do documento e o contato é o próprio formulário. Todos passam pela ponte de conversão, então quando o link de
+em intro, serviços, artista, processo e dúvidas. Pacotes, cursos e
+parcelamento têm CTA próprio e específico, e o "Ready for your next look?" leva o
+`Request a Consultation` do documento. Todos passam pela ponte de conversão, então quando o link de
 agendamento definitivo chegar é só preencher `BOOKING` e todos apontam para lá.
 
 **Seção da artista em duas colunas, foto de cima a baixo.** Foto à esquerda,
