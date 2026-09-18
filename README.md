@@ -190,7 +190,10 @@ texto e botão) e cursos. As seções 15 e 16 do documento (contato e texto de
 consentimento do formulário) foram tiradas a pedido do Leonardo, ver acima.
 
 **Pacotes em linhas horizontais, não em cards.** Quatro linhas de
-`nome | descrição e itens | preço | CTA`. Os itens de cada pacote são uma lista
+`nome | descrição e itens | preço em cima do CTA`. O preço e o botão dividem a
+mesma coluna, um sobre o outro: lado a lado, os preços longos ("3-Session Removal
+Package: $500") passavam por baixo do botão em qualquer tela acima de 900px.
+Abaixo de 900px a linha empilha. Os itens de cada pacote são uma lista
 inline separada por losango, não uma lista vertical. Isso cortou a seção de
 1.759px para 1.572px e alinhou os preços numa coluna, que é o que permite
 comparar. Sticky stack foi considerado e descartado: o efeito é bonito mas cada
