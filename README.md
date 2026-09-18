@@ -1,11 +1,13 @@
 # Agata Medical Aesthetics
 
-Site da nova marca da Agata Soldato, montado a partir do documento de conteúdo e
-de marca que ela enviou (`Agata_Medical_Aesthetics_Website_Content_WITH_PACKAGES.docx`).
+Site da nova marca da Agata Soldato. A fonte da verdade é o documento que ela
+mandou em 18/09 (`Agata_Medical_Aesthetics_Website.pdf`, "Website Content Master"),
+que substitui o `..._WITH_PACKAGES.docx`. A única mudança de texto entre os dois foi
+a saída da Lanie. **O site segue o documento seção por seção, na mesma ordem.**
 
 A marca **não** é mais "Agata Soldato". É **Agata Medical Aesthetics**, selo AMA,
-assinatura "Cosmetic & Paramedical Tattooing". A Agata aparece como fundadora e
-master artist, ao lado da Lanie Stein, artista sênior.
+assinatura "Cosmetic & Paramedical Tattooing". A Agata aparece sozinha como
+fundadora e master artist. A Lanie Stein saiu do documento e do site.
 
 - HTML/CSS/JS puro, arquivo único, sem framework
 - Idiomas EN (principal) / PT-BR / ES por bandeirinha, guardado no localStorage
@@ -47,52 +49,56 @@ para a empresa nova.
    documento dela manda só publicar provedor, link, APR promocional, compra
    mínima e disclosures depois de confirmar a conta merchant da empresa nova, e
    proíbe herdar a conta de financiamento da Posh. Hoje o CTA leva ao formulário.
-2. **Retrato da Lanie.** Os dois arquivos vieram nomeados `ChatGPT Image`, um com
-   jaleco branco e outro preto, mesma pose e mesma luz. Parece retoque de
-   guarda-roupa sobre uma foto real, o que é normal. Se for imagem gerada, não
-   pode ir ao ar como foto de uma pessoa nomeada. Confirmar com ela.
-3. **Histórico.** O site diz 12 anos e mais de 10 mil procedimentos, números que
+2. **Histórico.** O site diz 12 anos e mais de 10 mil procedimentos, números que
    vieram do documento dela. Como parte desse histórico foi construída sob a
    marca Posh, **confirmar se o acordo do divórcio permite reivindicá-lo**,
    principalmente cláusula de não concorrência ou de não solicitação.
-4. **Preços dos pacotes.** Estão publicados exatamente como no documento: economia
+3. **Preços dos pacotes.** Estão publicados exatamente como no documento: economia
    de US$ 500 no Complete Look, US$ 500 no PMU Reset, US$ 749 no Tummy, US$ 949
    no Breast. Conferir antes de ir ao ar, preço em página pública é promessa.
-5. **Sessões e tempo de cadeira** na tabela de serviços usam faixas padrão do
-   setor. Estão no array `SERVICES` do script, um por idioma. Ela precisa
-   confirmar ou corrigir.
-6. **Consentimento de SMS.** O texto do formulário é o que ela mandou. O próprio
+4. **Consentimento de SMS.** O texto do formulário é o que ela mandou. O próprio
    documento pede revisão jurídica da política de privacidade, do texto de SMS e
    dos termos de uso antes do lançamento.
 
 ## Fotos que faltam
 
-A seção de resultados é um carrossel arrastável. Só o par de sobrancelha é real,
-os outros quatro cartões estão marcados como "photo coming soon" e são só trocar:
+Cada serviço em destaque é um cartão com o slot de antes e depois em cima, porque
+o documento marca "(before and after picture)" em sete dos oito serviços. Só o par
+de sobrancelha é real. Os outros seis estão como "photo coming soon", e é só trocar
+o `.svc__soon` por um `.svc__ba` igual ao da sobrancelha (duas fotos 4:5).
+
+O **Eyeliner Tattoo** não tem foto no documento, então o slot dele leva o motivo
+do arco em vez de prometer uma foto. Se ela mandar um par de delineado, vira `.svc__ba`.
 
 | Onde | O que pedir |
 |---|---|
-| Resultados | Antes/depois de **lip blush**, **eyeliner**, **aréola** e **camuflagem de cicatriz**, já cicatrizados |
-| Resultados | Pares no **mesmo enquadramento, distância e luz**, como o próprio documento dela pede |
-| Serviços | Foto do **estúdio novo** |
-| Artistas | Uma foto de cada uma **trabalhando**, não posada |
+| Serviços | Antes/depois de **lip blush**, **aréola**, **estrias**, **cicatriz**, **remoção** e **piercing**, já cicatrizados |
+| Serviços | Pares no **mesmo enquadramento, distância e luz**, como o próprio documento dela pede |
 
 
 ## Assets, e a armadilha do fundo
 
-Os retratos **não** têm fundo recortado. O fundo foi casado com a cor da seção em
-que a foto aparece, o que evita halo no cabelo:
+O retrato da Agata **não** tem fundo recortado. O fundo cinza do estúdio foi
+trocado pela cor exata da seção, então a foto não tem borda visível e ela parece
+estar dentro da seção:
 
 | Arquivo | Fundo casado com |
 |---|---|
-| `agata-editorial.webp` (bloco Artistas) | `--ivory` `#F8F3EB` |
-| `lanie.webp` (bloco Artistas) | `--ivory` `#F8F3EB` |
+| `agata-portrait.webp` (1100w) e `agata-portrait-700.webp` | `--artist-bg` `#EDE2CF` |
 
-Se trocar qualquer uma dessas fotos, ou mudar a cor da seção, refazer o
-casamento, senão volta a aparecer o retângulo da foto. A técnica está nos
-scripts: máscara do fundo cinza do estúdio por distância de cor mais teste de
-temperatura (o fundo é frio, o jaleco creme é quente), blur de 1.5px na borda, e
-balanço quente aplicado só ao sujeito.
+O `#EDE2CF` não é o `--sand-soft` (`#EDE1CE`): é a cor que o webp devolve depois
+de comprimido, medida pixel a pixel. Usar a cor do CSS deixava 1 ponto de
+diferença, o suficiente para o retângulo aparecer em algumas telas. O areia foi
+escolhido porque o jaleco é creme e sumiria no marfim.
+
+Se trocar a foto ou a cor da seção, refazer o casamento. Como foi feito: máscara
+de pessoa do Apple Vision (`VNGenerateForegroundInstanceMaskRequest`) sobre o
+original de 4000x6000 (`Downloads/Agata Soldato/Agata Soldato.jpg`), fundo do
+estúdio modelado por ajuste quadrático, troca de cor com descontaminação das
+bordas (`saída = foto + (1 - alfa) x (cor nova - fundo)`, que tira o cinza dos
+fios de cabelo) e um balanço quente leve só no sujeito. Os lados da imagem são
+cor chapada de propósito: no celular a foto fica 128% mais larga que a coluna e
+entre 1041 e 1240px usa `cover`, e em ambos os casos só a cor chapada é cortada.
 
 As duas logos (`logo-ama.webp` vinho e `logo-ama-white.webp` branca) mantêm alpha
 de verdade e podem ir sobre qualquer fundo.
@@ -145,9 +151,9 @@ Lighthouse mobile, throttling real (`--throttling-method=devtools`):
 
 | Performance | Acessibilidade | Boas práticas | SEO |
 |---|---|---|---|
-| 100 | 100 | 100 | 100 |
+| 99 | 100 | 100 | 100 |
 
-LCP 1,9s · CLS 0 · TBT 0ms
+LCP 1,9s · CLS 0 · TBT 0ms (medido em 18/09, depois da reestruturação)
 
 O LCP subiu de 0,8s para 1,9s quando a foto entrou no hero, porque ela passou a
 ser o maior elemento visível. Continua na faixa verde e o CLS zerou.
@@ -173,9 +179,18 @@ O mobile usa o mesmo recorte horizontal (`hero-lips-1000.webp`, 25KB), não o
 retrato: na faixa larga ele entra sem zoom e pesa menos. O retrato que a cliente
 mandou continua disponível, mas fora do repositório.
 
-**Título do hero em 2 ou 3 linhas.** O `<br/>` antes de "in Austin, TX" é
-intencional. **Não colocar `text-wrap:balance`**: com balance o navegador
-reequilibra o primeiro segmento e devolve uma linha a mais.
+**O título do hero é o nome da marca.** A seção "Hero Section" do documento pede
+`AGATA MEDICAL AESTHETICS`, a frase e `BOOK NOW`, e é isso que está lá, em duas
+linhas ("Agata" / "Medical Aesthetics"). O H1 sugerido para SEO ("Permanent
+Makeup & Cosmetic Tattooing in Austin, TX") ficou de fora do visual porque não
+cabe no hero sem virar texto que ela não pediu. O `<title>` e a meta description
+seguem o texto de SEO do documento, que é onde pesa mais.
+
+**Ordem das seções igual à do documento.** Hero, intro, serviços, artista,
+processo, pacotes, dúvidas, parcelamento, "Ready for your next look?" (só título,
+texto e botão), cursos e, por último, contato com o formulário e o texto de
+consentimento. O formulário mora em `#contact`, e é para lá que os CTAs caem
+quando não há link de agendamento.
 
 **Pacotes em linhas horizontais, não em cards.** Quatro linhas de
 `nome | descrição e itens | preço | CTA`. Os itens de cada pacote são uma lista
@@ -186,12 +201,14 @@ card passa a exigir uma tela de rolagem, ou seja, faz o oposto de compactar.
 
 **Toda seção termina com um CTA.** `Book Your Consultation`, classe `.sec__cta`,
 em intro, serviços, resultados, artistas, processo e dúvidas. Pacotes, cursos e
-parcelamento têm CTA próprio e específico, e a seção de agendamento é o próprio
-formulário. Todos passam pela ponte de conversão, então quando o link de
+parcelamento têm CTA próprio e específico, o "Ready for your next look?" leva o
+`Request a Consultation` do documento e o contato é o próprio formulário. Todos passam pela ponte de conversão, então quando o link de
 agendamento definitivo chegar é só preencher `BOOKING` e todos apontam para lá.
 
-**Artistas sem cargo abaixo do nome** e sem "Master" antes de Agata Soldato. Os
-anos de experiência continuam no primeiro parágrafo de cada uma.
+**Seção da artista em duas colunas, foto de cima a baixo.** Foto à esquerda,
+apoiada na borda de baixo da seção (a cintura encontra o fim da seção), texto à
+direita com os negritos do documento. No celular o texto vem primeiro e a foto
+fecha a seção, pelo mesmo motivo.
 
 **Não devolver o hero para `flex-wrap`.** Os dois botões do hero e o bloco de
 números ficavam exatamente no limite de caber lado a lado em 412px. Qualquer

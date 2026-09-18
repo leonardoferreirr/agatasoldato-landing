@@ -42,7 +42,7 @@ p{color:var(--esp-soft);font-size:.94rem;line-height:1.75;max-width:27rem;margin
   <h1 id="h">Taking you to <em>the next step.</em></h1>
   <p id="p">This takes a second. If nothing happens, use the button below.</p>
   <div class="dots" aria-hidden="true"><i></i><i></i><i></i></div>
-  <a class="btn" id="go" href="index.html#booking">Continue</a>
+  <a class="btn" id="go" href="index.html#contact">Continue</a>
   <a class="back" id="back" href="index.html">Back to the site</a>
 </main>
 <script>
@@ -75,7 +75,7 @@ try{ msg = sessionStorage.getItem('ama-msg') || ''; sessionStorage.removeItem('a
 
 const dest = BOOKING ? BOOKING
            : PHONE   ? 'https://wa.me/' + PHONE + (msg ? '?text=' + encodeURIComponent(msg) : '')
-           : 'index.html#booking';
+           : 'index.html#contact';
 document.getElementById('go').href = dest;
 
 window.dataLayer = window.dataLayer || [];

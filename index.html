@@ -141,7 +141,7 @@ h3.d{font-size:clamp(1.45rem,2.4vw,2rem);line-height:1.14;font-weight:600}
 .hero::after{content:"";position:absolute;inset:auto 0 0;height:1px;background:var(--gold-line)}
 .hero__in{position:relative;z-index:2;width:min(100% - (var(--pad) * 2),var(--maxw));margin-inline:auto}
 .hero__copy{max-width:min(50%,36rem)}
-.hero h1{margin:0 0 1.35rem}
+.hero h1{margin:0 0 1.35rem;font-size:clamp(2.4rem,5.2vw,4.3rem);line-height:1.02}
 .hero .lead{max-width:31rem}
 .hero__cta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2.1rem}
 .hero__m{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:clamp(1.4rem,2.6vw,2.4rem);margin-top:clamp(2.4rem,4vw,3rem);padding-top:1.6rem;border-top:1px solid var(--gold-line)}
@@ -171,42 +171,23 @@ h3.d{font-size:clamp(1.45rem,2.4vw,2rem);line-height:1.14;font-weight:600}
 .intro p{font-family:var(--ff-d);font-weight:400;font-size:clamp(1.15rem,2vw,1.55rem);line-height:1.55;color:var(--esp-2);max-width:47rem;margin:0 auto}
 .intro p + p{margin-top:1.3rem;font-family:var(--ff-b);font-size:clamp(.95rem,1.1vw,1rem);line-height:1.85;color:var(--esp-soft);max-width:44rem}
 
-/* ---------- services ---------- */
-.srv{display:grid;grid-template-columns:1fr .82fr;gap:clamp(2rem,5vw,4.5rem);align-items:start;margin-top:clamp(2.5rem,5vw,3.5rem)}
-.srv__list{border-top:1px solid var(--line-soft)}
-.srv__row{width:100%;display:flex;align-items:baseline;gap:1rem;text-align:left;padding:1.15rem .2rem;border-bottom:1px solid var(--line-soft);transition:padding-left .35s var(--ease),color .3s;position:relative}
-.srv__row::before{content:"";position:absolute;left:0;top:50%;width:0;height:1px;background:var(--gold);transition:width .35s var(--ease);transform:translateY(-50%)}
-.srv__row[aria-selected="true"]{padding-left:2rem;color:var(--pom)}
-.srv__row[aria-selected="true"]::before{width:1.35rem}
-.srv__row b{font-family:var(--ff-d);font-weight:500;font-size:clamp(1.15rem,1.9vw,1.5rem);line-height:1.2}
-.srv__row[aria-selected="true"] b{font-weight:600}
-.srv__row i{font-style:normal;margin-left:auto;font-size:.6rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-ink);opacity:0;transition:opacity .3s;white-space:nowrap}
-.srv__row[aria-selected="true"] i{opacity:1}
-.srv__panel{background:var(--ivory-2);border:1px solid var(--line-soft);border-top:2px solid var(--pom);padding:clamp(1.6rem,3vw,2.4rem);position:sticky;top:6rem}
-.srv__panel h3{margin-bottom:.7rem}
-.srv__panel p{font-size:.94rem;color:var(--esp-soft);line-height:1.8}
-.srv__meta{display:grid;grid-template-columns:1fr 1fr;gap:1rem 1.2rem;margin-top:1.6rem;padding-top:1.4rem;border-top:1px solid var(--line-soft)}
-.srv__meta dt{font-size:.6rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--gold-ink)}
-.srv__meta dd{font-size:.88rem;color:var(--esp-2);margin-top:.25rem}
-.srv__note{margin-top:clamp(2rem,4vw,3rem);padding:1.3rem 1.5rem;background:var(--ivory-2);border-left:2px solid var(--gold);font-size:.9rem;color:var(--esp-soft);line-height:1.8}
-.srv__note b{color:var(--esp);font-weight:600}
-
-/* ---------- results ---------- */
-.res__track{display:flex;gap:1.1rem;overflow-x:auto;scroll-snap-type:x mandatory;padding:.4rem .2rem 1.6rem;margin-top:2.5rem;scrollbar-width:none;cursor:grab}
-.res__track::-webkit-scrollbar{display:none}
-.res__track.is-drag{cursor:grabbing;scroll-snap-type:none}
-.res__card{flex:0 0 min(84vw,380px);scroll-snap-align:start}
-.res__pair{display:grid;grid-template-columns:1fr 1fr;gap:3px;background:var(--sand);border-radius:6px;overflow:hidden}
-.res__ph{position:relative}
-.res__ph img{width:100%;aspect-ratio:4/5;object-fit:cover}
-.res__ph span{position:absolute;left:.55rem;bottom:.55rem;font-size:.55rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ivory);background:rgba(48,35,31,.62);padding:.28rem .55rem;border-radius:2px}
-.res__soon{aspect-ratio:8/5;display:grid;place-items:center;text-align:center;background:var(--sand-soft);border:1px dashed var(--gold-line);border-radius:6px;padding:1.2rem}
-.res__soon p{font-family:var(--ff-d);font-size:1.15rem;line-height:1.35;color:var(--esp-2)}
-.res__soon small{display:block;margin-top:.6rem;font-size:.58rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-ink)}
-.res__cap{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin-top:.9rem}
-.res__cap b{font-family:var(--ff-d);font-weight:600;font-size:1.1rem}
-.res__cap span{font-size:.68rem;color:var(--esp-soft);text-align:right}
-.res__hint{font-size:.62rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-ink);margin-top:.4rem}
+/* ---------- services: one card per service, as the doc lists them, photo slot on top ---------- */
+.svc{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(2rem,3vw,2.6rem) clamp(1rem,2vw,1.6rem);margin-top:clamp(2.5rem,5vw,3.5rem)}
+.svc__ba,.svc__soon,.svc__orn{aspect-ratio:8/5;border-radius:6px;overflow:hidden}
+.svc__ba{display:grid;grid-template-columns:1fr 1fr;gap:3px;background:var(--sand)}
+.svc__ph{position:relative;min-height:0}
+.svc__ph img{width:100%;height:100%;object-fit:cover}
+.svc__ph span{position:absolute;left:.5rem;bottom:.5rem;font-size:.55rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ivory);background:rgba(48,35,31,.62);padding:.26rem .5rem;border-radius:2px}
+.svc__soon{display:grid;place-content:center;text-align:center;background:var(--sand-soft);border:1px dashed var(--gold-line);padding:1rem}
+.svc__soon p{font-family:var(--ff-d);font-size:1.1rem;line-height:1.3;color:var(--esp-2)}
+.svc__soon small{display:block;margin-top:.5rem;font-size:.56rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-ink)}
+/* eyeliner has no before/after in the doc: the slot keeps the grid, with the arch motif instead of a promise of a photo */
+.svc__orn{position:relative;background:var(--blush-soft)}
+.svc__orn::before{content:"";position:absolute;left:50%;bottom:0;width:34%;height:74%;transform:translateX(-50%);border:1px solid var(--gold-line);border-bottom:0;border-radius:999px 999px 0 0}
+.svc__orn span{position:absolute;left:50%;top:52%;width:6px;height:6px;background:var(--gold);transform:translate(-50%,-50%) rotate(45deg)}
+.svc__i h3{font-size:clamp(1.15rem,1.5vw,1.32rem);line-height:1.22;margin:1.05rem 0 .45rem}
+.svc__i p{font-size:.86rem;color:var(--esp-soft);line-height:1.7}
+.svc__hint{display:none;font-size:.62rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-ink);margin-top:.9rem}
 
 /* ---------- packages: linhas horizontais, nao cards ---------- */
 .pkg{margin-top:clamp(1.6rem,3vw,2.4rem);border-top:1px solid rgba(208,172,128,.28)}
@@ -230,14 +211,20 @@ h3.d{font-size:clamp(1.45rem,2.4vw,2rem);line-height:1.14;font-weight:600}
 .pkg__end p{color:rgba(248,243,235,.82);max-width:44rem;margin:0 auto 1.3rem;font-size:.93rem}
 .pkg__disc{font-size:.72rem;color:rgba(248,243,235,.55);margin-top:1.6rem;line-height:1.7}
 
-/* ---------- artists ---------- */
-.team{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);margin-top:clamp(2.5rem,5vw,3.5rem)}
-.team__c{display:grid;grid-template-columns:minmax(0,.62fr) minmax(0,1fr);gap:clamp(1.2rem,2.5vw,2rem);align-items:start}
-.team__ph{border-radius:var(--arch);overflow:hidden;background:var(--sand-soft);border:1px solid var(--gold-line);padding:5px}
-.team__ph img{border-radius:var(--arch);width:100%;aspect-ratio:2/3;object-fit:cover;object-position:center top}
-.team__c h3{margin-bottom:.9rem}
-.team__c p{font-size:.9rem;color:var(--esp-soft);line-height:1.8}
-.team__c p + p{margin-top:.8rem}
+/* ---------- artist: portrait from top to bottom of the section, its background baked
+   to --artist-bg so the photo has no edge. The photo sits on the bottom edge. ---------- */
+.sec--artist{--artist-bg:#EDE2CF;background:var(--artist-bg);padding:0;overflow:hidden}
+.art{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-height:clamp(38rem,56vw,50rem)}
+.art__ph{position:relative}
+.art__ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:50% 100%}
+.art__tx{align-self:center;padding:clamp(4.5rem,8vw,6.5rem) max(var(--pad),calc((100vw - var(--maxw)) / 2)) clamp(4.5rem,8vw,6.5rem) clamp(1rem,3vw,3rem)}
+.art__tx h2{margin-bottom:clamp(1.5rem,3vw,2.1rem)}
+.art__tx h3{margin-bottom:.55rem}
+.art__tx p{font-size:.93rem;color:var(--esp-soft);line-height:1.8;max-width:34rem}
+.art__tx p + p{margin-top:.85rem}
+.art__tx p.team__r{font-size:.84rem;color:var(--gold-ink);margin:0 0 1.3rem}
+.art__cta{margin-top:clamp(1.8rem,3vw,2.4rem)}
+strong{font-weight:600;color:var(--esp)}
 
 /* ---------- process ---------- */
 .proc{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:clamp(1.5rem,3vw,2.5rem);margin-top:clamp(2.5rem,5vw,3.5rem)}
@@ -282,7 +269,7 @@ h3.d{font-size:clamp(1.45rem,2.4vw,2rem);line-height:1.14;font-weight:600}
 .faq__a p{padding:0 3rem 1.5rem .2rem;font-size:.92rem;color:var(--esp-soft);line-height:1.85}
 
 /* ---------- booking ---------- */
-.bk{display:grid;grid-template-columns:1fr .88fr;gap:clamp(2rem,5vw,4.5rem);align-items:start;margin-top:clamp(2.5rem,5vw,3.5rem)}
+.bk{display:grid;grid-template-columns:.8fr 1fr;gap:clamp(2rem,5vw,4.5rem);align-items:start}
 .f{display:grid;gap:1.05rem}
 .f label{display:block;font-size:.6rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--gold-ink);margin-bottom:.45rem}
 .f input,.f select,.f textarea{width:100%;font-family:inherit;font-size:.94rem;color:var(--esp);background:var(--ivory-2);border:1px solid var(--line);border-radius:3px;padding:.85rem .95rem;transition:border-color .3s}
@@ -313,12 +300,19 @@ h3.d{font-size:clamp(1.45rem,2.4vw,2rem);line-height:1.14;font-weight:600}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}html{scroll-behavior:auto}}
 
 /* ---------- responsive ---------- */
+@media (max-width:1240px) and (min-width:1041px){
+  .art__ph img{object-fit:cover}
+}
 @media (max-width:1040px){
   .hero__in{position:relative;z-index:2;width:min(100% - (var(--pad) * 2),var(--maxw));margin-inline:auto}
 .hero__copy{max-width:min(50%,36rem)}
-  .srv{grid-template-columns:1fr}
-  .srv__panel{position:static}
-  .team{grid-template-columns:1fr;gap:2.5rem}
+  .svc{grid-template-columns:repeat(2,minmax(0,1fr))}
+  /* stacked: text first, portrait last so her waist still meets the section edge.
+     The photo is wider than the column on purpose: its sides are flat section colour */
+  .art{grid-template-columns:1fr;min-height:0}
+  .art__tx{order:-1;padding:clamp(4rem,12vw,5rem) var(--pad) 0}
+  .art__ph{overflow:hidden}
+  .art__ph img{position:relative;inset:auto;left:50%;transform:translateX(-50%);width:min(128%,700px);max-width:none;height:auto;margin-top:2.2rem}
   .fin,.bk{grid-template-columns:1fr}
 }
 @media (max-width:860px){
@@ -335,7 +329,6 @@ h3.d{font-size:clamp(1.45rem,2.4vw,2rem);line-height:1.14;font-weight:600}
   .burger{display:block}
   .nav .btn{display:none}
   .tr{grid-template-columns:1fr}
-  .team__c{grid-template-columns:minmax(0,.5fr) minmax(0,1fr)}
 }
 @media (max-width:560px){
   .pk{grid-template-columns:1fr;gap:1rem}
@@ -346,21 +339,22 @@ h3.d{font-size:clamp(1.45rem,2.4vw,2rem);line-height:1.14;font-weight:600}
   .hero__cta{flex-direction:column;align-items:stretch}
   .hero__cta .btn{width:100%}
   .hero__m{grid-template-columns:repeat(2,1fr);gap:1.4rem 1.2rem}
-  .team__c{grid-template-columns:1fr}
-  .team__ph{max-width:230px}
-  .srv__meta{grid-template-columns:1fr}
+  /* services turn into a swipe row on phones, a 1-column stack of 8 photo cards is too long */
+  .svc{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--pad);gap:1rem;margin-inline:calc(var(--pad) * -1);padding:0 var(--pad) .4rem;scrollbar-width:none}
+  .svc::-webkit-scrollbar{display:none}
+  .svc__i{flex:0 0 80%;scroll-snap-align:start}
+  .svc__hint{display:block}
   .faq__a p{padding-right:1rem}
 }
 .head__tag{font-family:var(--ff-d);font-weight:500;font-size:clamp(1.3rem,2.3vw,1.75rem);line-height:1.3;color:var(--esp-2);margin:-.3rem 0 1.2rem}
 .head__tag em{color:var(--pom)}
 .sec--pom .head__tag,.sec--esp .head__tag{color:var(--ivory)}
 .sec--pom .head__tag em,.sec--esp .head__tag em{color:var(--gold-2)}
-.team__c p.team__r{font-size:.84rem;color:var(--gold-ink);margin:-.5rem 0 1.1rem}
 .fin__lead2{margin-top:.8rem}
 .fin__how{font-size:1.2rem;margin-bottom:1rem}
 .tr__note{font-size:.8rem;color:rgba(248,243,235,.66);line-height:1.7;margin:0 0 1.4rem}
 .tr__end h3{margin-bottom:.6rem}
-.bk__brand{font-size:1.2rem;margin-bottom:1.3rem}
+.bk__brand{font-size:clamp(1.9rem,3.4vw,2.7rem);margin-bottom:1.6rem}
 .foot{border-top:1px solid rgba(208,172,128,.24)}
 </style>
 </head>
@@ -377,8 +371,8 @@ h3.d{font-size:clamp(1.45rem,2.4vw,2rem);line-height:1.14;font-weight:600}
       <a href="#artists" data-i18n="nav.artists">Artists</a>
       <a href="#packages" data-i18n="nav.packages">Packages</a>
       <a href="#faq" data-i18n="nav.faq">FAQ</a>
-      <a href="#booking" data-i18n="nav.contact">Contact</a>
       <a href="#training" data-i18n="nav.training">Training</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
     </nav>
     <div class="nav__end">
       <div class="lang" role="group" aria-label="Language">
@@ -386,7 +380,7 @@ h3.d{font-size:clamp(1.45rem,2.4vw,2rem);line-height:1.14;font-weight:600}
         <button type="button" data-lang="pt" aria-pressed="false" aria-label="Português" title="Português"><svg viewBox="0 0 60 40" aria-hidden="true"><rect width="60" height="40" fill="#009B3A"/><path d="M30 5 55 20 30 35 5 20Z" fill="#FEDF00"/><circle cx="30" cy="20" r="8" fill="#002776"/></svg></button>
         <button type="button" data-lang="es" aria-pressed="false" aria-label="Español" title="Español"><svg viewBox="0 0 60 40" aria-hidden="true"><rect width="60" height="40" fill="#AA151B"/><rect y="10" width="60" height="20" fill="#F1BF00"/></svg></button>
       </div>
-      <a class="btn" href="#booking" data-cta="nav" data-i18n="nav.cta">Book Now</a>
+      <a class="btn" href="#contact" data-cta="nav" data-i18n="nav.cta">Book Now</a>
       <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="navLinks"><i></i><i></i></button>
     </div>
   </div>
@@ -405,10 +399,10 @@ h3.d{font-size:clamp(1.45rem,2.4vw,2rem);line-height:1.14;font-weight:600}
   <div class="hero__veil" aria-hidden="true"></div>
   <div class="hero__in">
     <div class="hero__copy">
-    <h1 class="d" data-i18n="hero.h1">Permanent Makeup &amp; Cosmetic Tattooing<br/><em>in Austin, TX</em></h1>
+    <h1 class="d">Agata<br/><em>Medical Aesthetics</em></h1>
     <p class="lead" data-i18n="hero.lead">Medical Aesthetic Tattooing designed to enhance your natural features with refined, personalized results.</p>
     <div class="hero__cta">
-      <a class="btn" href="#booking" data-cta="hero">
+      <a class="btn" href="#contact" data-cta="hero">
         <span data-i18n="hero.cta1">Book Now</span>
         <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.4"/></svg>
       </a>
@@ -424,7 +418,7 @@ h3.d{font-size:clamp(1.45rem,2.4vw,2rem);line-height:1.14;font-weight:600}
     <p style="margin-top:1.6rem" data-i18n="intro.p1">At AMAesthetics, beauty is personal. Our approach combines advanced cosmetic tattoo techniques, detailed facial design, premium pigments, and years of hands-on experience to create results that feel polished, balanced, and uniquely yours.</p>
     <p data-i18n="intro.p2">From brows, lips, and eyeliner to cleft lip reconstruction, areola tattooing, scar and stretch mark camouflage, laser tattoo removal, permanent makeup removal, and piercing, every service begins with a personalized consultation and a focus on precision, comfort, and long-term results.</p>
     <div class="sec__cta rv">
-      <a class="btn" href="#booking" data-cta="intro" data-i18n="cta.book">Book a Consultation</a>
+      <a class="btn" href="#contact" data-cta="intro" data-i18n="cta.book">Book a Consultation</a>
     </div>
   </div>
 </section>
@@ -435,84 +429,80 @@ h3.d{font-size:clamp(1.45rem,2.4vw,2rem);line-height:1.14;font-weight:600}
     <div class="head rv">
       <h2 class="d" data-i18n="srv.h2">Featured Services</h2>
     </div>
-    <div class="srv rv">
-      <div class="srv__list" id="srvList" role="tablist" aria-label="Services"></div>
-      <div class="srv__panel" id="srvPanel" role="tabpanel" aria-live="polite">
-        <h3 class="d" id="spName"></h3>
-        <p id="spDesc"></p>
-      </div>
-    </div>
-    <div class="res__track rv" id="resTrack">
-      <article class="res__card">
-        <div class="res__pair">
-          <div class="res__ph"><img src="assets/brows-before.webp" width="480" height="600" loading="lazy" decoding="async" alt="Eyebrows before nano brows treatment" /><span data-i18n="res.before">Before</span></div>
-          <div class="res__ph"><img src="assets/brows-after.webp" width="480" height="600" loading="lazy" decoding="async" alt="Eyebrows after healed nano brows treatment" /><span data-i18n="res.after">After</span></div>
+    <!-- one card per service, in the order of the client doc; each "(before and after picture)" in the doc is a photo slot here -->
+    <div class="svc rv" id="svcTrack">
+      <article class="svc__i">
+        <div class="svc__ba">
+          <div class="svc__ph"><img src="assets/brows-before.webp" width="480" height="600" loading="lazy" decoding="async" alt="Eyebrows before nano brows treatment" /><span data-i18n="res.before">Before</span></div>
+          <div class="svc__ph"><img src="assets/brows-after.webp" width="480" height="600" loading="lazy" decoding="async" alt="Eyebrows after healed nano brows treatment" /><span data-i18n="res.after">After</span></div>
         </div>
-        <div class="res__cap"><b data-i18n="res.t1">Nano Brows &amp; Ombre Brows</b></div>
+        <h3 class="d" data-i18n="svc.n1">Nano Brows &amp; Ombre Brows</h3>
+        <p data-i18n="svc.d1">Customized eyebrow enhancement from natural hair-stroke definition to soft powder shading.</p>
       </article>
-      <article class="res__card">
-        <div class="res__soon"><div><p data-i18n="res.ba">Before and after</p><small data-i18n="res.soon">Photo coming soon</small></div></div>
-        <div class="res__cap"><b data-i18n="res.t2">Lip Blush &amp; Cleft Lip Reconstruction</b></div>
+      <article class="svc__i">
+        <div class="svc__soon"><p data-i18n="res.ba">Before and after</p><small data-i18n="res.soon">Photo coming soon</small></div>
+        <h3 class="d" data-i18n="svc.n2">Lip Blush &amp; Cleft Lip Reconstruction</h3>
+        <p data-i18n="svc.d2">Natural color enhancement, definition, neutralization, symmetry, and restorative lip tattooing.</p>
       </article>
-      <article class="res__card">
-        <div class="res__soon"><div><p data-i18n="res.ba">Before and after</p><small data-i18n="res.soon">Photo coming soon</small></div></div>
-        <div class="res__cap"><b data-i18n="res.t3">Areola Tattoo</b></div>
+      <article class="svc__i">
+        <div class="svc__orn" aria-hidden="true"><span></span></div>
+        <h3 class="d" data-i18n="svc.n3">Eyeliner Tattoo</h3>
+        <p data-i18n="svc.d3">Lash Liner Tattoo, Wing Liner, Smokey Eyeliner, and Eyeliner Tattoo Correction.</p>
       </article>
-      <article class="res__card">
-        <div class="res__soon"><div><p data-i18n="res.ba">Before and after</p><small data-i18n="res.soon">Photo coming soon</small></div></div>
-        <div class="res__cap"><b data-i18n="res.t4">Stretch Mark Camouflage</b></div>
+      <article class="svc__i">
+        <div class="svc__soon"><p data-i18n="res.ba">Before and after</p><small data-i18n="res.soon">Photo coming soon</small></div>
+        <h3 class="d" data-i18n="svc.n4">Areola Tattoo</h3>
+        <p data-i18n="svc.d4">Realistic 3D restorative and aesthetic areola tattooing.</p>
       </article>
-      <article class="res__card">
-        <div class="res__soon"><div><p data-i18n="res.ba">Before and after</p><small data-i18n="res.soon">Photo coming soon</small></div></div>
-        <div class="res__cap"><b data-i18n="res.t5">Scar Camouflage</b></div>
+      <article class="svc__i">
+        <div class="svc__soon"><p data-i18n="res.ba">Before and after</p><small data-i18n="res.soon">Photo coming soon</small></div>
+        <h3 class="d" data-i18n="svc.n5">Stretch Mark Camouflage</h3>
+        <p data-i18n="svc.d5">Customized techniques designed to reduce the visible contrast of healed stretch marks.</p>
       </article>
-      <article class="res__card">
-        <div class="res__soon"><div><p data-i18n="res.ba">Before and after</p><small data-i18n="res.soon">Photo coming soon</small></div></div>
-        <div class="res__cap"><b data-i18n="res.t6">Laser Tattoo Removal &amp; Permanent Makeup Removal</b></div>
+      <article class="svc__i">
+        <div class="svc__soon"><p data-i18n="res.ba">Before and after</p><small data-i18n="res.soon">Photo coming soon</small></div>
+        <h3 class="d" data-i18n="svc.n6">Scar Camouflage</h3>
+        <p data-i18n="svc.d6">Customized paramedical tattoo solutions for eligible healed scars.</p>
       </article>
-      <article class="res__card">
-        <div class="res__soon"><div><p data-i18n="res.ba">Before and after</p><small data-i18n="res.soon">Photo coming soon</small></div></div>
-        <div class="res__cap"><b data-i18n="res.t7">Professional Piercing</b></div>
+      <article class="svc__i">
+        <div class="svc__soon"><p data-i18n="res.ba">Before and after</p><small data-i18n="res.soon">Photo coming soon</small></div>
+        <h3 class="d" data-i18n="svc.n7">Laser Tattoo Removal &amp; Permanent Makeup Removal</h3>
+        <p data-i18n="svc.d7">Customized lightening and removal plans for unwanted pigment.</p>
+      </article>
+      <article class="svc__i">
+        <div class="svc__soon"><p data-i18n="res.ba">Before and after</p><small data-i18n="res.soon">Photo coming soon</small></div>
+        <h3 class="d" data-i18n="svc.n8">Professional Piercing</h3>
       </article>
     </div>
-    <p class="res__hint rv" data-i18n="res.hint">Drag to see more</p>
+    <p class="svc__hint" data-i18n="res.hint">Drag to see more</p>
     <div class="sec__cta rv">
-      <a class="btn" href="#booking" data-cta="services" data-i18n="cta.book">Book a Consultation</a>
+      <a class="btn" href="#contact" data-cta="services" data-i18n="cta.book">Book a Consultation</a>
     </div>
   </div>
 </section>
 
 <!-- ===================== ARTISTS ===================== -->
-<section class="sec" id="artists">
-  <div class="wrap">
-    <div class="head rv">
+<!-- the portrait background is baked to the exact section colour (--artist-bg),
+     so the photo has no visible edge: change one, redo the other -->
+<section class="sec sec--artist" id="artists">
+  <div class="art">
+    <div class="art__ph">
+      <img src="assets/agata-portrait.webp"
+           srcset="assets/agata-portrait-700.webp 700w, assets/agata-portrait.webp 1100w"
+           sizes="(max-width:860px) 100vw, 50vw" width="1100" height="1375" loading="lazy" decoding="async"
+           alt="Master Agata Soldato, founder and master artist" />
+    </div>
+    <div class="art__tx rv">
       <h2 class="d" data-i18n="team.h2">Meet the Artists</h2>
-    </div>
-    <div class="team rv">
-      <article class="team__c">
-        <div class="team__ph"><img src="assets/agata-editorial.webp" width="760" height="1013" loading="lazy" decoding="async" alt="Master Agata Soldato, founder and master artist" /></div>
-        <div>
-          <h3 class="d" data-i18n="team.n1">Master Agata Soldato</h3>
-          <p class="team__r" data-i18n="team.r1">Founder • Master Artist • 12 Years of Experience</p>
-          <p data-i18n="team.p1a">With 12 years of experience and more than 10,000 treatments performed, Agata Soldato is known for precision, natural-looking results, and advanced corrective work.</p>
-          <p data-i18n="team.p1b">Her expertise includes Nano Brows, Eyeliner Tattoo, PMU Corrections, Laser Removal, Cleft Lip Reconstruction, and Areola Tattooing.</p>
-          <p data-i18n="team.p1c">Throughout her career, Agata has worked with a diverse clientele, including well-known celebrities and public figures, while maintaining the same personalized attention and discretion for every client.</p>
-          <p data-i18n="team.p1d">She is especially experienced in correcting previous permanent makeup, including challenging shapes, colors, asymmetry, and unwanted results.</p>
-        </div>
-      </article>
-      <article class="team__c">
-        <div class="team__ph"><img src="assets/lanie.webp" width="760" height="1156" loading="lazy" decoding="async" alt="Lanie Stein, senior artist and trainer" /></div>
-        <div>
-          <h3 class="d" data-i18n="team.n2">Lanie Stein</h3>
-          <p class="team__r" data-i18n="team.r2">Senior Artist • Trainer • 8 Years of Experience</p>
-          <p data-i18n="team.p2a">Lanie Stein is known for her attention to detail, patience, and ability to truly listen to her clients. She takes the time to understand each client’s goals, building genuine, trusting relationships and creating personalized results.</p>
-          <p data-i18n="team.p2b">With 8 years of experience and extensive advanced training, Lanie specializes in permanent makeup and restorative techniques. She has completed multiple specialized trainings and is now also a trainer in Scar Camouflage and Stretch Mark Camouflage, sharing her expertise with other artists.</p>
-          <p data-i18n="team.p2c">Her thoughtful approach, technical precision, and commitment to her clients make every treatment feel personal and carefully designed.</p>
-        </div>
-      </article>
-    </div>
-    <div class="sec__cta rv">
-      <a class="btn" href="#booking" data-cta="artists" data-i18n="cta.book">Book a Consultation</a>
+      <h3 class="d" data-i18n="team.n1">Master Agata Soldato</h3>
+      <p class="team__r" data-i18n="team.r1">Founder • Master Artist • 12 Years of Experience</p>
+      <p data-i18n="team.p1a">With 12 years of experience and more than <strong>10,000 treatments performed</strong>, Agata Soldato is known for precision, natural-looking results, and advanced corrective work.</p>
+      <p data-i18n="team.p1b">Her expertise includes <strong>Nano Brows, Eyeliner Tattoo, PMU Corrections, Laser Removal, Cleft Lip Reconstruction, and Areola Tattooing</strong>.</p>
+      <p data-i18n="team.p1c">Throughout her career, Agata has worked with a diverse clientele, including <strong>well-known celebrities and public figures</strong>, while maintaining the same personalized attention and discretion for every client.</p>
+      <p data-i18n="team.p1d">She is especially experienced in <strong>correcting previous permanent makeup</strong>, including challenging shapes, colors, asymmetry, and unwanted results.</p>
+      <div class="art__cta">
+        <a class="btn" href="#contact" data-cta="artists" data-i18n="cta.book">Book a Consultation</a>
+      </div>
     </div>
   </div>
 </section>
@@ -527,10 +517,10 @@ h3.d{font-size:clamp(1.45rem,2.4vw,2rem);line-height:1.14;font-weight:600}
       <div class="proc__s"><span class="proc__n">01</span><h3 class="d" data-i18n="proc.t1">Consultation</h3><p data-i18n="proc.p1">We listen to your goals, evaluate your needs, and recommend the best approach.</p></div>
       <div class="proc__s"><span class="proc__n">02</span><h3 class="d" data-i18n="proc.t2">Personalized Plan</h3><p data-i18n="proc.p2">Your treatment is customized specifically for you.</p></div>
       <div class="proc__s"><span class="proc__n">03</span><h3 class="d" data-i18n="proc.t3">Treatment</h3><p data-i18n="proc.p3">Your service is performed with precision, attention to detail, and care.</p></div>
-      <div class="proc__s"><span class="proc__n">04</span><h3 class="d" data-i18n="proc.t4">Aftercare &amp; Follow-Up</h3><p data-i18n="proc.p4">You’ll receive an aftercare kit with everything you need for proper healing, along with simple instructions and follow-up recommendations.</p></div>
+      <div class="proc__s"><span class="proc__n">04</span><h3 class="d" data-i18n="proc.t4">Aftercare &amp; Follow-Up</h3><p data-i18n="proc.p4">You’ll receive an <strong>aftercare kit with everything you need for proper healing</strong>, along with simple instructions and follow-up recommendations.</p></div>
     </div>
     <div class="sec__cta rv">
-      <a class="btn" href="#booking" data-cta="process" data-i18n="cta.book">Book a Consultation</a>
+      <a class="btn" href="#contact" data-cta="process" data-i18n="cta.book">Book a Consultation</a>
     </div>
   </div>
 </section>
@@ -563,7 +553,7 @@ h3.d{font-size:clamp(1.45rem,2.4vw,2rem);line-height:1.14;font-weight:600}
           <b data-i18n="pkg.p1">Package Benefit: Save $500</b>
           <span data-i18n="pkg.pv1">All three treatments must be performed on the same day to receive the package savings.</span>
         </div>
-        <a class="btn btn--light" href="#booking" data-cta="pkg-complete" data-i18n="pkg.c1">Book the Complete Look</a>
+        <a class="btn btn--light" href="#contact" data-cta="pkg-complete" data-i18n="pkg.c1">Book the Complete Look</a>
       </article>
 
       <article class="pk">
@@ -586,7 +576,7 @@ h3.d{font-size:clamp(1.45rem,2.4vw,2rem);line-height:1.14;font-weight:600}
           <b data-i18n="pkg.p2">3-Session Removal Package: $500</b>
           <span data-i18n="pkg.pv2">Brows or Lips<br/>Single session: $200 | Package savings: $100</span>
         </div>
-        <a class="btn btn--light" href="#booking" data-cta="pkg-reset" data-i18n="pkg.c2">Start Your PMU Correction</a>
+        <a class="btn btn--light" href="#contact" data-cta="pkg-reset" data-i18n="pkg.c2">Start Your PMU Correction</a>
       </article>
 
       <article class="pk">
@@ -609,7 +599,7 @@ h3.d{font-size:clamp(1.45rem,2.4vw,2rem);line-height:1.14;font-weight:600}
           <b data-i18n="pkg.p3">3 Sessions: $749</b>
           <span data-i18n="pkg.pv3">Regularly $1,200 | Save $451</span>
         </div>
-        <a class="btn btn--light" href="#booking" data-cta="pkg-tummy" data-i18n="pkg.c3">Book Tummy Restoration</a>
+        <a class="btn btn--light" href="#contact" data-cta="pkg-tummy" data-i18n="pkg.c3">Book Tummy Restoration</a>
       </article>
 
       <article class="pk">
@@ -634,14 +624,14 @@ h3.d{font-size:clamp(1.45rem,2.4vw,2rem);line-height:1.14;font-weight:600}
           <b data-i18n="pkg.p4">3 Sessions: $949</b>
           <span data-i18n="pkg.pv4">Regularly $1,650 | Save $701</span>
         </div>
-        <a class="btn btn--light" href="#booking" data-cta="pkg-breast" data-i18n="pkg.c4">Book Breast Restoration</a>
+        <a class="btn btn--light" href="#contact" data-cta="pkg-breast" data-i18n="pkg.c4">Book Breast Restoration</a>
       </article>
     </div>
 
     <div class="pkg__end rv">
       <h3 class="d" data-i18n="pkg.eh">Not Sure Which Package Is Right for You?</h3>
       <p data-i18n="pkg.ep">We’ll help you choose the best treatment based on your skin, previous work, and desired results.</p>
-      <a class="btn btn--light" href="#booking" data-cta="pkg-help" data-i18n="pkg.ec">Book a Consultation</a>
+      <a class="btn btn--light" href="#contact" data-cta="pkg-help" data-i18n="pkg.ec">Book a Consultation</a>
       <p class="pkg__disc" data-i18n="pkg.disc">Results vary. Scar and stretch mark treatments require fully healed tissue. Additional sessions may be recommended.</p>
     </div>
   </div>
@@ -655,7 +645,7 @@ h3.d{font-size:clamp(1.45rem,2.4vw,2rem);line-height:1.14;font-weight:600}
     </div>
     <div class="faq rv" id="faqList"></div>
     <div class="sec__cta rv">
-      <a class="btn" href="#booking" data-cta="faq" data-i18n="cta.book">Book a Consultation</a>
+      <a class="btn" href="#contact" data-cta="faq" data-i18n="cta.book">Book a Consultation</a>
     </div>
   </div>
 </section>
@@ -682,7 +672,7 @@ h3.d{font-size:clamp(1.45rem,2.4vw,2rem);line-height:1.14;font-weight:600}
       <div class="fin__box">
         <h3 class="d" data-i18n="fin.bh">Important Financing Policy</h3>
         <p data-i18n="fin.bp">Financed services may be subject to separate cancellation, refund, rescheduling, and provider terms. Clients should review and agree to the applicable financing agreement and Agata Medical Aesthetics policies before completing a financed purchase. Financing approval and terms are determined by the financing provider.</p>
-        <a class="btn" href="#booking" data-cta="financing" data-i18n="fin.bc">Explore Payment Options</a>
+        <a class="btn" href="#contact" data-cta="financing" data-i18n="fin.bc">Explore Payment Options</a>
       </div>
     </div>
   </div>
@@ -691,11 +681,88 @@ h3.d{font-size:clamp(1.45rem,2.4vw,2rem);line-height:1.14;font-weight:600}
 <!-- ===================== BOOKING ===================== -->
 <section class="sec sec--ivory2" id="booking">
   <div class="wrap">
-    <div class="head rv">
+    <div class="head head--c rv">
       <h2 class="d" data-i18n="bk.h2">Ready for <em>Your Next Look?</em></h2>
       <p class="lead" data-i18n="bk.lead">Whether you already know which service you want or need help deciding, our team will guide you through the options and create a personalized plan.</p>
+      <div class="sec__cta">
+        <a class="btn" href="#contact" data-cta="booking" data-i18n="bk.send">Request a Consultation</a>
+      </div>
     </div>
+  </div>
+</section>
+
+<!-- ===================== TRAINING ===================== -->
+<section class="sec sec--esp" id="training">
+  <div class="wrap">
+    <div class="head rv">
+      <h2 class="d" data-i18n="tr.h2">PMU Training &amp; Private Mentorship</h2>
+      <p class="head__tag d" data-i18n="tr.tag">Learn the Technique. Master the Business. <em>Build Your Career.</em></p>
+      <p class="lead" data-i18n="tr.lead">Train with Master Agata Soldato through a personalized education experience designed for artists who want more than a basic permanent makeup class. Students can choose private 1:1 in-person mentorship or flexible online education.</p>
+    </div>
+    <div class="tr rv">
+      <article class="tr__c">
+        <h3 class="d" data-i18n="tr.n1">Private 1:1 In-Person Mentorship</h3>
+        <span class="tr__k" data-i18n="tr.k1">One Student. One Mentor. Personalized Attention.</span>
+        <p data-i18n="tr.d1">Private mentorship provides focused, hands-on training directly with Master Agata. The program can be customized around the student's selected technique and experience level, with individual guidance throughout the learning process.</p>
+        <ul class="tr__ul">
+          <li data-i18n="tr.a1">Personalized technique theory and fundamentals</li>
+          <li data-i18n="tr.a2">Facial analysis, brow mapping, shaping, and design</li>
+          <li data-i18n="tr.a3">Color theory and pigment selection</li>
+          <li data-i18n="tr.a4">Machine, needle, and equipment guidance</li>
+          <li data-i18n="tr.a5">Practice exercises and technique development</li>
+          <li data-i18n="tr.a6">Live demonstrations and hands-on model experience when included in the selected program</li>
+          <li data-i18n="tr.a7">Client consultation and expectation management</li>
+          <li data-i18n="tr.a8">Touch-ups, troubleshooting, corrections, and healed-result evaluation</li>
+          <li data-i18n="tr.a9">Photography and presentation of finished work</li>
+          <li data-i18n="tr.a10">Pricing, sales, customer service, marketing, and business development</li>
+        </ul>
+        <p class="tr__note" data-i18n="tr.note">Training techniques may include Nano Brows, Ombre Brows, Lip Blush, Lip Neutralization, touch-ups, corrections, and permanent makeup removal, depending on the selected mentorship program.</p>
+        <a class="btn btn--gold" href="#contact" data-cta="training-1on1" data-i18n="tr.c1">Book Private 1:1 Mentorship</a>
+      </article>
+      <article class="tr__c">
+        <h3 class="d" data-i18n="tr.n2">Online PMU Training</h3>
+        <p data-i18n="tr.d2">Learn from anywhere and progress at your own pace. The online program combines permanent makeup education with the business knowledge needed to build and grow a professional beauty career.</p>
+        <ul class="tr__ul">
+          <li data-i18n="tr.e1">100+ educational lessons and video-based instruction</li>
+          <li data-i18n="tr.e2">Permanent makeup technique education and demonstrations</li>
+          <li data-i18n="tr.e3">Nano and Ombre Brow education</li>
+          <li data-i18n="tr.e4">Lip Blush and color theory</li>
+          <li data-i18n="tr.e5">Brow design and mapping</li>
+          <li data-i18n="tr.e6">Touch-up and correction concepts</li>
+          <li data-i18n="tr.e7">Permanent makeup removal education</li>
+          <li data-i18n="tr.e8">Equipment and product guidance</li>
+          <li data-i18n="tr.e9">Client consultation and customer service</li>
+          <li data-i18n="tr.e10">Pricing and business setup</li>
+          <li data-i18n="tr.e11">Branding and social media</li>
+          <li data-i18n="tr.e12">Lead generation, sales, and client conversion</li>
+          <li data-i18n="tr.e13">Marketing funnels and advertising</li>
+          <li data-i18n="tr.e14">Business growth, scaling, recruiting, and team development</li>
+        </ul>
+        <a class="btn btn--gold" href="#contact" data-cta="training-online" data-i18n="tr.c2">Start Online Training</a>
+      </article>
+    </div>
+    <div class="tr__end rv">
+      <h3 class="d" data-i18n="tr.endh">More Than a PMU Course</h3>
+      <p data-i18n="tr.end">Agata's mentorship is designed to help students understand both the artistry and the business behind permanent makeup. The goal is to develop technical confidence while also learning how to attract clients, deliver a professional experience, price services, market effectively, and build a sustainable business.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTACT ===================== -->
+<section class="sec sec--ivory2" id="contact">
+  <div class="wrap">
     <div class="bk rv">
+      <div class="bk__side">
+        <h2 class="d bk__brand">Agata Medical Aesthetics</h2>
+        <dl>
+          <div><dt data-i18n="bk.k2">Phone</dt><dd id="cPhone"></dd></div>
+          <div><dt data-i18n="bk.k3">Email</dt><dd id="cEmail"></dd></div>
+          <div><dt data-i18n="bk.k1">Address</dt><dd id="cStudio"></dd></div>
+          <div><dt data-i18n="bk.k5">Hours</dt><dd id="cHours"></dd></div>
+          <div><dt data-i18n="bk.k4">Instagram</dt><dd id="cIG"></dd></div>
+          <div><dt data-i18n="bk.k6">Booking Link</dt><dd id="cBooking"></dd></div>
+        </dl>
+      </div>
       <form class="f" id="bookForm" novalidate>
         <div>
           <label for="fName" data-i18n="bk.name">Name</label>
@@ -728,74 +795,6 @@ h3.d{font-size:clamp(1.45rem,2.4vw,2rem);line-height:1.14;font-weight:600}
         <button class="btn" type="submit" data-i18n="bk.send">Request a Consultation</button>
         <p class="f__consent" data-i18n="bk.consent">By providing your phone number and submitting this form, you agree to receive appointment-related and marketing communications from Agata Medical Aesthetics at the number provided. Message and data rates may apply. Consent is not a condition of purchase. You may opt out of SMS marketing at any time by replying STOP.</p>
       </form>
-      <div class="bk__side">
-        <h3 class="d bk__brand">Agata Medical Aesthetics</h3>
-        <dl>
-          <div><dt data-i18n="bk.k2">Phone</dt><dd id="cPhone"></dd></div>
-          <div><dt data-i18n="bk.k3">Email</dt><dd id="cEmail"></dd></div>
-          <div><dt data-i18n="bk.k1">Address</dt><dd id="cStudio"></dd></div>
-          <div><dt data-i18n="bk.k5">Hours</dt><dd id="cHours"></dd></div>
-          <div><dt data-i18n="bk.k4">Instagram</dt><dd id="cIG"></dd></div>
-          <div><dt data-i18n="bk.k6">Booking Link</dt><dd id="cBooking"></dd></div>
-        </dl>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== TRAINING ===================== -->
-<section class="sec sec--esp" id="training">
-  <div class="wrap">
-    <div class="head rv">
-      <h2 class="d" data-i18n="tr.h2">PMU Training &amp; Private Mentorship</h2>
-      <p class="head__tag d" data-i18n="tr.tag">Learn the Technique. Master the Business. <em>Build Your Career.</em></p>
-      <p class="lead" data-i18n="tr.lead">Train with Master Agata Soldato through a personalized education experience designed for artists who want more than a basic permanent makeup class. Students can choose private 1:1 in-person mentorship or flexible online education.</p>
-    </div>
-    <div class="tr rv">
-      <article class="tr__c">
-        <h3 class="d" data-i18n="tr.n1">Private 1:1 In-Person Mentorship</h3>
-        <span class="tr__k" data-i18n="tr.k1">One Student. One Mentor. Personalized Attention.</span>
-        <p data-i18n="tr.d1">Private mentorship provides focused, hands-on training directly with Master Agata. The program can be customized around the student's selected technique and experience level, with individual guidance throughout the learning process.</p>
-        <ul class="tr__ul">
-          <li data-i18n="tr.a1">Personalized technique theory and fundamentals</li>
-          <li data-i18n="tr.a2">Facial analysis, brow mapping, shaping, and design</li>
-          <li data-i18n="tr.a3">Color theory and pigment selection</li>
-          <li data-i18n="tr.a4">Machine, needle, and equipment guidance</li>
-          <li data-i18n="tr.a5">Practice exercises and technique development</li>
-          <li data-i18n="tr.a6">Live demonstrations and hands-on model experience when included in the selected program</li>
-          <li data-i18n="tr.a7">Client consultation and expectation management</li>
-          <li data-i18n="tr.a8">Touch-ups, troubleshooting, corrections, and healed-result evaluation</li>
-          <li data-i18n="tr.a9">Photography and presentation of finished work</li>
-          <li data-i18n="tr.a10">Pricing, sales, customer service, marketing, and business development</li>
-        </ul>
-        <p class="tr__note" data-i18n="tr.note">Training techniques may include Nano Brows, Ombre Brows, Lip Blush, Lip Neutralization, touch-ups, corrections, and permanent makeup removal, depending on the selected mentorship program.</p>
-        <a class="btn btn--gold" href="#booking" data-cta="training-1on1" data-i18n="tr.c1">Book Private 1:1 Mentorship</a>
-      </article>
-      <article class="tr__c">
-        <h3 class="d" data-i18n="tr.n2">Online PMU Training</h3>
-        <p data-i18n="tr.d2">Learn from anywhere and progress at your own pace. The online program combines permanent makeup education with the business knowledge needed to build and grow a professional beauty career.</p>
-        <ul class="tr__ul">
-          <li data-i18n="tr.e1">100+ educational lessons and video-based instruction</li>
-          <li data-i18n="tr.e2">Permanent makeup technique education and demonstrations</li>
-          <li data-i18n="tr.e3">Nano and Ombre Brow education</li>
-          <li data-i18n="tr.e4">Lip Blush and color theory</li>
-          <li data-i18n="tr.e5">Brow design and mapping</li>
-          <li data-i18n="tr.e6">Touch-up and correction concepts</li>
-          <li data-i18n="tr.e7">Permanent makeup removal education</li>
-          <li data-i18n="tr.e8">Equipment and product guidance</li>
-          <li data-i18n="tr.e9">Client consultation and customer service</li>
-          <li data-i18n="tr.e10">Pricing and business setup</li>
-          <li data-i18n="tr.e11">Branding and social media</li>
-          <li data-i18n="tr.e12">Lead generation, sales, and client conversion</li>
-          <li data-i18n="tr.e13">Marketing funnels and advertising</li>
-          <li data-i18n="tr.e14">Business growth, scaling, recruiting, and team development</li>
-        </ul>
-        <a class="btn btn--gold" href="#booking" data-cta="training-online" data-i18n="tr.c2">Start Online Training</a>
-      </article>
-    </div>
-    <div class="tr__end rv">
-      <h3 class="d" data-i18n="tr.endh">More Than a PMU Course</h3>
-      <p data-i18n="tr.end">Agata's mentorship is designed to help students understand both the artistry and the business behind permanent makeup. The goal is to develop technical confidence while also learning how to attract clients, deliver a professional experience, price services, market effectively, and build a sustainable business.</p>
     </div>
   </div>
 </section>
@@ -812,8 +811,8 @@ h3.d{font-size:clamp(1.45rem,2.4vw,2rem);line-height:1.14;font-weight:600}
         <a href="#artists" data-i18n="nav.artists">Artists</a>
         <a href="#packages" data-i18n="nav.packages">Packages</a>
         <a href="#financing" data-i18n="nav.financing">Financing</a>
-        <a href="#booking" data-i18n="nav.contact">Contact</a>
         <a href="#training" data-i18n="nav.training">Training</a>
+        <a href="#contact" data-i18n="nav.contact">Contact</a>
       </nav>
     </div>
     <div class="foot__bot">
@@ -846,29 +845,31 @@ en:{},
 pt:{
 "cta.book":"Agendar uma avaliação",
 "nav.services":"Serviços","nav.packages":"Pacotes","nav.artists":"Artistas","nav.training":"Cursos","nav.faq":"Dúvidas","nav.contact":"Contato","nav.financing":"Parcelamento","nav.cta":"Agendar",
-"hero.h1":"Micropigmentação e tatuagem cosmética<br/><em>em Austin, TX</em>",
 "hero.lead":"Tatuagem Estética Médica feita para realçar seus traços naturais, com resultado refinado e personalizado.",
 "hero.cta1":"Agendar",
 "intro.p1":"Na AMAesthetics, beleza é pessoal. Nosso trabalho combina técnicas avançadas de tatuagem cosmética, desenho facial detalhado, pigmentos premium e anos de prática para criar resultados polidos, equilibrados e só seus.",
 "intro.p2":"De sobrancelha, lábio e delineado até reconstrução de lábio leporino, tatuagem de aréola, camuflagem de cicatriz e estria, remoção de tatuagem a laser, remoção de micropigmentação e piercing, todo serviço começa por uma avaliação personalizada, com foco em precisão, conforto e resultado duradouro.",
 "srv.h2":"Serviços em destaque",
 "res.before":"Antes","res.after":"Depois","res.ba":"Antes e depois","res.soon":"Foto em breve","res.hint":"Arraste para ver mais",
-"res.t1":"Nano brows e ombre brows","res.t2":"Lip blush e reconstrução de lábio leporino","res.t3":"Tatuagem de aréola","res.t4":"Camuflagem de estrias","res.t5":"Camuflagem de cicatriz","res.t6":"Remoção de tatuagem a laser e remoção de micropigmentação","res.t7":"Piercing profissional",
+"svc.n1":"Nano brows e ombre brows","svc.d1":"Sobrancelha personalizada, do fio a fio natural ao esfumado suave.",
+"svc.n2":"Lip blush e reconstrução de lábio leporino","svc.d2":"Realce natural da cor, definição, neutralização, simetria e tatuagem restauradora do lábio.",
+"svc.n3":"Delineado","svc.d3":"Delineado de cílios, gatinho, esfumado e correção de delineado.",
+"svc.n4":"Tatuagem de aréola","svc.d4":"Tatuagem de aréola 3D realista, restauradora e estética.",
+"svc.n5":"Camuflagem de estrias","svc.d5":"Técnicas personalizadas para reduzir o contraste visível de estrias já cicatrizadas.",
+"svc.n6":"Camuflagem de cicatriz","svc.d6":"Tatuagem paramédica personalizada para cicatrizes cicatrizadas elegíveis.",
+"svc.n7":"Remoção de tatuagem a laser e remoção de micropigmentação","svc.d7":"Planos personalizados de clareamento e remoção de pigmento indesejado.",
+"svc.n8":"Piercing profissional",
 "team.h2":"Conheça as artistas",
 "team.n1":"Master Agata Soldato","team.r1":"Fundadora • Master Artist • 12 anos de experiência",
-"team.p1a":"Com 12 anos de experiência e mais de 10 mil procedimentos realizados, Agata Soldato é reconhecida pela precisão, pelo resultado natural e pelo trabalho corretivo avançado.",
-"team.p1b":"Sua especialidade inclui nano brows, delineado, correção de micropigmentação, remoção a laser, reconstrução de lábio leporino e tatuagem de aréola.",
-"team.p1c":"Ao longo da carreira, Agata atendeu um público diverso, incluindo celebridades e figuras públicas conhecidas, mantendo a mesma atenção personalizada e a mesma discrição com cada cliente.",
-"team.p1d":"Ela é especialmente experiente em corrigir micropigmentação anterior, incluindo formatos difíceis, cores, assimetria e resultados indesejados.",
-"team.n2":"Lanie Stein","team.r2":"Artista sênior • Instrutora • 8 anos de experiência",
-"team.p2a":"Lanie Stein é conhecida pela atenção aos detalhes, pela paciência e pela capacidade de realmente escutar suas clientes. Ela dedica tempo a entender o objetivo de cada cliente, construindo relações genuínas e de confiança e criando resultados personalizados.",
-"team.p2b":"Com 8 anos de experiência e ampla formação avançada, Lanie é especialista em micropigmentação e técnicas restauradoras. Concluiu várias formações específicas e hoje também é instrutora de camuflagem de cicatriz e de estria, compartilhando sua experiência com outras artistas.",
-"team.p2c":"A abordagem atenta, a precisão técnica e o compromisso com as clientes fazem cada atendimento parecer pessoal e cuidadosamente desenhado.",
+"team.p1a":"Com 12 anos de experiência e mais de <strong>10 mil procedimentos realizados</strong>, Agata Soldato é reconhecida pela precisão, pelo resultado natural e pelo trabalho corretivo avançado.",
+"team.p1b":"Sua especialidade inclui <strong>nano brows, delineado, correção de micropigmentação, remoção a laser, reconstrução de lábio leporino e tatuagem de aréola</strong>.",
+"team.p1c":"Ao longo da carreira, Agata atendeu um público diverso, incluindo <strong>celebridades e figuras públicas conhecidas</strong>, mantendo a mesma atenção personalizada e a mesma discrição com cada cliente.",
+"team.p1d":"Ela é especialmente experiente em <strong>corrigir micropigmentação anterior</strong>, incluindo formatos difíceis, cores, assimetria e resultados indesejados.",
 "proc.h2":"Nosso processo",
 "proc.t1":"Avaliação","proc.p1":"A gente escuta seus objetivos, avalia o que você precisa e indica o melhor caminho.",
 "proc.t2":"Plano personalizado","proc.p2":"Seu tratamento é montado especificamente para você.",
 "proc.t3":"Procedimento","proc.p3":"Seu serviço é feito com precisão, atenção aos detalhes e cuidado.",
-"proc.t4":"Pós e acompanhamento","proc.p4":"Você recebe um kit de pós-procedimento com tudo o que precisa para cicatrizar direito, além de instruções simples e recomendações de acompanhamento.",
+"proc.t4":"Pós e acompanhamento","proc.p4":"Você recebe um <strong>kit de pós-procedimento com tudo o que precisa para cicatrizar direito</strong>, além de instruções simples e recomendações de acompanhamento.",
 "pkg.h2":"Pacotes exclusivos","pkg.tag":"Mais valor. <em>Resultado personalizado.</em>",
 "pkg.lead":"Escolha entre pacotes de micropigmentação, correção, remoção e restauração, montados para simplificar seu plano de tratamento e garantir preço preferencial de pacote.",
 "pkg.n1":"The Complete Look","pkg.s1":"Sobrancelha + lábio + olhos",
@@ -933,29 +934,31 @@ pt:{
 es:{
 "cta.book":"Reservar una consulta",
 "nav.services":"Servicios","nav.packages":"Paquetes","nav.artists":"Artistas","nav.training":"Formación","nav.faq":"Preguntas","nav.contact":"Contacto","nav.financing":"Financiación","nav.cta":"Reservar",
-"hero.h1":"Micropigmentación y tatuaje cosmético<br/><em>en Austin, TX</em>",
 "hero.lead":"Tatuaje Estético Médico diseñado para realzar tus rasgos naturales, con resultados refinados y personalizados.",
 "hero.cta1":"Reservar",
 "intro.p1":"En AMAesthetics, la belleza es personal. Nuestro enfoque combina técnicas avanzadas de tatuaje cosmético, diseño facial detallado, pigmentos premium y años de experiencia práctica para crear resultados pulidos, equilibrados y únicamente tuyos.",
 "intro.p2":"Desde cejas, labios y delineado hasta reconstrucción de labio leporino, tatuaje de areola, camuflaje de cicatrices y estrías, eliminación láser de tatuajes, eliminación de micropigmentación y piercing, cada servicio comienza con una consulta personalizada y un enfoque en precisión, comodidad y resultados duraderos.",
 "srv.h2":"Servicios destacados",
 "res.before":"Antes","res.after":"Después","res.ba":"Antes y después","res.soon":"Foto próximamente","res.hint":"Arrastra para ver más",
-"res.t1":"Nano brows y ombre brows","res.t2":"Lip blush y reconstrucción de labio leporino","res.t3":"Tatuaje de areola","res.t4":"Camuflaje de estrías","res.t5":"Camuflaje de cicatrices","res.t6":"Eliminación láser de tatuajes y eliminación de micropigmentación","res.t7":"Piercing profesional",
+"svc.n1":"Nano brows y ombre brows","svc.d1":"Cejas personalizadas, desde el pelo a pelo natural hasta el degradado suave.",
+"svc.n2":"Lip blush y reconstrucción de labio leporino","svc.d2":"Realce natural del color, definición, neutralización, simetría y tatuaje restaurador de labios.",
+"svc.n3":"Delineado","svc.d3":"Delineado de pestañas, rabillo, ahumado y corrección de delineado.",
+"svc.n4":"Tatuaje de areola","svc.d4":"Tatuaje de areola 3D realista, restaurador y estético.",
+"svc.n5":"Camuflaje de estrías","svc.d5":"Técnicas personalizadas para reducir el contraste visible de estrías ya cicatrizadas.",
+"svc.n6":"Camuflaje de cicatrices","svc.d6":"Tatuaje paramédico personalizado para cicatrices cicatrizadas elegibles.",
+"svc.n7":"Eliminación láser de tatuajes y eliminación de micropigmentación","svc.d7":"Planes personalizados de aclarado y eliminación de pigmento no deseado.",
+"svc.n8":"Piercing profesional",
 "team.h2":"Conoce a las artistas",
 "team.n1":"Master Agata Soldato","team.r1":"Fundadora • Master Artist • 12 años de experiencia",
-"team.p1a":"Con 12 años de experiencia y más de 10.000 tratamientos realizados, Agata Soldato es reconocida por su precisión, sus resultados naturales y su trabajo correctivo avanzado.",
-"team.p1b":"Su especialidad incluye nano brows, delineado, corrección de micropigmentación, eliminación láser, reconstrucción de labio leporino y tatuaje de areola.",
-"team.p1c":"A lo largo de su carrera, Agata ha trabajado con una clientela diversa, incluidas celebridades y figuras públicas conocidas, manteniendo la misma atención personalizada y la misma discreción con cada clienta.",
-"team.p1d":"Tiene experiencia especial en corregir micropigmentación previa, incluidas formas difíciles, colores, asimetría y resultados no deseados.",
-"team.n2":"Lanie Stein","team.r2":"Artista sénior • Instructora • 8 años de experiencia",
-"team.p2a":"Lanie Stein es conocida por su atención al detalle, su paciencia y su capacidad de escuchar de verdad a sus clientas. Se toma el tiempo de entender los objetivos de cada clienta, construyendo relaciones genuinas y de confianza y creando resultados personalizados.",
-"team.p2b":"Con 8 años de experiencia y amplia formación avanzada, Lanie se especializa en micropigmentación y técnicas restauradoras. Ha completado múltiples formaciones especializadas y hoy también es instructora de camuflaje de cicatrices y de estrías, compartiendo su experiencia con otras artistas.",
-"team.p2c":"Su enfoque atento, su precisión técnica y su compromiso con las clientas hacen que cada tratamiento se sienta personal y cuidadosamente diseñado.",
+"team.p1a":"Con 12 años de experiencia y más de <strong>10.000 tratamientos realizados</strong>, Agata Soldato es reconocida por su precisión, sus resultados naturales y su trabajo correctivo avanzado.",
+"team.p1b":"Su especialidad incluye <strong>nano brows, delineado, corrección de micropigmentación, eliminación láser, reconstrucción de labio leporino y tatuaje de areola</strong>.",
+"team.p1c":"A lo largo de su carrera, Agata ha trabajado con una clientela diversa, incluidas <strong>celebridades y figuras públicas conocidas</strong>, manteniendo la misma atención personalizada y la misma discreción con cada clienta.",
+"team.p1d":"Tiene experiencia especial en <strong>corregir micropigmentación previa</strong>, incluidas formas difíciles, colores, asimetría y resultados no deseados.",
 "proc.h2":"Nuestro proceso",
 "proc.t1":"Consulta","proc.p1":"Escuchamos tus objetivos, evaluamos lo que necesitas y recomendamos el mejor enfoque.",
 "proc.t2":"Plan personalizado","proc.p2":"Tu tratamiento se diseña específicamente para ti.",
 "proc.t3":"Tratamiento","proc.p3":"Tu servicio se realiza con precisión, atención al detalle y cuidado.",
-"proc.t4":"Cuidado posterior y seguimiento","proc.p4":"Recibirás un kit de cuidado posterior con todo lo necesario para una buena cicatrización, junto con instrucciones simples y recomendaciones de seguimiento.",
+"proc.t4":"Cuidado posterior y seguimiento","proc.p4":"Recibirás un <strong>kit de cuidado posterior con todo lo necesario para una buena cicatrización</strong>, junto con instrucciones simples y recomendaciones de seguimiento.",
 "pkg.h2":"Paquetes exclusivos","pkg.tag":"Más valor. <em>Resultados personalizados.</em>",
 "pkg.lead":"Elige entre paquetes de micropigmentación, corrección, eliminación y restauración, pensados para simplificar tu plan de tratamiento y darte un precio preferencial de paquete.",
 "pkg.n1":"The Complete Look","pkg.s1":"Cejas + labios + ojos",
@@ -1019,40 +1022,8 @@ es:{
 }};
 
 /* ============================================================
-   Services and FAQ data, rendered per language
+   FAQ data, rendered per language
    ============================================================ */
-const SERVICES = {
-en:[
- ["Nano Brows &amp; Ombre Brows","Customized eyebrow enhancement from natural hair-stroke definition to soft powder shading."],
- ["Lip Blush &amp; Cleft Lip Reconstruction","Natural color enhancement, definition, neutralization, symmetry, and restorative lip tattooing."],
- ["Eyeliner Tattoo","Lash Liner Tattoo, Wing Liner, Smokey Eyeliner, and Eyeliner Tattoo Correction."],
- ["Areola Tattoo","Realistic 3D restorative and aesthetic areola tattooing."],
- ["Stretch Mark Camouflage","Customized techniques designed to reduce the visible contrast of healed stretch marks."],
- ["Scar Camouflage","Customized paramedical tattoo solutions for eligible healed scars."],
- ["Laser Tattoo Removal &amp; Permanent Makeup Removal","Customized lightening and removal plans for unwanted pigment."],
- ["Professional Piercing",""]
-],
-pt:[
- ["Nano brows e ombre brows","Sobrancelha personalizada, do fio a fio natural ao esfumado suave."],
- ["Lip blush e reconstrução de lábio leporino","Realce natural da cor, definição, neutralização, simetria e tatuagem restauradora do lábio."],
- ["Delineado","Delineado de cílios, gatinho, esfumado e correção de delineado."],
- ["Tatuagem de aréola","Tatuagem de aréola 3D realista, restauradora e estética."],
- ["Camuflagem de estrias","Técnicas personalizadas para reduzir o contraste visível de estrias já cicatrizadas."],
- ["Camuflagem de cicatriz","Tatuagem paramédica personalizada para cicatrizes cicatrizadas elegíveis."],
- ["Remoção de tatuagem a laser e remoção de micropigmentação","Planos personalizados de clareamento e remoção de pigmento indesejado."],
- ["Piercing profissional",""]
-],
-es:[
- ["Nano brows y ombre brows","Cejas personalizadas, desde el pelo a pelo natural hasta el degradado suave."],
- ["Lip blush y reconstrucción de labio leporino","Realce natural del color, definición, neutralización, simetría y tatuaje restaurador de labios."],
- ["Delineado","Delineado de pestañas, rabillo, ahumado y corrección de delineado."],
- ["Tatuaje de areola","Tatuaje de areola 3D realista, restaurador y estético."],
- ["Camuflaje de estrías","Técnicas personalizadas para reducir el contraste visible de estrías ya cicatrizadas."],
- ["Camuflaje de cicatrices","Tatuaje paramédico personalizado para cicatrices cicatrizadas elegibles."],
- ["Eliminación láser de tatuajes y eliminación de micropigmentación","Planes personalizados de aclarado y eliminación de pigmento no deseado."],
- ["Piercing profesional",""]
-]};
-
 const FAQ = {
 en:[
  ["How long does permanent makeup last?","Results commonly fade gradually over time. Longevity varies by treatment area, skin type, lifestyle, pigment, sun exposure, skincare, and aftercare. Maintenance or refresh appointments may be recommended."],
@@ -1110,32 +1081,7 @@ function applyLang(l){
   });
   $$('.lang button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === l)));
   try{ localStorage.setItem('ama-lang', l); }catch(e){}
-  buildServices(); buildFaq(); paintContact();
-}
-
-/* ============================================================
-   Services list + panel
-   ============================================================ */
-let srvIndex = 0;
-function buildServices(){
-  const list = $('#srvList'); const rows = SERVICES[lang] || SERVICES.en;
-  list.innerHTML = '';
-  rows.forEach((s, i) => {
-    const b = document.createElement('button');
-    b.type = 'button'; b.className = 'srv__row'; b.setAttribute('role','tab');
-    b.setAttribute('aria-selected', String(i === srvIndex));
-    b.innerHTML = `<b>${s[0]}</b><i>${lang==='en'?'View':lang==='pt'?'Ver':'Ver'}</i>`;
-    b.addEventListener('click', () => { srvIndex = i; paintPanel(); });
-    b.addEventListener('mouseenter', () => { if(matchMedia('(hover:hover)').matches){ srvIndex = i; paintPanel(); } });
-    b.addEventListener('focus', () => { srvIndex = i; paintPanel(); });
-    list.appendChild(b);
-  });
-  paintPanel();
-}
-function paintPanel(){
-  const s = (SERVICES[lang] || SERVICES.en)[srvIndex];
-  $('#spName').innerHTML = s[0]; $('#spDesc').textContent = s[1]; $('#spDesc').hidden = !s[1];
-  $$('#srvList .srv__row').forEach((r,i) => r.setAttribute('aria-selected', String(i === srvIndex)));
+  buildFaq(); paintContact();
 }
 
 /* ============================================================
@@ -1208,7 +1154,7 @@ $('#bookForm').addEventListener('submit', e => {
 });
 
 /* ============================================================
-   Nav, reveal, carousel
+   Nav, reveal
    ============================================================ */
 const nav = $('#nav'), burger = $('#burger'), navLinks = $('#navLinks');
 addEventListener('scroll', () => nav.classList.toggle('is-stuck', scrollY > 24), {passive:true});
@@ -1225,21 +1171,6 @@ const io = new IntersectionObserver(es => es.forEach(e => {
 }), {rootMargin:'0px 0px -8% 0px'});
 $$('.rv').forEach(el => io.observe(el));
 
-(function drag(){
-  const t = $('#resTrack'); if(!t) return;
-  let down = false, x0 = 0, l0 = 0, moved = 0;
-  t.addEventListener('pointerdown', e => {
-    down = true; moved = 0; x0 = e.clientX; l0 = t.scrollLeft; t.classList.add('is-drag');
-  });
-  t.addEventListener('pointermove', e => {
-    if(!down) return;
-    const dx = e.clientX - x0; moved = Math.max(moved, Math.abs(dx));
-    t.scrollLeft = l0 - dx;
-  });
-  const up = () => { down = false; t.classList.remove('is-drag'); };
-  addEventListener('pointerup', up); addEventListener('pointercancel', up);
-  t.addEventListener('click', e => { if(moved > 6) e.preventDefault(); }, true);
-})();
 
 $$('.lang button').forEach(b => b.addEventListener('click', () => applyLang(b.dataset.lang)));
 $('#yr').textContent = new Date().getFullYear();
