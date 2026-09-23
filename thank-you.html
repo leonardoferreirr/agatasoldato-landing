@@ -46,11 +46,11 @@ p{color:var(--esp-soft);font-size:.94rem;line-height:1.75;max-width:27rem;margin
   <a class="back" id="back" href="index.html">Back to the site</a>
 </main>
 <script>
-/* Keep these the same as index.html.
-   BOOKING wins when both are filled: an external booking system is a
-   better destination for a request than a chat thread. */
-const PHONE   = '';
-const BOOKING = 'https://book.mypatientnow.com/practice/47U2Ts';
+/* Nothing links here since 23/09: every CTA on the site is a plain
+   tel: link now, because a phone call has to fire on the first tap.
+   The page stays for the day a tag manager goes in and the calls
+   need a measurable step. Keep the number the same as index.html. */
+const TEL = 'tel:+15125025022';
 
 const q    = new URLSearchParams(location.search);
 const lang = (q.get('l')||'en').slice(0,2);
@@ -70,15 +70,12 @@ if(T){
   document.getElementById('back').textContent = T.k;
 }
 
-const dest = BOOKING ? BOOKING
-           : PHONE   ? 'https://wa.me/' + PHONE
-           : 'index.html#booking';
-document.getElementById('go').href = dest;
+document.getElementById('go').href = TEL;
 
 window.dataLayer = window.dataLayer || [];
 dataLayer.push({event:'booking_conversion', contexto:ctx, idioma:lang});
 
-setTimeout(() => location.replace(dest), 1800);
+setTimeout(() => location.replace(TEL), 1800);
 </script>
 </body>
 </html>

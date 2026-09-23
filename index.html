@@ -97,9 +97,9 @@ h3.d{font-size:clamp(1.45rem,2.4vw,2rem);line-height:1.14;font-weight:600}
 .btn:hover svg{transform:translateX(5px)}
 .btn--line{background:transparent;color:var(--pom);border:1px solid var(--pom);padding:1.04rem 1.9rem}
 .btn--line:hover{background:var(--pom);color:var(--ivory)}
-/* the slide-on-hover belongs to the arrow, not to the phone handset */
-.btn--tel svg{width:13px;height:13px}
-.btn--tel:hover svg{transform:none}
+/* the slide-on-hover belonged to the arrow, not to the phone handset */
+.btn--call svg{width:13px;height:13px}
+.btn--call:hover svg{transform:none}
 .btn--light{background:var(--ivory);color:var(--pom)}
 .btn--light:hover{background:var(--sand-soft);color:var(--pom-deep)}
 .btn--gold{background:transparent;color:var(--gold-2);border:1px solid rgba(208,172,128,.55)}
@@ -116,6 +116,7 @@ h3.d{font-size:clamp(1.45rem,2.4vw,2rem);line-height:1.14;font-weight:600}
 .nav__links{display:flex;align-items:center;gap:clamp(1rem,2.2vw,2rem)}
 .nav__links a{font-size:.68rem;font-weight:500;letter-spacing:.13em;text-transform:uppercase;color:var(--esp-2);transition:color .3s}
 .nav__links a:hover{color:var(--pom)}
+.nav__tel{display:none}
 .nav__end{display:flex;align-items:center;gap:1rem}
 .lang{display:flex;gap:.3rem}
 .lang button{width:26px;height:19px;border-radius:2px;overflow:hidden;opacity:.42;transition:opacity .3s,transform .3s;display:block}
@@ -192,6 +193,26 @@ h3.d{font-size:clamp(1.45rem,2.4vw,2rem);line-height:1.14;font-weight:600}
 .svc__i h3{font-size:clamp(1.15rem,1.5vw,1.32rem);line-height:1.22;margin:1.05rem 0 .45rem}
 .svc__i p{font-size:.86rem;color:var(--esp-soft);line-height:1.7}
 .svc__hint{display:none;font-size:.62rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-ink);margin-top:.9rem}
+
+/* ---------- services rail: from 1041px up the section holds the screen and the
+   track slides sideways while you scroll down. JS sets the height of .svcrail,
+   because only JS knows how far the track has to travel, and only JS adds
+   .is-rail. Without it — no JS, narrow screen, reduced motion — everything below
+   is inert and the grid above stays exactly as it was. ---------- */
+.is-rail{overflow-x:clip}            /* clip, not hidden: hidden would kill the sticky */
+.is-rail .svcrail{position:relative;margin-inline:calc(50% - 50vw)}
+.is-rail .svcrail__vp{position:sticky;top:0;height:100svh;display:flex;align-items:center;overflow:hidden;
+  padding-top:clamp(4rem,7vw,5.5rem)} /* keeps the cards clear of the fixed header */
+.is-rail .svcrail__pad{width:100%;padding-left:max(var(--pad),calc((100vw - var(--maxw)) / 2))}
+/* in the rail the heading lines up with the first card instead of centring */
+.is-rail .head{max-width:none;margin-inline:0;text-align:left;margin-bottom:clamp(1.8rem,3.5vw,2.8rem)}
+.is-rail .svc{display:flex;width:max-content;gap:clamp(1rem,2vw,1.6rem);margin-top:0;
+  will-change:transform;transform:translate3d(0,0,0)}
+.is-rail .svc__i{flex:0 0 clamp(17rem,23vw,21.5rem)}
+.is-rail .svc__drag{display:none}
+/* the nudge fades out over the last quarter of the rail, when there is nothing left to see */
+.is-rail .svc__scroll{display:block;margin-top:clamp(1.4rem,2.6vw,2rem);
+  opacity:calc((1 - var(--rail-done,0)) * 4);transition:opacity .2s linear}
 
 /* ---------- packages: linhas horizontais, nao cards ---------- */
 .pkg{margin-top:clamp(1.6rem,3vw,2.4rem);border-top:1px solid rgba(208,172,128,.28)}
@@ -302,7 +323,7 @@ strong{font-weight:600;color:var(--esp)}
   .svc{grid-template-columns:repeat(2,minmax(0,1fr))}
   /* stacked: portrait first, text below, the way the client asked.
      The photo is wider than the column on purpose: its sides are flat section colour */
-  .art{grid-template-columns:1fr;min-height:0}
+  .art{grid-template-columns:minmax(0,1fr);min-height:0}
   .art__tx{padding:clamp(1.4rem,4vw,2.2rem) var(--pad) clamp(4rem,12vw,5rem)}
   .art__ph{overflow:hidden}
   .art__ph img{position:relative;inset:auto;left:50%;transform:translateX(-50%);width:min(128%,700px);max-width:none;height:auto;margin-top:clamp(2.2rem,7vw,3.2rem)}
@@ -312,7 +333,8 @@ strong{font-weight:600;color:var(--esp)}
     background:linear-gradient(180deg,rgba(237,226,207,0),var(--artist-bg) 88%)}
 }
 @media (max-width:900px){
-  .pk{grid-template-columns:1fr;grid-template-areas:"id" "body" "price" "cta";row-gap:1rem}
+  .pk{grid-template-columns:minmax(0,1fr);grid-template-areas:"id" "body" "price" "cta";row-gap:1rem}
+  .pk > *{min-width:0}
   .pk__price{align-self:start}
 }
 @media (max-width:860px){
@@ -328,6 +350,7 @@ strong{font-weight:600;color:var(--esp)}
   .nav__links a{width:100%;padding:.85rem 0;font-size:.8rem;border-bottom:1px solid var(--line-soft)}
   .burger{display:block}
   .nav .btn{display:none}
+  .nav__tel{display:block;color:var(--pom)!important;border-bottom:0!important;margin-top:.4rem;font-size:.86rem;letter-spacing:.1em}
   .tr{grid-template-columns:1fr}
 }
 @media (max-width:560px){
@@ -340,8 +363,12 @@ strong{font-weight:600;color:var(--esp)}
   .svc{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--pad);gap:1rem;margin-inline:calc(var(--pad) * -1);padding:0 var(--pad) .4rem;scrollbar-width:none}
   .svc::-webkit-scrollbar{display:none}
   .svc__i{flex:0 0 80%;scroll-snap-align:start}
-  .svc__hint{display:block}
+  .svc__drag{display:block}
   .faq__a p{padding-right:1rem}
+  /* the training labels are the longest on the site and .btn never wraps, so on a
+     narrow phone the card could not shrink and pushed the whole page sideways */
+  .tr__c{min-width:0}
+  .tr__c .btn{align-self:stretch;white-space:normal;text-align:center;line-height:1.5}
 }
 .head__tag{font-family:var(--ff-d);font-weight:500;font-size:clamp(1.3rem,2.3vw,1.75rem);line-height:1.3;color:var(--esp-2);margin:-.3rem 0 1.2rem}
 .head__tag em{color:var(--pom)}
@@ -368,6 +395,8 @@ strong{font-weight:600;color:var(--esp)}
       <a href="#packages" data-i18n="nav.packages">Packages</a>
       <a href="#faq" data-i18n="nav.faq">FAQ</a>
       <a href="#training" data-i18n="nav.training">Training</a>
+      <!-- the header Book Now button is hidden on phones, so the menu carries the number -->
+      <a class="nav__tel" href="tel:+15125025022" data-cta="menu">(512) 502-5022</a>
     </nav>
     <div class="nav__end">
       <div class="lang" role="group" aria-label="Language">
@@ -375,7 +404,7 @@ strong{font-weight:600;color:var(--esp)}
         <button type="button" data-lang="pt" aria-pressed="false" aria-label="Português" title="Português"><svg viewBox="0 0 60 40" aria-hidden="true"><rect width="60" height="40" fill="#009B3A"/><path d="M30 5 55 20 30 35 5 20Z" fill="#FEDF00"/><circle cx="30" cy="20" r="8" fill="#002776"/></svg></button>
         <button type="button" data-lang="es" aria-pressed="false" aria-label="Español" title="Español"><svg viewBox="0 0 60 40" aria-hidden="true"><rect width="60" height="40" fill="#AA151B"/><rect y="10" width="60" height="20" fill="#F1BF00"/></svg></button>
       </div>
-      <a class="btn" href="#booking" data-cta="nav" data-i18n="nav.cta">Book Now</a>
+      <a class="btn btn--call" href="tel:+15125025022" data-cta="nav"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5.2 2.2 6.7 5 5.4 6.4a8.4 8.4 0 0 0 4.2 4.2L11 9.3l2.8 1.5-.5 2.4c-.1.5-.6.9-1.1.8C7 13.4 2.6 9 2 3.8c-.1-.5.3-1 .8-1.1z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg><span data-i18n="nav.cta">Book Now</span></a>
       <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="navLinks"><i></i><i></i></button>
     </div>
   </div>
@@ -399,15 +428,11 @@ strong{font-weight:600;color:var(--esp)}
     <h1 class="d">Agata<br/><em>Medical Aesthetics</em></h1>
     <p class="lead" data-i18n="hero.lead">Medical Aesthetic Tattooing designed to enhance your natural features with refined, personalized results.</p>
     <div class="hero__cta">
-      <a class="btn" href="#booking" data-cta="hero">
-        <span data-i18n="hero.cta1">Book Now</span>
-        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.4"/></svg>
-      </a>
-      <!-- no data-cta: this one dials, it must not be hijacked by the conversion bridge -->
-      <a class="btn btn--line btn--tel" href="tel:+15125025022">
+      <a class="btn btn--call" href="tel:+15125025022" data-cta="hero">
         <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5.2 2.2 6.7 5 5.4 6.4a8.4 8.4 0 0 0 4.2 4.2L11 9.3l2.8 1.5-.5 2.4c-.1.5-.6.9-1.1.8C7 13.4 2.6 9 2 3.8c-.1-.5.3-1 .8-1.1z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
-        <span>(512) 502-5022</span>
+        <span data-i18n="hero.cta1">Book Now</span>
       </a>
+      <a class="btn btn--line" href="tel:+15125025022" data-cta="hero-number">(512) 502-5022</a>
     </div>
     </div>
   </div>
@@ -419,7 +444,7 @@ strong{font-weight:600;color:var(--esp)}
     <div class="orn" aria-hidden="true"><span></span></div>
     <p style="margin-top:1.6rem" data-i18n="intro.p1">At AMAesthetics, beauty is personal. Our approach combines advanced cosmetic tattoo techniques, detailed facial design, premium pigments, and years of hands-on experience to create results that feel polished, balanced, and uniquely yours.</p>
     <div class="sec__cta rv">
-      <a class="btn" href="#booking" data-cta="intro" data-i18n="cta.book">Book a Consultation</a>
+      <a class="btn btn--call" href="tel:+15125025022" data-cta="intro"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5.2 2.2 6.7 5 5.4 6.4a8.4 8.4 0 0 0 4.2 4.2L11 9.3l2.8 1.5-.5 2.4c-.1.5-.6.9-1.1.8C7 13.4 2.6 9 2 3.8c-.1-.5.3-1 .8-1.1z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg><span data-i18n="cta.book">Book a Consultation</span></a>
     </div>
   </div>
 </section>
@@ -427,11 +452,16 @@ strong{font-weight:600;color:var(--esp)}
 <!-- ===================== SERVICES ===================== -->
 <section class="sec sec--ivory2" id="services">
   <div class="wrap">
+    <!-- one card per service, in the order of the client doc; each "(before and after picture)" in the doc is a photo slot here.
+         From 1041px up this turns into a rail: the section holds the screen and the track
+         slides sideways as you scroll down. Below that it stays a grid, and on phones a
+         swipe row. .svcrail and .svcrail__vp are inert until the desktop breakpoint.
+         The heading lives inside the rail so it stays on screen the whole way across. -->
+    <div class="svcrail" id="svcRail"><div class="svcrail__vp"><div class="svcrail__pad">
     <div class="head rv">
       <h2 class="d" data-i18n="srv.h2">Featured Services</h2>
     </div>
-    <!-- one card per service, in the order of the client doc; each "(before and after picture)" in the doc is a photo slot here -->
-    <div class="svc rv" id="svcTrack">
+    <div class="svc" id="svcTrack">
       <article class="svc__i">
         <div class="svc__ba">
           <div class="svc__ph"><img src="assets/brows-before.webp" width="480" height="600" loading="lazy" decoding="async" alt="Eyebrows before nano brows treatment" /><span data-i18n="res.before">Before</span></div>
@@ -485,9 +515,11 @@ strong{font-weight:600;color:var(--esp)}
         <h3 class="d" data-i18n="svc.n10">Professional Piercing</h3>
       </article>
     </div>
-    <p class="svc__hint" data-i18n="res.hint">Drag to see more</p>
+    <p class="svc__hint svc__drag" data-i18n="res.hint">Drag to see more</p>
+    <p class="svc__hint svc__scroll" data-i18n="res.scroll">Keep scrolling to see every service</p>
+    </div></div></div>
     <div class="sec__cta rv">
-      <a class="btn" href="#booking" data-cta="services" data-i18n="cta.book">Book a Consultation</a>
+      <a class="btn btn--call" href="tel:+15125025022" data-cta="services"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5.2 2.2 6.7 5 5.4 6.4a8.4 8.4 0 0 0 4.2 4.2L11 9.3l2.8 1.5-.5 2.4c-.1.5-.6.9-1.1.8C7 13.4 2.6 9 2 3.8c-.1-.5.3-1 .8-1.1z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg><span data-i18n="cta.book">Book a Consultation</span></a>
     </div>
   </div>
 </section>
@@ -512,7 +544,7 @@ strong{font-weight:600;color:var(--esp)}
       <p data-i18n="team.p1c">Throughout her career, Agata has worked with a diverse clientele, including <strong>well-known celebrities and public figures</strong>, while maintaining the same personalized attention and discretion for every client.</p>
       <p data-i18n="team.p1d">She is especially experienced in <strong>correcting previous permanent makeup</strong>, including challenging shapes, colors, asymmetry, and unwanted results.</p>
       <div class="art__cta">
-        <a class="btn" href="#booking" data-cta="artists" data-i18n="cta.book">Book a Consultation</a>
+        <a class="btn btn--call" href="tel:+15125025022" data-cta="artists"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5.2 2.2 6.7 5 5.4 6.4a8.4 8.4 0 0 0 4.2 4.2L11 9.3l2.8 1.5-.5 2.4c-.1.5-.6.9-1.1.8C7 13.4 2.6 9 2 3.8c-.1-.5.3-1 .8-1.1z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg><span data-i18n="cta.book">Book a Consultation</span></a>
       </div>
     </div>
   </div>
@@ -531,7 +563,7 @@ strong{font-weight:600;color:var(--esp)}
       <div class="proc__s"><span class="proc__n">04</span><h3 class="d" data-i18n="proc.t4">Aftercare &amp; Follow-Up</h3><p data-i18n="proc.p4">You’ll receive an <strong>aftercare kit with everything you need for proper healing</strong>, along with simple instructions and follow-up recommendations.</p></div>
     </div>
     <div class="sec__cta rv">
-      <a class="btn" href="#booking" data-cta="process" data-i18n="cta.book">Book a Consultation</a>
+      <a class="btn btn--call" href="tel:+15125025022" data-cta="process"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5.2 2.2 6.7 5 5.4 6.4a8.4 8.4 0 0 0 4.2 4.2L11 9.3l2.8 1.5-.5 2.4c-.1.5-.6.9-1.1.8C7 13.4 2.6 9 2 3.8c-.1-.5.3-1 .8-1.1z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg><span data-i18n="cta.book">Book a Consultation</span></a>
     </div>
   </div>
 </section>
@@ -564,7 +596,7 @@ strong{font-weight:600;color:var(--esp)}
           <b data-i18n="pkg.p1">Package Benefit: Save $500</b>
           <span data-i18n="pkg.pv1">All three treatments must be performed on the same day to receive the package savings.</span>
         </div>
-        <a class="btn btn--light" href="#booking" data-cta="pkg-complete" data-i18n="pkg.c1">Book the Complete Look</a>
+        <a class="btn btn--light btn--call" href="tel:+15125025022" data-cta="pkg-complete"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5.2 2.2 6.7 5 5.4 6.4a8.4 8.4 0 0 0 4.2 4.2L11 9.3l2.8 1.5-.5 2.4c-.1.5-.6.9-1.1.8C7 13.4 2.6 9 2 3.8c-.1-.5.3-1 .8-1.1z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg><span data-i18n="pkg.c1">Book the Complete Look</span></a>
       </article>
 
       <article class="pk">
@@ -587,7 +619,7 @@ strong{font-weight:600;color:var(--esp)}
           <b data-i18n="pkg.p2">3-Session Removal Package: $500</b>
           <span data-i18n="pkg.pv2">Brows or Lips<br/>Single session: $200 | Package savings: $100</span>
         </div>
-        <a class="btn btn--light" href="#booking" data-cta="pkg-reset" data-i18n="pkg.c2">Start Your PMU Correction</a>
+        <a class="btn btn--light btn--call" href="tel:+15125025022" data-cta="pkg-reset"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5.2 2.2 6.7 5 5.4 6.4a8.4 8.4 0 0 0 4.2 4.2L11 9.3l2.8 1.5-.5 2.4c-.1.5-.6.9-1.1.8C7 13.4 2.6 9 2 3.8c-.1-.5.3-1 .8-1.1z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg><span data-i18n="pkg.c2">Start Your PMU Correction</span></a>
       </article>
 
       <article class="pk">
@@ -610,7 +642,7 @@ strong{font-weight:600;color:var(--esp)}
           <b data-i18n="pkg.p3">3 Sessions: $749</b>
           <span data-i18n="pkg.pv3">Regularly $1,200 | Save $451</span>
         </div>
-        <a class="btn btn--light" href="#booking" data-cta="pkg-tummy" data-i18n="pkg.c3">Book Tummy Restoration</a>
+        <a class="btn btn--light btn--call" href="tel:+15125025022" data-cta="pkg-tummy"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5.2 2.2 6.7 5 5.4 6.4a8.4 8.4 0 0 0 4.2 4.2L11 9.3l2.8 1.5-.5 2.4c-.1.5-.6.9-1.1.8C7 13.4 2.6 9 2 3.8c-.1-.5.3-1 .8-1.1z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg><span data-i18n="pkg.c3">Book Tummy Restoration</span></a>
       </article>
 
       <article class="pk">
@@ -635,7 +667,7 @@ strong{font-weight:600;color:var(--esp)}
           <b data-i18n="pkg.p4">3 Sessions: $949</b>
           <span data-i18n="pkg.pv4">Regularly $1,650 | Save $701</span>
         </div>
-        <a class="btn btn--light" href="#booking" data-cta="pkg-breast" data-i18n="pkg.c4">Book Breast Restoration</a>
+        <a class="btn btn--light btn--call" href="tel:+15125025022" data-cta="pkg-breast"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5.2 2.2 6.7 5 5.4 6.4a8.4 8.4 0 0 0 4.2 4.2L11 9.3l2.8 1.5-.5 2.4c-.1.5-.6.9-1.1.8C7 13.4 2.6 9 2 3.8c-.1-.5.3-1 .8-1.1z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg><span data-i18n="pkg.c4">Book Breast Restoration</span></a>
       </article>
     </div>
 
@@ -654,7 +686,7 @@ strong{font-weight:600;color:var(--esp)}
     </div>
     <div class="faq rv" id="faqList"></div>
     <div class="sec__cta rv">
-      <a class="btn" href="#booking" data-cta="faq" data-i18n="cta.book">Book a Consultation</a>
+      <a class="btn btn--call" href="tel:+15125025022" data-cta="faq"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5.2 2.2 6.7 5 5.4 6.4a8.4 8.4 0 0 0 4.2 4.2L11 9.3l2.8 1.5-.5 2.4c-.1.5-.6.9-1.1.8C7 13.4 2.6 9 2 3.8c-.1-.5.3-1 .8-1.1z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg><span data-i18n="cta.book">Book a Consultation</span></a>
     </div>
   </div>
 </section>
@@ -689,7 +721,7 @@ strong{font-weight:600;color:var(--esp)}
       <h2 class="d" data-i18n="bk.h2">Ready for <em>Your Next Look?</em></h2>
       <p class="lead" data-i18n="bk.lead">Whether you already know which service you want or need help deciding, our team will guide you through the options and create a personalized plan.</p>
       <div class="sec__cta">
-        <a class="btn" href="#booking" data-cta="booking" data-i18n="bk.send">Request a Consultation</a>
+        <a class="btn btn--call" href="tel:+15125025022" data-cta="booking"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5.2 2.2 6.7 5 5.4 6.4a8.4 8.4 0 0 0 4.2 4.2L11 9.3l2.8 1.5-.5 2.4c-.1.5-.6.9-1.1.8C7 13.4 2.6 9 2 3.8c-.1-.5.3-1 .8-1.1z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg><span data-i18n="bk.send">Request a Consultation</span></a>
       </div>
     </div>
   </div>
@@ -721,7 +753,7 @@ strong{font-weight:600;color:var(--esp)}
           <li data-i18n="tr.a10">Pricing, sales, customer service, marketing, and business development</li>
         </ul>
         <p class="tr__note" data-i18n="tr.note">Training techniques may include Nano Brows, Ombre Brows, Lip Blush, Lip Neutralization, touch-ups, corrections, and permanent makeup removal, depending on the selected mentorship program.</p>
-        <a class="btn btn--gold" href="#booking" data-cta="training-1on1" data-i18n="tr.c1">Book Private 1:1 Mentorship</a>
+        <a class="btn btn--gold btn--call" href="tel:+15125025022" data-cta="training-1on1"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5.2 2.2 6.7 5 5.4 6.4a8.4 8.4 0 0 0 4.2 4.2L11 9.3l2.8 1.5-.5 2.4c-.1.5-.6.9-1.1.8C7 13.4 2.6 9 2 3.8c-.1-.5.3-1 .8-1.1z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg><span data-i18n="tr.c1">Book Private 1:1 Mentorship</span></a>
       </article>
       <article class="tr__c">
         <h3 class="d" data-i18n="tr.n2">Online PMU Training</h3>
@@ -742,7 +774,7 @@ strong{font-weight:600;color:var(--esp)}
           <li data-i18n="tr.e13">Marketing funnels and advertising</li>
           <li data-i18n="tr.e14">Business growth, scaling, recruiting, and team development</li>
         </ul>
-        <a class="btn btn--gold" href="#booking" data-cta="training-online" data-i18n="tr.c2">Start Online Training</a>
+        <a class="btn btn--gold btn--call" href="tel:+15125025022" data-cta="training-online"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5.2 2.2 6.7 5 5.4 6.4a8.4 8.4 0 0 0 4.2 4.2L11 9.3l2.8 1.5-.5 2.4c-.1.5-.6.9-1.1.8C7 13.4 2.6 9 2 3.8c-.1-.5.3-1 .8-1.1z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg><span data-i18n="tr.c2">Start Online Training</span></a>
       </article>
     </div>
     <div class="tr__end rv">
@@ -779,13 +811,12 @@ strong{font-weight:600;color:var(--esp)}
 
 <script>
 /* ============================================================
-   CONTACT — fill these and every CTA starts working.
-   PHONE: digits only, with country code. e.g. '15122514170'
-   Do NOT reuse the Posh numbers, address or email unless they
-   remain valid for Agata Medical Aesthetics.
+   CONTACT — the studio phone, confirmed by the client 21/09.
+   It lives in the markup (href="tel:+15125025022"), not here:
+   every CTA dials it directly. Changing the number means a
+   find and replace on "5125025022" across index.html.
+   The PatientNow booking link is out since 23/09, at her request.
    ============================================================ */
-const PHONE   = '';                 // e.g. '15125550100'
-const BOOKING = 'https://book.mypatientnow.com/practice/47U2Ts'; // external booking link, optional
 
 /* ============================================================
    i18n — EN lives in the markup, PT and ES override it.
@@ -799,7 +830,7 @@ pt:{
 "hero.cta1":"Agendar",
 "intro.p1":"Na AMAesthetics, beleza é pessoal. Nosso trabalho combina técnicas avançadas de tatuagem cosmética, desenho facial detalhado, pigmentos premium e anos de prática para criar resultados polidos, equilibrados e só seus.",
 "srv.h2":"Serviços em destaque",
-"res.before":"Antes","res.after":"Depois","res.ba":"Antes e depois","res.soon":"Foto em breve","res.hint":"Arraste para ver mais",
+"res.before":"Antes","res.after":"Depois","res.ba":"Antes e depois","res.soon":"Foto em breve","res.hint":"Arraste para ver mais","res.scroll":"Continue rolando para ver todos os serviços",
 "svc.n1":"Nano brows","svc.d1":"Sobrancelha personalizada com fio a fio natural.",
 "svc.n2":"Ombre brows","svc.d2":"Sobrancelha personalizada com esfumado suave em pó.",
 "svc.n3":"Lip blush","svc.d3":"Realce natural da cor, definição e neutralização dos lábios.",
@@ -882,7 +913,7 @@ es:{
 "hero.cta1":"Reservar",
 "intro.p1":"En AMAesthetics, la belleza es personal. Nuestro enfoque combina técnicas avanzadas de tatuaje cosmético, diseño facial detallado, pigmentos premium y años de experiencia práctica para crear resultados pulidos, equilibrados y únicamente tuyos.",
 "srv.h2":"Servicios destacados",
-"res.before":"Antes","res.after":"Después","res.ba":"Antes y después","res.soon":"Foto próximamente","res.hint":"Arrastra para ver más",
+"res.before":"Antes","res.after":"Después","res.ba":"Antes y después","res.soon":"Foto próximamente","res.hint":"Arrastra para ver más","res.scroll":"Sigue bajando para ver todos los servicios",
 "svc.n1":"Nano brows","svc.d1":"Cejas personalizadas con pelo a pelo natural.",
 "svc.n2":"Ombre brows","svc.d2":"Cejas personalizadas con degradado suave en polvo.",
 "svc.n3":"Lip blush","svc.d3":"Realce natural del color, definición y neutralización de los labios.",
@@ -1043,18 +1074,12 @@ function buildFaq(){
 }
 
 /* ============================================================
-   Conversion bridge — no CTA points straight at wa.me
+   CTAs — every one is a plain tel: link in the markup, on purpose.
+   No bridge, no preventDefault: a phone call has to fire on the
+   first tap, and the browser has to show the real number on
+   hover and long press. data-cta stays only as a label, so a tag
+   manager can tell the hero button from the FAQ one later.
    ============================================================ */
-function goBridge(context){
-  location.href = `thank-you.html?c=${encodeURIComponent(context)}&l=${lang}`;
-}
-$$('[data-cta]').forEach(a => {
-  a.addEventListener('click', e => {
-    if(!PHONE && !BOOKING) return;              // no destination yet, let it scroll to the booking block
-    e.preventDefault();
-    goBridge(a.dataset.cta);
-  });
-});
 
 
 /* ============================================================
@@ -1074,6 +1099,59 @@ const io = new IntersectionObserver(es => es.forEach(e => {
   if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
 }), {rootMargin:'0px 0px -8% 0px'});
 $$('.rv').forEach(el => io.observe(el));
+
+
+/* ============================================================
+   Services rail — scrolling down slides the track sideways.
+   Only from 1041px up, and never with reduced motion on: below
+   that the cards stay the grid and the phone swipe row they were.
+   The section height is the travel distance plus one screen, so
+   the last card lands just as the sticky frame lets go.
+   ============================================================ */
+(() => {
+  const sec = $('#services'), rail = $('#svcRail'), track = $('#svcTrack');
+  if(!sec || !rail || !track) return;
+  const vp = rail.firstElementChild;
+  const wide = matchMedia('(min-width:1041px)');
+  const still = matchMedia('(prefers-reduced-motion:reduce)');
+  let travel = 0, frame = 0;
+
+  function measure(){
+    if(!wide.matches || still.matches){
+      sec.classList.remove('is-rail');
+      rail.style.height = '';
+      track.style.transform = '';
+      travel = 0;
+      return;
+    }
+    sec.classList.add('is-rail');
+    rail.style.height = '';                       // measure the natural sticky frame first
+    const screen = vp.offsetHeight;
+    const gutter = track.getBoundingClientRect().left;
+    // the track has to clear the right edge, plus the same gutter as a tail
+    travel = Math.max(0, track.scrollWidth + gutter * 2 - innerWidth);
+    rail.style.height = (screen + travel) + 'px';
+    place();
+  }
+
+  function place(){
+    if(!travel) return;
+    // once the frame is stuck, rail.top is how far into the rail we are
+    const done = Math.min(Math.max(-rail.getBoundingClientRect().top, 0), travel);
+    track.style.transform = `translate3d(${-done}px,0,0)`;
+    sec.style.setProperty('--rail-done', (done / travel).toFixed(3));
+  }
+
+  addEventListener('scroll', () => {
+    if(frame) return;
+    frame = requestAnimationFrame(() => { frame = 0; place(); });
+  }, {passive:true});
+  addEventListener('resize', measure, {passive:true});
+  wide.addEventListener('change', measure);
+  still.addEventListener('change', measure);
+  addEventListener('load', measure);
+  measure();
+})();
 
 
 $$('.lang button').forEach(b => b.addEventListener('click', () => applyLang(b.dataset.lang)));

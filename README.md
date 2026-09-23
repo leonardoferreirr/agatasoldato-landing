@@ -14,34 +14,30 @@ fundadora e master artist. A Lanie Stein saiu do documento e do site.
 - Fontes self-hosted (Cormorant Garamond + Montserrat, subset latin)
 - Deploy estático na Vercel
 
-## Antes de publicar: o que falta preencher
+## Para onde vão os botões
 
-O destino dos botões está no topo do `<script>` do `index.html` e precisa ser
-repetido no topo do `thank-you.html`:
+**Todo CTA do site liga para (512) 502-5022.** São 16, e cada um é um
+`<a href="tel:+15125025022">` escrito no HTML, sem JavaScript no meio.
+Trocar o número é um find and replace em `5125025022`.
 
-```js
-const PHONE   = '';   // só dígitos com código do país, ex: '15125550100'
-const BOOKING = 'https://book.mypatientnow.com/practice/47U2Ts';  // PREENCHIDO
-```
+Nada de `preventDefault`, nada de ponte: uma ligação tem que disparar no
+primeiro toque, e o navegador tem que mostrar o número de verdade ao passar o
+mouse ou segurar o dedo. O `data-cta` sobrou só como etiqueta, para um gerenciador
+de tags conseguir separar o botão do hero do botão do FAQ no dia em que entrar um.
 
-`BOOKING` já está preenchido com o link do PatientNow, então os 16 CTAs saem da
-página pela ponte de conversão e caem no agendamento.
+O **PatientNow saiu em 23/09**, a pedido da cliente: ela quis que o botão ligasse.
+O link era `https://book.mypatientnow.com/practice/47U2Ts`, guardado aqui caso volte.
+O `thank-you.html` ficou órfão, apontando para o `tel:`, porque é o lugar pronto
+para medir a ligação se um GTM entrar. Hoje não existe nenhuma tag no site.
 
-**Não há seção de contato nem formulário.** Saíram em 18/09 a pedido do Leonardo:
-todo botão já leva ao PatientNow, e o bloco de contato só mostrava "To be
-confirmed". As seções 15 (Contact Page) e 16 (Contact Form Consent Copy) do
-documento ficam de fora por isso. Quando ela confirmar endereço, horário e
-Instagram, o lugar natural é o rodapé.
+Além dos botões, o número aparece escrito em três lugares: segundo botão do hero,
+último item do menu no celular (`.nav__tel`, porque o botão do topo some nessa
+largura) e sob a marca no rodapé.
 
-**O telefone (512) 502-5022** ela confirmou em 21/09 e já está no site, como
-segundo botão do hero e no rodapé, nos dois casos `tel:+15125025022`. Ele **não**
-passa pela ponte de conversão: os dois links não têm `data-cta`, senão o script
-sequestraria o clique e mandaria pro PatientNow em vez de discar. A constante
-`PHONE` continua vazia de propósito, porque ela só serve de fallback `wa.me`, e
-esse número é fixo americano, não WhatsApp. Os botões "Book" seguem no PatientNow.
-
-Se `PHONE` e `BOOKING` ficarem os dois vazios, todo CTA rola até o bloco "Ready
-for your next look?" em vez de sair da página.
+**Não há seção de contato nem formulário.** Saíram em 18/09 a pedido do Leonardo,
+e o bloco de contato só mostrava "To be confirmed". As seções 15 (Contact Page) e
+16 (Contact Form Consent Copy) do documento ficam de fora por isso. Quando ela
+confirmar endereço, horário e Instagram, o lugar natural é o rodapé.
 
 O próprio documento dela avisa, e vale repetir: **não reaproveitar o telefone,
 o endereço nem o e-mail da Posh** (11719 RM 2244 #101, Bee Cave, TX 78738,
@@ -95,12 +91,44 @@ por ela no WhatsApp:
 | A foto dela passou a vir **acima** do texto no celular | `.art` na media query de 1040px |
 | O logo entrou acima do H1 do hero | `.hero__logo` |
 | Telefone **(512) 502-5022** entrou como segundo botão do hero e no rodapé | `a[href^="tel:"]` |
+| **23/09:** o PatientNow saiu e os 16 CTAs passaram a ligar direto | ver "Para onde vão os botões" |
+| **23/09:** Featured Services virou trilho horizontal no desktop | `.svcrail`, ver abaixo |
 
 As descrições dos quatro serviços separados não existem no documento: foram
 quebradas a partir da descrição combinada que ele traz, sem palavra nova.
 
-**Ainda combinado num cartão só:** "Laser Tattoo Removal & Permanent Makeup
-Removal". Ela não marcou esse, mas pelo mesmo critério pode ser dois. Confirmar.
+**Ainda combinado num cartão só, de propósito:** "Laser Tattoo Removal & Permanent
+Makeup Removal". Ela não apontou esse, então fica como está.
+
+## Featured Services: o trilho
+
+De **1041px para cima** a seção segura a tela e os 10 cartões deslizam para o lado
+enquanto a pessoa rola para baixo. Abaixo disso nada muda: continua grade de 2
+colunas, e no celular a fileira de arrastar de sempre.
+
+Como funciona, em três peças:
+
+| Peça | Papel |
+|---|---|
+| `.svcrail` | o espaço vertical. Altura = uma tela + a distância que o trilho precisa andar, e quem calcula isso é o JS |
+| `.svcrail__vp` | o quadro que gruda (`position:sticky`), uma tela de altura, com `padding-top` para os cartões não passarem por baixo do header fixo |
+| `.svcrail__pad` | sangra para a largura da tela inteira e recoloca o início do trilho na margem da página |
+
+O JS só põe a classe `.is-rail` na seção quando a tela é larga **e** o sistema não
+está em `prefers-reduced-motion`. Sem a classe, todo o CSS do trilho é inerte e a
+grade original aparece. Sem JS nenhum, idem. É o mesmo motivo de `.svcrail` e
+`.svcrail__vp` serem `div`s sem estilo fora do trilho: o HTML funciona sozinho.
+
+Duas armadilhas que custaram tempo:
+
+- `overflow` na seção tem que ser **`clip`**, não `hidden`. `hidden` transforma o
+  elemento em container de rolagem e o `sticky` de dentro para de grudar.
+- a sangria é `margin-inline:calc(50% - 50vw)`. Com barra de rolagem visível o
+  `100vw` passa alguns pixels da largura útil, e é o `overflow-x:clip` que apara
+  essa sobra. Sem ele nasce uma barra horizontal no site inteiro.
+
+O aviso "continue rolando" apaga sozinho no último quarto do percurso: o JS
+escreve `--rail-done` (0 a 1) na seção e o CSS liga a opacidade nisso.
 
 
 ## Assets, e a armadilha do fundo
