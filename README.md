@@ -30,8 +30,15 @@ página pela ponte de conversão e caem no agendamento.
 **Não há seção de contato nem formulário.** Saíram em 18/09 a pedido do Leonardo:
 todo botão já leva ao PatientNow, e o bloco de contato só mostrava "To be
 confirmed". As seções 15 (Contact Page) e 16 (Contact Form Consent Copy) do
-documento ficam de fora por isso. Quando ela confirmar telefone, endereço,
-horário e Instagram, o lugar natural é o rodapé.
+documento ficam de fora por isso. Quando ela confirmar endereço, horário e
+Instagram, o lugar natural é o rodapé.
+
+**O telefone (512) 502-5022** ela confirmou em 21/09 e já está no site, como
+segundo botão do hero e no rodapé, nos dois casos `tel:+15125025022`. Ele **não**
+passa pela ponte de conversão: os dois links não têm `data-cta`, senão o script
+sequestraria o clique e mandaria pro PatientNow em vez de discar. A constante
+`PHONE` continua vazia de propósito, porque ela só serve de fallback `wa.me`, e
+esse número é fixo americano, não WhatsApp. Os botões "Book" seguem no PatientNow.
 
 Se `PHONE` e `BOOKING` ficarem os dois vazios, todo CTA rola até o bloco "Ready
 for your next look?" em vez de sair da página.
@@ -62,17 +69,38 @@ para a empresa nova.
 ## Fotos que faltam
 
 Cada serviço em destaque é um cartão com o slot de antes e depois em cima, porque
-o documento marca "(before and after picture)" em sete dos oito serviços. Só o par
-de sobrancelha é real. Os outros seis estão como "photo coming soon", e é só trocar
-o `.svc__soon` por um `.svc__ba` igual ao da sobrancelha (duas fotos 4:5).
+o documento marca "(before and after picture)" em quase todos. Só o par de
+sobrancelha é real. Os outros estão como "photo coming soon", e é só trocar o
+`.svc__soon` por um `.svc__ba` igual ao da sobrancelha (duas fotos 4:5).
 
 O **Eyeliner Tattoo** não tem foto no documento, então o slot dele leva o motivo
 do arco em vez de prometer uma foto. Se ela mandar um par de delineado, vira `.svc__ba`.
 
 | Onde | O que pedir |
 |---|---|
-| Serviços | Antes/depois de **lip blush**, **aréola**, **estrias**, **cicatriz**, **remoção** e **piercing**, já cicatrizados |
+| Serviços | Antes/depois de **ombre brows**, **lip blush**, **reconstrução de lábio leporino**, **aréola**, **estrias**, **cicatriz**, **remoção** e **piercing**, já cicatrizados |
 | Serviços | Pares no **mesmo enquadramento, distância e luz**, como o próprio documento dela pede |
+
+## O que a cliente mudou depois do documento (21/09)
+
+O documento de 18/09 continua sendo a fonte da copy, com estas exceções pedidas
+por ela no WhatsApp:
+
+| Mudança | Onde |
+|---|---|
+| Saiu o segundo parágrafo do intro ("From brows, lips, and eyeliner...") | seção INTRO |
+| "Nano Brows & Ombre Brows" viraram **dois** serviços; "Lip Blush & Cleft Lip Reconstruction" também. São 10 cartões, não 8 | seção SERVICES |
+| Saíram o botão e o aviso "Results vary..." do bloco "Not Sure Which Package" | `.pkg__end` |
+| Saiu o box inteiro "Important Financing Policy", com o botão Explore Payment Options | seção FINANCING |
+| A foto dela passou a vir **acima** do texto no celular | `.art` na media query de 1040px |
+| O logo entrou acima do H1 do hero | `.hero__logo` |
+| Telefone **(512) 502-5022** entrou como segundo botão do hero e no rodapé | `a[href^="tel:"]` |
+
+As descrições dos quatro serviços separados não existem no documento: foram
+quebradas a partir da descrição combinada que ele traz, sem palavra nova.
+
+**Ainda combinado num cartão só:** "Laser Tattoo Removal & Permanent Makeup
+Removal". Ela não marcou esse, mas pelo mesmo critério pode ser dois. Confirmar.
 
 
 ## Assets, e a armadilha do fundo

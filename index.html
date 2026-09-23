@@ -97,6 +97,9 @@ h3.d{font-size:clamp(1.45rem,2.4vw,2rem);line-height:1.14;font-weight:600}
 .btn:hover svg{transform:translateX(5px)}
 .btn--line{background:transparent;color:var(--pom);border:1px solid var(--pom);padding:1.04rem 1.9rem}
 .btn--line:hover{background:var(--pom);color:var(--ivory)}
+/* the slide-on-hover belongs to the arrow, not to the phone handset */
+.btn--tel svg{width:13px;height:13px}
+.btn--tel:hover svg{transform:none}
 .btn--light{background:var(--ivory);color:var(--pom)}
 .btn--light:hover{background:var(--sand-soft);color:var(--pom-deep)}
 .btn--gold{background:transparent;color:var(--gold-2);border:1px solid rgba(208,172,128,.55)}
@@ -141,6 +144,7 @@ h3.d{font-size:clamp(1.45rem,2.4vw,2rem);line-height:1.14;font-weight:600}
 .hero::after{content:"";position:absolute;inset:auto 0 0;height:1px;background:var(--gold-line)}
 .hero__in{position:relative;z-index:2;width:min(100% - (var(--pad) * 2),var(--maxw));margin-inline:auto}
 .hero__copy{max-width:min(50%,36rem)}
+.hero__logo{display:block;width:auto;height:clamp(52px,6.4vw,78px);margin:0 0 clamp(1.1rem,2vw,1.6rem)}
 .hero h1{margin:0 0 1.35rem;font-size:clamp(2.4rem,5.2vw,4.3rem);line-height:1.02}
 .hero .lead{max-width:31rem}
 .hero__cta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2.1rem}
@@ -213,8 +217,7 @@ h3.d{font-size:clamp(1.45rem,2.4vw,2rem);line-height:1.14;font-weight:600}
 .sec__cta{margin-top:clamp(2.2rem,4vw,3.2rem);text-align:center}
 .pkg__end{margin-top:clamp(1.8rem,3.2vw,2.5rem);text-align:center}
 .pkg__end h3{margin-bottom:.6rem}
-.pkg__end p{color:rgba(248,243,235,.82);max-width:44rem;margin:0 auto 1.3rem;font-size:.93rem}
-.pkg__disc{font-size:.72rem;color:rgba(248,243,235,.55);margin-top:1.6rem;line-height:1.7}
+.pkg__end p{color:rgba(248,243,235,.82);max-width:44rem;margin:0 auto;font-size:.93rem}
 
 /* ---------- artist: portrait from top to bottom of the section, its background baked
    to --artist-bg so the photo has no edge. The photo sits on the bottom edge. ---------- */
@@ -251,14 +254,12 @@ strong{font-weight:600;color:var(--esp)}
 .tr__end{margin-top:clamp(2rem,4vw,2.8rem);padding-top:1.8rem;border-top:1px solid rgba(208,172,128,.24);font-size:.95rem;color:rgba(248,243,235,.78);max-width:46rem;line-height:1.85}
 
 /* ---------- financing ---------- */
-.fin{display:grid;grid-template-columns:1fr .9fr;gap:clamp(2rem,5vw,4rem);align-items:start;margin-top:clamp(2rem,4vw,3rem)}
+/* one column since the financing-policy box came out: the steps sit centred
+   under the centred heading instead of hugging the left edge of the section */
+.fin{margin-top:clamp(2rem,4vw,3rem);max-width:46rem;margin-inline:auto}
 .fin__steps{list-style:none;display:grid;gap:1rem;counter-reset:f}
 .fin__steps li{counter-increment:f;position:relative;padding-left:2.4rem;font-size:.92rem;color:var(--esp-2);line-height:1.8}
 .fin__steps li::before{content:counter(f);position:absolute;left:0;top:.05em;width:1.6rem;height:1.6rem;display:grid;place-items:center;border:1px solid var(--gold-line);border-radius:50%;font-family:var(--ff-d);font-weight:600;font-size:.9rem;color:var(--gold-ink)}
-.fin__box{background:var(--ivory);border:1px solid var(--line-soft);border-left:2px solid var(--gold);padding:clamp(1.4rem,2.6vw,1.9rem)}
-.fin__box h3{font-size:1.2rem;margin-bottom:.6rem}
-.fin__box p{font-size:.86rem;color:var(--esp-soft);line-height:1.8}
-.fin__box .btn{margin-top:1.3rem}
 
 /* ---------- faq ---------- */
 .faq{max-width:52rem;margin:clamp(2.5rem,5vw,3.5rem) auto 0;border-top:1px solid var(--line-soft)}
@@ -280,6 +281,10 @@ strong{font-weight:600;color:var(--esp)}
 .foot__links{display:flex;flex-wrap:wrap;gap:1.4rem}
 .foot__links a{font-size:.68rem;font-weight:500;letter-spacing:.13em;text-transform:uppercase;color:rgba(248,243,235,.74);transition:color .3s}
 .foot__links a:hover{color:var(--gold-2)}
+/* the phone sits under the mark, not inside the nav: it is contact, not a link to a section */
+.foot__brand{display:grid;gap:.9rem;justify-items:start}
+.foot__tel{font-size:.82rem;font-weight:500;letter-spacing:.09em;color:var(--gold-2);transition:color .3s}
+.foot__tel:hover{color:var(--ivory)}
 .foot__bot{margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid rgba(208,172,128,.2);display:flex;flex-wrap:wrap;gap:.8rem;justify-content:space-between;font-size:.7rem;color:rgba(248,243,235,.55)}
 
 /* ---------- reveal ---------- */
@@ -295,13 +300,16 @@ strong{font-weight:600;color:var(--esp)}
   .hero__in{position:relative;z-index:2;width:min(100% - (var(--pad) * 2),var(--maxw));margin-inline:auto}
 .hero__copy{max-width:min(50%,36rem)}
   .svc{grid-template-columns:repeat(2,minmax(0,1fr))}
-  /* stacked: text first, portrait last so her waist still meets the section edge.
+  /* stacked: portrait first, text below, the way the client asked.
      The photo is wider than the column on purpose: its sides are flat section colour */
   .art{grid-template-columns:1fr;min-height:0}
-  .art__tx{order:-1;padding:clamp(4rem,12vw,5rem) var(--pad) 0}
+  .art__tx{padding:clamp(1.4rem,4vw,2.2rem) var(--pad) clamp(4rem,12vw,5rem)}
   .art__ph{overflow:hidden}
-  .art__ph img{position:relative;inset:auto;left:50%;transform:translateX(-50%);width:min(128%,700px);max-width:none;height:auto;margin-top:2.2rem}
-  .fin{grid-template-columns:1fr}
+  .art__ph img{position:relative;inset:auto;left:50%;transform:translateX(-50%);width:min(128%,700px);max-width:none;height:auto;margin-top:clamp(2.2rem,7vw,3.2rem)}
+  /* stacked, the photo ends mid-jacket: fade it into the section instead of
+     cutting her in a straight line right above the heading */
+  .art__ph::after{content:"";position:absolute;left:0;right:0;bottom:0;height:18%;pointer-events:none;
+    background:linear-gradient(180deg,rgba(237,226,207,0),var(--artist-bg) 88%)}
 }
 @media (max-width:900px){
   .pk{grid-template-columns:1fr;grid-template-areas:"id" "body" "price" "cta";row-gap:1rem}
@@ -386,12 +394,19 @@ strong{font-weight:600;color:var(--esp)}
   <div class="hero__veil" aria-hidden="true"></div>
   <div class="hero__in">
     <div class="hero__copy">
+    <!-- decorative: the h1 right below already says the name, so the logo is alt="" -->
+    <img class="hero__logo" src="assets/logo-ama.webp" width="560" height="283" decoding="async" alt="" />
     <h1 class="d">Agata<br/><em>Medical Aesthetics</em></h1>
     <p class="lead" data-i18n="hero.lead">Medical Aesthetic Tattooing designed to enhance your natural features with refined, personalized results.</p>
     <div class="hero__cta">
       <a class="btn" href="#booking" data-cta="hero">
         <span data-i18n="hero.cta1">Book Now</span>
         <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.4"/></svg>
+      </a>
+      <!-- no data-cta: this one dials, it must not be hijacked by the conversion bridge -->
+      <a class="btn btn--line btn--tel" href="tel:+15125025022">
+        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5.2 2.2 6.7 5 5.4 6.4a8.4 8.4 0 0 0 4.2 4.2L11 9.3l2.8 1.5-.5 2.4c-.1.5-.6.9-1.1.8C7 13.4 2.6 9 2 3.8c-.1-.5.3-1 .8-1.1z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
+        <span>(512) 502-5022</span>
       </a>
     </div>
     </div>
@@ -403,7 +418,6 @@ strong{font-weight:600;color:var(--esp)}
   <div class="wrap intro rv">
     <div class="orn" aria-hidden="true"><span></span></div>
     <p style="margin-top:1.6rem" data-i18n="intro.p1">At AMAesthetics, beauty is personal. Our approach combines advanced cosmetic tattoo techniques, detailed facial design, premium pigments, and years of hands-on experience to create results that feel polished, balanced, and uniquely yours.</p>
-    <p data-i18n="intro.p2">From brows, lips, and eyeliner to cleft lip reconstruction, areola tattooing, scar and stretch mark camouflage, laser tattoo removal, permanent makeup removal, and piercing, every service begins with a personalized consultation and a focus on precision, comfort, and long-term results.</p>
     <div class="sec__cta rv">
       <a class="btn" href="#booking" data-cta="intro" data-i18n="cta.book">Book a Consultation</a>
     </div>
@@ -423,42 +437,52 @@ strong{font-weight:600;color:var(--esp)}
           <div class="svc__ph"><img src="assets/brows-before.webp" width="480" height="600" loading="lazy" decoding="async" alt="Eyebrows before nano brows treatment" /><span data-i18n="res.before">Before</span></div>
           <div class="svc__ph"><img src="assets/brows-after.webp" width="480" height="600" loading="lazy" decoding="async" alt="Eyebrows after healed nano brows treatment" /><span data-i18n="res.after">After</span></div>
         </div>
-        <h3 class="d" data-i18n="svc.n1">Nano Brows &amp; Ombre Brows</h3>
-        <p data-i18n="svc.d1">Customized eyebrow enhancement from natural hair-stroke definition to soft powder shading.</p>
+        <h3 class="d" data-i18n="svc.n1">Nano Brows</h3>
+        <p data-i18n="svc.d1">Customized eyebrow enhancement with natural hair-stroke definition.</p>
       </article>
       <article class="svc__i">
         <div class="svc__soon"><p data-i18n="res.ba">Before and after</p><small data-i18n="res.soon">Photo coming soon</small></div>
-        <h3 class="d" data-i18n="svc.n2">Lip Blush &amp; Cleft Lip Reconstruction</h3>
-        <p data-i18n="svc.d2">Natural color enhancement, definition, neutralization, symmetry, and restorative lip tattooing.</p>
+        <h3 class="d" data-i18n="svc.n2">Ombre Brows</h3>
+        <p data-i18n="svc.d2">Customized eyebrow enhancement with soft powder shading.</p>
+      </article>
+      <article class="svc__i">
+        <div class="svc__soon"><p data-i18n="res.ba">Before and after</p><small data-i18n="res.soon">Photo coming soon</small></div>
+        <h3 class="d" data-i18n="svc.n3">Lip Blush</h3>
+        <p data-i18n="svc.d3">Natural color enhancement, definition, and neutralization for the lips.</p>
+      </article>
+      <article class="svc__i">
+        <div class="svc__soon"><p data-i18n="res.ba">Before and after</p><small data-i18n="res.soon">Photo coming soon</small></div>
+        <h3 class="d" data-i18n="svc.n4">Cleft Lip Reconstruction</h3>
+        <p data-i18n="svc.d4">Restorative lip tattooing that rebuilds symmetry and color after cleft lip repair.</p>
       </article>
       <article class="svc__i">
         <div class="svc__orn" aria-hidden="true"><span></span></div>
-        <h3 class="d" data-i18n="svc.n3">Eyeliner Tattoo</h3>
-        <p data-i18n="svc.d3">Lash Liner Tattoo, Wing Liner, Smokey Eyeliner, and Eyeliner Tattoo Correction.</p>
+        <h3 class="d" data-i18n="svc.n5">Eyeliner Tattoo</h3>
+        <p data-i18n="svc.d5">Lash Liner Tattoo, Wing Liner, Smokey Eyeliner, and Eyeliner Tattoo Correction.</p>
       </article>
       <article class="svc__i">
         <div class="svc__soon"><p data-i18n="res.ba">Before and after</p><small data-i18n="res.soon">Photo coming soon</small></div>
-        <h3 class="d" data-i18n="svc.n4">Areola Tattoo</h3>
-        <p data-i18n="svc.d4">Realistic 3D restorative and aesthetic areola tattooing.</p>
+        <h3 class="d" data-i18n="svc.n6">Areola Tattoo</h3>
+        <p data-i18n="svc.d6">Realistic 3D restorative and aesthetic areola tattooing.</p>
       </article>
       <article class="svc__i">
         <div class="svc__soon"><p data-i18n="res.ba">Before and after</p><small data-i18n="res.soon">Photo coming soon</small></div>
-        <h3 class="d" data-i18n="svc.n5">Stretch Mark Camouflage</h3>
-        <p data-i18n="svc.d5">Customized techniques designed to reduce the visible contrast of healed stretch marks.</p>
+        <h3 class="d" data-i18n="svc.n7">Stretch Mark Camouflage</h3>
+        <p data-i18n="svc.d7">Customized techniques designed to reduce the visible contrast of healed stretch marks.</p>
       </article>
       <article class="svc__i">
         <div class="svc__soon"><p data-i18n="res.ba">Before and after</p><small data-i18n="res.soon">Photo coming soon</small></div>
-        <h3 class="d" data-i18n="svc.n6">Scar Camouflage</h3>
-        <p data-i18n="svc.d6">Customized paramedical tattoo solutions for eligible healed scars.</p>
+        <h3 class="d" data-i18n="svc.n8">Scar Camouflage</h3>
+        <p data-i18n="svc.d8">Customized paramedical tattoo solutions for eligible healed scars.</p>
       </article>
       <article class="svc__i">
         <div class="svc__soon"><p data-i18n="res.ba">Before and after</p><small data-i18n="res.soon">Photo coming soon</small></div>
-        <h3 class="d" data-i18n="svc.n7">Laser Tattoo Removal &amp; Permanent Makeup Removal</h3>
-        <p data-i18n="svc.d7">Customized lightening and removal plans for unwanted pigment.</p>
+        <h3 class="d" data-i18n="svc.n9">Laser Tattoo Removal &amp; Permanent Makeup Removal</h3>
+        <p data-i18n="svc.d9">Customized lightening and removal plans for unwanted pigment.</p>
       </article>
       <article class="svc__i">
         <div class="svc__soon"><p data-i18n="res.ba">Before and after</p><small data-i18n="res.soon">Photo coming soon</small></div>
-        <h3 class="d" data-i18n="svc.n8">Professional Piercing</h3>
+        <h3 class="d" data-i18n="svc.n10">Professional Piercing</h3>
       </article>
     </div>
     <p class="svc__hint" data-i18n="res.hint">Drag to see more</p>
@@ -618,8 +642,6 @@ strong{font-weight:600;color:var(--esp)}
     <div class="pkg__end rv">
       <h3 class="d" data-i18n="pkg.eh">Not Sure Which Package Is Right for You?</h3>
       <p data-i18n="pkg.ep">We’ll help you choose the best treatment based on your skin, previous work, and desired results.</p>
-      <a class="btn btn--light" href="#booking" data-cta="pkg-help" data-i18n="pkg.ec">Book a Consultation</a>
-      <p class="pkg__disc" data-i18n="pkg.disc">Results vary. Scar and stretch mark treatments require fully healed tissue. Additional sessions may be recommended.</p>
     </div>
   </div>
 </section>
@@ -655,11 +677,6 @@ strong{font-weight:600;color:var(--esp)}
           <li data-i18n="fin.s3">Complete the financing provider's application and review the terms offered directly by that provider.</li>
           <li data-i18n="fin.s4">Once approved and all studio requirements are completed, schedule your service according to the applicable booking and financing policies.</li>
         </ol>
-      </div>
-      <div class="fin__box">
-        <h3 class="d" data-i18n="fin.bh">Important Financing Policy</h3>
-        <p data-i18n="fin.bp">Financed services may be subject to separate cancellation, refund, rescheduling, and provider terms. Clients should review and agree to the applicable financing agreement and Agata Medical Aesthetics policies before completing a financed purchase. Financing approval and terms are determined by the financing provider.</p>
-        <a class="btn" href="#booking" data-cta="financing" data-i18n="fin.bc">Explore Payment Options</a>
       </div>
     </div>
   </div>
@@ -741,7 +758,10 @@ strong{font-weight:600;color:var(--esp)}
 <footer class="foot">
   <div class="wrap">
     <div class="foot__in">
-      <img src="assets/logo-ama-white.webp" width="560" height="284" loading="lazy" decoding="async" alt="Agata Medical Aesthetics" />
+      <div class="foot__brand">
+        <img src="assets/logo-ama-white.webp" width="560" height="284" loading="lazy" decoding="async" alt="Agata Medical Aesthetics" />
+        <a class="foot__tel" href="tel:+15125025022">(512) 502-5022</a>
+      </div>
       <nav class="foot__links" aria-label="Footer">
         <a href="#services" data-i18n="nav.services">Services</a>
         <a href="#artists" data-i18n="nav.artists">Artists</a>
@@ -778,17 +798,18 @@ pt:{
 "hero.lead":"Tatuagem Estética Médica feita para realçar seus traços naturais, com resultado refinado e personalizado.",
 "hero.cta1":"Agendar",
 "intro.p1":"Na AMAesthetics, beleza é pessoal. Nosso trabalho combina técnicas avançadas de tatuagem cosmética, desenho facial detalhado, pigmentos premium e anos de prática para criar resultados polidos, equilibrados e só seus.",
-"intro.p2":"De sobrancelha, lábio e delineado até reconstrução de lábio leporino, tatuagem de aréola, camuflagem de cicatriz e estria, remoção de tatuagem a laser, remoção de micropigmentação e piercing, todo serviço começa por uma avaliação personalizada, com foco em precisão, conforto e resultado duradouro.",
 "srv.h2":"Serviços em destaque",
 "res.before":"Antes","res.after":"Depois","res.ba":"Antes e depois","res.soon":"Foto em breve","res.hint":"Arraste para ver mais",
-"svc.n1":"Nano brows e ombre brows","svc.d1":"Sobrancelha personalizada, do fio a fio natural ao esfumado suave.",
-"svc.n2":"Lip blush e reconstrução de lábio leporino","svc.d2":"Realce natural da cor, definição, neutralização, simetria e tatuagem restauradora do lábio.",
-"svc.n3":"Delineado","svc.d3":"Delineado de cílios, gatinho, esfumado e correção de delineado.",
-"svc.n4":"Tatuagem de aréola","svc.d4":"Tatuagem de aréola 3D realista, restauradora e estética.",
-"svc.n5":"Camuflagem de estrias","svc.d5":"Técnicas personalizadas para reduzir o contraste visível de estrias já cicatrizadas.",
-"svc.n6":"Camuflagem de cicatriz","svc.d6":"Tatuagem paramédica personalizada para cicatrizes cicatrizadas elegíveis.",
-"svc.n7":"Remoção de tatuagem a laser e remoção de micropigmentação","svc.d7":"Planos personalizados de clareamento e remoção de pigmento indesejado.",
-"svc.n8":"Piercing profissional",
+"svc.n1":"Nano brows","svc.d1":"Sobrancelha personalizada com fio a fio natural.",
+"svc.n2":"Ombre brows","svc.d2":"Sobrancelha personalizada com esfumado suave em pó.",
+"svc.n3":"Lip blush","svc.d3":"Realce natural da cor, definição e neutralização dos lábios.",
+"svc.n4":"Reconstrução de lábio leporino","svc.d4":"Tatuagem restauradora do lábio, que devolve simetria e cor depois da cirurgia.",
+"svc.n5":"Delineado","svc.d5":"Delineado de cílios, gatinho, esfumado e correção de delineado.",
+"svc.n6":"Tatuagem de aréola","svc.d6":"Tatuagem de aréola 3D realista, restauradora e estética.",
+"svc.n7":"Camuflagem de estrias","svc.d7":"Técnicas personalizadas para reduzir o contraste visível de estrias já cicatrizadas.",
+"svc.n8":"Camuflagem de cicatriz","svc.d8":"Tatuagem paramédica personalizada para cicatrizes cicatrizadas elegíveis.",
+"svc.n9":"Remoção de tatuagem a laser e remoção de micropigmentação","svc.d9":"Planos personalizados de clareamento e remoção de pigmento indesejado.",
+"svc.n10":"Piercing profissional",
 "team.h2":"Conheça as artistas",
 "team.n1":"Master Agata Soldato","team.r1":"Fundadora • Master Artist • 12 anos de experiência",
 "team.p1a":"Com 12 anos de experiência e mais de <strong>10 mil procedimentos realizados</strong>, Agata Soldato é reconhecida pela precisão, pelo resultado natural e pelo trabalho corretivo avançado.",
@@ -827,8 +848,6 @@ pt:{
 "pkg.c4":"Agendar Breast Restoration",
 "pkg.f4":"A elegibilidade depende da cicatrização, do estado da cicatriz, do tom de pele e da área tratada. A consulta é obrigatória antes do procedimento.",
 "pkg.eh":"Não sabe qual pacote é o seu?","pkg.ep":"A gente ajuda você a escolher o melhor tratamento a partir da sua pele, do trabalho anterior e do resultado que você quer.",
-"pkg.ec":"Agendar uma avaliação",
-"pkg.disc":"Os resultados variam. Tratamentos de cicatriz e estria exigem tecido totalmente cicatrizado. Sessões extras podem ser recomendadas.",
 "faq.h2":"Perguntas frequentes",
 "fin.h2":"Parcelamento e financiamento","fin.tag":"Beleza agora. <em>Pagamento flexível.</em>",
 "fin.lead":"A Agata Medical Aesthetics oferece opções de parcelamento para tornar os serviços e os planos com vários procedimentos mais acessíveis. As clientes podem perguntar sobre o financiamento disponível na consulta e conferir elegibilidade, condições e formas de pagamento antes de agendar.",
@@ -838,8 +857,6 @@ pt:{
 "fin.s2":"Pergunte à nossa equipe quais opções de parcelamento estão disponíveis no momento.",
 "fin.s3":"Preencha a proposta da financeira e confira as condições oferecidas diretamente por ela.",
 "fin.s4":"Com a aprovação e todos os requisitos do estúdio cumpridos, agende seu serviço conforme as políticas de agendamento e de financiamento aplicáveis.",
-"fin.bh":"Política importante de financiamento","fin.bp":"Serviços financiados podem ter regras próprias de cancelamento, reembolso, remarcação e condições da financeira. As clientes devem ler e aceitar o contrato de financiamento aplicável e as políticas da Agata Medical Aesthetics antes de concluir uma compra financiada. A aprovação e as condições do financiamento são definidas pela financeira.",
-"fin.bc":"Ver opções de pagamento",
 "bk.h2":"Pronta para <em>o seu próximo look?</em>",
 "bk.lead":"Se você já sabe qual serviço quer ou precisa de ajuda para decidir, nossa equipe apresenta as opções e monta um plano personalizado.",
 "bk.send":"Pedir uma avaliação",
@@ -864,17 +881,18 @@ es:{
 "hero.lead":"Tatuaje Estético Médico diseñado para realzar tus rasgos naturales, con resultados refinados y personalizados.",
 "hero.cta1":"Reservar",
 "intro.p1":"En AMAesthetics, la belleza es personal. Nuestro enfoque combina técnicas avanzadas de tatuaje cosmético, diseño facial detallado, pigmentos premium y años de experiencia práctica para crear resultados pulidos, equilibrados y únicamente tuyos.",
-"intro.p2":"Desde cejas, labios y delineado hasta reconstrucción de labio leporino, tatuaje de areola, camuflaje de cicatrices y estrías, eliminación láser de tatuajes, eliminación de micropigmentación y piercing, cada servicio comienza con una consulta personalizada y un enfoque en precisión, comodidad y resultados duraderos.",
 "srv.h2":"Servicios destacados",
 "res.before":"Antes","res.after":"Después","res.ba":"Antes y después","res.soon":"Foto próximamente","res.hint":"Arrastra para ver más",
-"svc.n1":"Nano brows y ombre brows","svc.d1":"Cejas personalizadas, desde el pelo a pelo natural hasta el degradado suave.",
-"svc.n2":"Lip blush y reconstrucción de labio leporino","svc.d2":"Realce natural del color, definición, neutralización, simetría y tatuaje restaurador de labios.",
-"svc.n3":"Delineado","svc.d3":"Delineado de pestañas, rabillo, ahumado y corrección de delineado.",
-"svc.n4":"Tatuaje de areola","svc.d4":"Tatuaje de areola 3D realista, restaurador y estético.",
-"svc.n5":"Camuflaje de estrías","svc.d5":"Técnicas personalizadas para reducir el contraste visible de estrías ya cicatrizadas.",
-"svc.n6":"Camuflaje de cicatrices","svc.d6":"Tatuaje paramédico personalizado para cicatrices cicatrizadas elegibles.",
-"svc.n7":"Eliminación láser de tatuajes y eliminación de micropigmentación","svc.d7":"Planes personalizados de aclarado y eliminación de pigmento no deseado.",
-"svc.n8":"Piercing profesional",
+"svc.n1":"Nano brows","svc.d1":"Cejas personalizadas con pelo a pelo natural.",
+"svc.n2":"Ombre brows","svc.d2":"Cejas personalizadas con degradado suave en polvo.",
+"svc.n3":"Lip blush","svc.d3":"Realce natural del color, definición y neutralización de los labios.",
+"svc.n4":"Reconstrucción de labio leporino","svc.d4":"Tatuaje restaurador de labios que devuelve simetría y color tras la cirugía.",
+"svc.n5":"Delineado","svc.d5":"Delineado de pestañas, rabillo, ahumado y corrección de delineado.",
+"svc.n6":"Tatuaje de areola","svc.d6":"Tatuaje de areola 3D realista, restaurador y estético.",
+"svc.n7":"Camuflaje de estrías","svc.d7":"Técnicas personalizadas para reducir el contraste visible de estrías ya cicatrizadas.",
+"svc.n8":"Camuflaje de cicatrices","svc.d8":"Tatuaje paramédico personalizado para cicatrices cicatrizadas elegibles.",
+"svc.n9":"Eliminación láser de tatuajes y eliminación de micropigmentación","svc.d9":"Planes personalizados de aclarado y eliminación de pigmento no deseado.",
+"svc.n10":"Piercing profesional",
 "team.h2":"Conoce a las artistas",
 "team.n1":"Master Agata Soldato","team.r1":"Fundadora • Master Artist • 12 años de experiencia",
 "team.p1a":"Con 12 años de experiencia y más de <strong>10.000 tratamientos realizados</strong>, Agata Soldato es reconocida por su precisión, sus resultados naturales y su trabajo correctivo avanzado.",
@@ -913,8 +931,6 @@ es:{
 "pkg.c4":"Reservar Breast Restoration",
 "pkg.f4":"La elegibilidad depende de la cicatrización, el estado de la cicatriz, el tono de piel y la zona a tratar. La consulta es obligatoria antes del tratamiento.",
 "pkg.eh":"¿No sabes cuál paquete es el adecuado para ti?","pkg.ep":"Te ayudamos a elegir el mejor tratamiento según tu piel, tu trabajo previo y el resultado que buscas.",
-"pkg.ec":"Reservar una consulta",
-"pkg.disc":"Los resultados varían. Los tratamientos de cicatriz y estría requieren tejido totalmente cicatrizado. Pueden recomendarse sesiones adicionales.",
 "faq.h2":"Preguntas frecuentes",
 "fin.h2":"Planes de pago y financiación","fin.tag":"Belleza ahora. <em>Pagos flexibles.</em>",
 "fin.lead":"Agata Medical Aesthetics ofrece opciones de planes de pago para hacer más accesibles los servicios y los planes de varios tratamientos. Las clientas pueden preguntar por la financiación disponible durante su consulta y revisar la elegibilidad, las condiciones y las formas de pago antes de agendar.",
@@ -924,8 +940,6 @@ es:{
 "fin.s2":"Pregunta a nuestro equipo qué opciones de plan de pago están disponibles actualmente.",
 "fin.s3":"Completa la solicitud de la financiera y revisa las condiciones que ofrece directamente esa financiera.",
 "fin.s4":"Una vez aprobada y cumplidos todos los requisitos del estudio, agenda tu servicio según las políticas de reserva y financiación aplicables.",
-"fin.bh":"Política importante de financiación","fin.bp":"Los servicios financiados pueden estar sujetos a condiciones propias de cancelación, reembolso, reprogramación y de la financiera. Las clientas deben revisar y aceptar el contrato de financiación aplicable y las políticas de Agata Medical Aesthetics antes de completar una compra financiada. La aprobación y las condiciones de la financiación las determina la financiera.",
-"fin.bc":"Ver opciones de pago",
 "bk.h2":"¿Lista para <em>tu próximo look?</em>",
 "bk.lead":"Ya sea que sepas qué servicio quieres o necesites ayuda para decidir, nuestro equipo te guía por las opciones y crea un plan personalizado.",
 "bk.send":"Solicitar una consulta",
