@@ -68,6 +68,9 @@ Ela mandou o acervo pelo WhatsApp legendando **cada foto com o nome do serviço*
 Essa legenda é a lista de serviços dela, e vale mais que o documento de 18/09,
 que é de doze dias antes. Onde a legenda nomeava um serviço que não tinha cartão,
 o cartão foi criado. **São 16 cartões, não 10**, e 15 deles têm foto real.
+O décimo sexto, camuflagem de estrias, está **comentado no HTML** até a foto
+chegar: um único quadro vazio no meio de quinze fotos reais chamava mais atenção
+que o próprio serviço. No ar, hoje, 15 cartões.
 
 O cartão guarda-chuva **Eyeliner Tattoo** deixou de existir: ela legendou lash
 liner, gatinho, esfumado e correção como quatro serviços, então viraram quatro
@@ -104,7 +107,7 @@ dela. Sem JS o desfoque fica e nada quebra.
 | 10 | Delineado esfumado | `svc-smokey-eyeliner` | **novo** |
 | 11 | Correção de delineado | `svc-eyeliner-correction` | **novo**; traço falhado em cima, gatinho limpo embaixo |
 | 12 | Aréola | `svc-areola` | desfocada até o clique |
-| 13 | Estrias | — | **única que falta**; ela não mandou par |
+| 13 | Estrias | — | **fora do ar**, comentado no HTML; ela não mandou par |
 | 14 | Cicatriz | `svc-scar-camouflage` | abdominoplastia; a versão com a marca "posh" foi descartada |
 | 15 | Remoção a laser | `svc-laser-removal` | laser na sobrancelha tatuada em cima, pigmento levantado embaixo |
 | 16 | Piercing | `svc-piercing` | ela legendou *Ear and Body Piercings*; o nome do documento ficou |
@@ -153,6 +156,7 @@ por ela no WhatsApp:
 | **23/09:** o PatientNow saiu e os 16 CTAs passaram a ligar direto | ver "Para onde vão os botões" |
 | **23/09:** Featured Services virou trilho horizontal no desktop | `.svcrail`, ver abaixo |
 | **30/09:** as legendas das fotos viraram a lista de serviços: 16 cartões, 15 com foto | ver "Serviços e fotos" |
+| **30/09:** estrias saiu do ar até a foto chegar, comentado no HTML | seção SERVICES |
 | **30/09:** o trilho passou a andar 2x mais rápido que a rolagem | `PACE` no JS do trilho |
 
 As descrições dos quatro serviços separados não existem no documento: foram
@@ -163,7 +167,7 @@ Makeup Removal". Ela não apontou esse, então fica como está.
 
 ## Featured Services: o trilho
 
-De **1041px para cima** a seção segura a tela e os 16 cartões deslizam para o lado
+De **1041px para cima** a seção segura a tela e os cartões deslizam para o lado
 enquanto a pessoa rola para baixo. Abaixo disso nada muda: continua grade de 2
 colunas, e no celular a fileira de arrastar de sempre.
 
