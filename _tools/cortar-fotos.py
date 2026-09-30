@@ -27,18 +27,28 @@ DEST = RAIZ / "assets"
 RATIO = 4 / 5          # a proporcao do slot no cartao
 SIZES = [(620, 775), (420, 525)]
 
-# slug                 origem  focal        o que e
+# slug                    origem  focal       o que e
 FOTOS = [
-    ("nano-brows",      "010", (0.47, 0.50)),  # sobrancelha rala -> fio a fio
-    ("ombre-brows",     "029", (0.62, 0.50)),  # pele negra; 0.62 enquadra a MESMA sobrancelha
-                                               # nas duas metades, centro cortava a de cima
-    ("lip-blush",       "033", (0.50, 0.50)),
-    ("lip-reconstruction","051", (0.50, 0.50)), # labio leporino reconstruido
-    ("eyeliner",        "035", (0.50, 0.50)),  # correcao: traco falhado -> gatinho limpo
-    ("areola",          "030", (0.50, 0.50)),  # restauracao pos-mastectomia
-    ("scar-camouflage", "027", (0.50, 0.50)),  # cicatriz de abdominoplastia
-    ("laser-removal",   "009", (0.48, 0.50)),  # laser na sobrancelha tatuada
-    ("piercing",        "045", (0.50, 0.50)),  # resultado, nao antes/depois
+    # sobrancelha
+    ("nano-brows",          "010", (0.47, 0.50)),  # rala -> fio a fio
+    ("ombre-brows",         "029", (0.62, 0.50)),  # pele negra; 0.62 enquadra a MESMA sobrancelha
+                                                   # nas duas metades, centro cortava a de cima
+    ("brow-restoration",    "007", (0.50, 0.50)),  # quase sem pelo -> desenho cheio
+    # labios
+    ("lip-blush",           "033", (0.50, 0.50)),
+    ("ombre-lip-blush",     "036", (0.50, 0.50)),  # esfumado do contorno para dentro
+    ("lip-neutralization",  "065", (0.50, 0.50)),  # ja nasce 4:5, nao corta nada
+    ("lip-reconstruction",  "051", (0.50, 0.50)),  # labio leporino reconstruido
+    # olhos
+    ("lash-liner",          "016", (0.50, 0.50)),  # resultado, nao antes/depois
+    ("winged-eyeliner",     "049", (0.50, 0.50)),  # resultado, olho aberto e fechado
+    ("smokey-eyeliner",     "047", (0.50, 0.47)),  # resultado; 0.47 centra no olho
+    ("eyeliner-correction", "035", (0.50, 0.50)),  # traco falhado -> gatinho limpo
+    # paramedico e corpo
+    ("areola",              "030", (0.50, 0.50)),  # restauracao pos-mastectomia
+    ("scar-camouflage",     "027", (0.50, 0.50)),  # cicatriz de abdominoplastia
+    ("laser-removal",       "009", (0.48, 0.50)),  # laser na sobrancelha tatuada
+    ("piercing",            "045", (0.50, 0.50)),  # resultado, nao antes/depois
 ]
 
 

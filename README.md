@@ -62,57 +62,79 @@ para a empresa nova.
    lançamento. Sem formulário no site, quem coleta telefone é o PatientNow, nos
    termos dele. Se um formulário voltar, o texto de consentimento está no documento.
 
-## Fotos dos serviços (30/09)
+## Serviços e fotos (30/09)
 
-Ela mandou o acervo pelo WhatsApp e **9 dos 10 cartões têm foto real**. Só falta
-**camuflagem de estrias**, que continua em `.svc__soon`.
+Ela mandou o acervo pelo WhatsApp legendando **cada foto com o nome do serviço**.
+Essa legenda é a lista de serviços dela, e vale mais que o documento de 18/09,
+que é de doze dias antes. Onde a legenda nomeava um serviço que não tinha cartão,
+o cartão foi criado. **São 16 cartões, não 10**, e 15 deles têm foto real.
+
+O cartão guarda-chuva **Eyeliner Tattoo** deixou de existir: ela legendou lash
+liner, gatinho, esfumado e correção como quatro serviços, então viraram quatro
+cartões. Mesma coisa com **lip blush**, que no documento trazia blush, ombre e
+neutralização numa descrição só.
 
 **Uma foto por cartão, não duas.** Era para ser um par lado a lado, mas o material
 dela já vem montado: antes e depois empilhados no mesmo enquadramento, distância e
 luz, exatamente como o documento pede. As metades são deitadas (proporção de 1,1 a
 2,5), então cortar cada uma para um retrato 4:5 jogava fora justamente a comparação,
 sobrava um olho ou o dorso do nariz. O cartão mostra o composto inteiro num slot
-4:5, com a legenda "antes e depois" por cima. `.svc__ph` e `.svc__orn` saíram.
+4:5, com a legenda por cima. `.svc__ph` e `.svc__orn` saíram.
+
+A legenda é **"antes e depois"** ou **"resultado"**, nunca "antes" e "depois"
+separados: nem toda composição dela põe o antes em cima, e legenda neutra não
+erra a ordem. Lash liner, gatinho, esfumado e piercing são resultado, sem par.
 
 **A foto de aréola nasce desfocada** e só abre no clique, em `.svc__ba--med`. É
 foto clínica de reconstrução pós-mastectomia: o desfoque protege quem está rolando
 a página em público e mantém o domínio seguro para anúncio, sem esconder o trabalho
 dela. Sem JS o desfoque fica e nada quebra.
 
-**Piercing não é antes e depois**, a legenda dele diz "resultado".
-
-| Cartão | Foto | Observação |
-|---|---|---|
-| Nano brows | `svc-nano-brows` | trocou o par antigo, que era um recorte esticado com adesivo de medição no quadro |
-| Ombre brows | `svc-ombre-brows` | pele negra; corte em `cx 0,62` para a **mesma** sobrancelha aparecer nas duas metades |
-| Lip blush | `svc-lip-blush` | |
-| Reconstrução de lábio | `svc-lip-reconstruction` | ela chama de *Lip Shape Reconstruction* |
-| Delineado | `svc-eyeliner` | correção: traço falhado em cima, gatinho limpo embaixo |
-| Aréola | `svc-areola` | desfocada até o clique |
-| Estrias | — | **única que falta** |
-| Cicatriz | `svc-scar-camouflage` | abdominoplastia; a versão com a marca "posh" foi descartada |
-| Remoção a laser | `svc-laser-removal` | laser na sobrancelha tatuada em cima, pigmento levantado embaixo |
-| Piercing | `svc-piercing` | resultado, sem par |
+| # | Cartão | Foto | Observação |
+|---|---|---|---|
+| 1 | Nano brows | `svc-nano-brows` | trocou o par antigo, que era recorte esticado com adesivo de medição no quadro |
+| 2 | Ombre brows | `svc-ombre-brows` | pele negra; corte em `cx 0,62` para a **mesma** sobrancelha aparecer nas duas metades |
+| 3 | Restauração de sobrancelha | `svc-brow-restoration` | **novo**; ela chama de *Brow Restoration* e *Brow Regrowth* |
+| 4 | Lip blush | `svc-lip-blush` | perdeu "neutralização" da descrição, que virou cartão 6 |
+| 5 | Ombre lip blush | `svc-ombre-lip-blush` | **novo** |
+| 6 | Neutralização labial | `svc-lip-neutralization` | **novo**; a única foto que já nasce 4:5, não corta nada |
+| 7 | Reconstrução de lábio leporino | `svc-lip-reconstruction` | ela legendou *Lip Shape Reconstruction*; o nome do documento é mais específico e ficou |
+| 8 | Delineado de cílios | `svc-lash-liner` | **novo** |
+| 9 | Delineado gatinho | `svc-winged-eyeliner` | **novo**; mesmo olho aberto e fechado |
+| 10 | Delineado esfumado | `svc-smokey-eyeliner` | **novo** |
+| 11 | Correção de delineado | `svc-eyeliner-correction` | **novo**; traço falhado em cima, gatinho limpo embaixo |
+| 12 | Aréola | `svc-areola` | desfocada até o clique |
+| 13 | Estrias | — | **única que falta**; ela não mandou par |
+| 14 | Cicatriz | `svc-scar-camouflage` | abdominoplastia; a versão com a marca "posh" foi descartada |
+| 15 | Remoção a laser | `svc-laser-removal` | laser na sobrancelha tatuada em cima, pigmento levantado embaixo |
+| 16 | Piercing | `svc-piercing` | ela legendou *Ear and Body Piercings*; o nome do documento ficou |
 
 Para refazer um corte: `_tools/cortar-fotos.py`, que tem o ponto focal de cada
 foto e o porquê. Os originais são de paciente e ficam **fora do repositório**,
 em `_tools/originais/` (no `.gitignore`).
 
-### Sobrou material que não entrou
+### Copy dos seis cartões novos: falta aval dela
 
-Ela mandou serviços que o documento de 18/09 não lista como cartão, e fotos boas
-que não couberam. **Nada disso foi para o site sem ela pedir:**
+O documento não descreve Brow Restoration, Ombre Lip Blush, Neutralização, Lash
+Liner, Gatinho, Esfumado nem Correção. As descrições foram escritas aqui, só com
+o vocabulário que o próprio documento usa (personalizada, definição, esfumado,
+correção, reconstrói), **sem promessa de resultado e sem dizer para quem serve**,
+que é o que um site de estética médica não pode inventar. Mesmo assim são palavras
+que ela não assinou: confirmar antes de considerar final.
 
-- **Brow Restoration / Brow Regrowth** — ela nomeou como serviço próprio e mandou
-  três pares. Hoje some dentro de nano e ombre brows. Se vira cartão, é decisão dela.
-- **Lip Neutralization**, **Smokey Eyeliner**, **Winged Eyeliner**, **Lash Liner**,
-  **Eyeliner Correction** — estão cobertos pela descrição dos cartões de lábio e
-  delineado, mas cada um tem foto própria.
-- Uma arte de **6 quadros da remoção a laser** (antes, laser, 1, 2, 3 e 4+ sessões),
-  pronta e legendada. Não cabe num slot 4:5, mas é o melhor material do acervo.
+Dois nomes também ficaram em aberto, porque renomear serviço aprovado é decisão
+dela: *Lip Shape Reconstruction* (documento diz "Cleft Lip Reconstruction") e
+*Ear and Body Piercings* (documento diz "Professional Piercing").
+
+### Sobrou material
+
+- Uma arte pronta de **6 quadros da remoção a laser** (antes, laser, 1, 2, 3 e 4+
+  sessões), legendada. É o melhor material do acervo e não cabe num slot 4:5.
+- Um segundo par de reconstrução de lábio (`006`), onde a fissura aparece muito
+  mais clara que na foto que está no ar. Mais forte e mais cru.
 - Fotos de bastidor do estúdio: pigmentos, máquina, paquímetro, luva.
 
-Se esse acervo for usar, o lugar é uma galeria de resultados própria, não o trilho.
+Se isso for usar, o lugar é uma galeria de resultados própria, não o trilho.
 
 ## O que a cliente mudou depois do documento (21/09)
 
@@ -130,7 +152,8 @@ por ela no WhatsApp:
 | Telefone **(512) 502-5022** entrou como segundo botão do hero e no rodapé | `a[href^="tel:"]` |
 | **23/09:** o PatientNow saiu e os 16 CTAs passaram a ligar direto | ver "Para onde vão os botões" |
 | **23/09:** Featured Services virou trilho horizontal no desktop | `.svcrail`, ver abaixo |
-| **30/09:** chegaram as fotos de resultado, 9 dos 10 cartões preenchidos | ver "Fotos dos serviços" |
+| **30/09:** as legendas das fotos viraram a lista de serviços: 16 cartões, 15 com foto | ver "Serviços e fotos" |
+| **30/09:** o trilho passou a andar 2x mais rápido que a rolagem | `PACE` no JS do trilho |
 
 As descrições dos quatro serviços separados não existem no documento: foram
 quebradas a partir da descrição combinada que ele traz, sem palavra nova.
@@ -140,15 +163,21 @@ Makeup Removal". Ela não apontou esse, então fica como está.
 
 ## Featured Services: o trilho
 
-De **1041px para cima** a seção segura a tela e os 10 cartões deslizam para o lado
+De **1041px para cima** a seção segura a tela e os 16 cartões deslizam para o lado
 enquanto a pessoa rola para baixo. Abaixo disso nada muda: continua grade de 2
 colunas, e no celular a fileira de arrastar de sempre.
+
+**`PACE` (30/09).** O trilho andava 1:1 com a rolagem. Com 10 cartões isso custava
+~2250px de rolagem, que foi o que a cliente aprovou. Com 16 pularia para ~4400px,
+quase cinco telas presas numa seção só. `PACE = 2` separa as duas coisas: o trilho
+percorre a mesma distância, mas gasta metade da rolagem, e a seção volta a custar
+~2200px. Em `PACE = 1` ele volta ao 1:1 de antes.
 
 Como funciona, em três peças:
 
 | Peça | Papel |
 |---|---|
-| `.svcrail` | o espaço vertical. Altura = uma tela + a distância que o trilho precisa andar, e quem calcula isso é o JS |
+| `.svcrail` | o espaço vertical. Altura = uma tela + `travel / PACE`, e quem calcula isso é o JS |
 | `.svcrail__vp` | o quadro que gruda (`position:sticky`), uma tela de altura, com `padding-top` para os cartões não passarem por baixo do header fixo |
 | `.svcrail__pad` | sangra para a largura da tela inteira e recoloca o início do trilho na margem da página |
 
