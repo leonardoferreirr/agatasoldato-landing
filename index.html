@@ -178,18 +178,26 @@ h3.d{font-size:clamp(1.45rem,2.4vw,2rem);line-height:1.14;font-weight:600}
 
 /* ---------- services: one card per service, as the doc lists them, photo slot on top ---------- */
 .svc{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(2rem,3vw,2.6rem) clamp(1rem,2vw,1.6rem);margin-top:clamp(2.5rem,5vw,3.5rem)}
-.svc__ba,.svc__soon,.svc__orn{aspect-ratio:8/5;border-radius:6px;overflow:hidden}
-.svc__ba{display:grid;grid-template-columns:1fr 1fr;gap:3px;background:var(--sand)}
-.svc__ph{position:relative;min-height:0}
-.svc__ph img{width:100%;height:100%;object-fit:cover}
-.svc__ph span{position:absolute;left:.5rem;bottom:.5rem;font-size:.55rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ivory);background:rgba(48,35,31,.62);padding:.26rem .5rem;border-radius:2px}
+/* 30/09: a foto do cartao e o composto que ela mesma monta, antes e depois no
+   mesmo enquadramento, distancia e luz. Nao se divide em duas celulas: as metades
+   dela sao deitadas (1,1 a 2,5 de proporcao) e cortar cada uma para um retrato 4:5
+   descartava justamente a comparacao. Uma foto so, 4:5, com a legenda por cima. */
+.svc__ba,.svc__soon{aspect-ratio:4/5;border-radius:6px;overflow:hidden}
+.svc__ba{position:relative;background:var(--sand)}
+.svc__ba img{display:block;width:100%;height:100%;object-fit:cover}
+.svc__ba span{position:absolute;left:.5rem;bottom:.5rem;font-size:.55rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ivory);background:rgba(48,35,31,.62);padding:.26rem .5rem;border-radius:2px}
+/* foto clinica: nasce desfocada e so abre no clique. Protege quem esta rolando a
+   pagina em publico e mantem o dominio seguro para anuncio, sem esconder o trabalho */
+.svc__ba--med img{filter:blur(22px);transform:scale(1.08)}
+.svc__ba--med.is-open img{filter:none;transform:none}
+.svc__gate{position:absolute;inset:0;width:100%;display:grid;place-content:center;gap:.45rem;padding:1rem;text-align:center;border:0;cursor:pointer;color:var(--ivory);background:rgba(48,35,31,.5);font:inherit;transition:opacity .3s}
+.svc__gate b{font-family:var(--ff-d);font-weight:500;font-size:1.02rem;line-height:1.3}
+.svc__gate small{font-size:.56rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase}
+.svc__ba--med.is-open .svc__gate{opacity:0;pointer-events:none}
 .svc__soon{display:grid;place-content:center;text-align:center;background:var(--sand-soft);border:1px dashed var(--gold-line);padding:1rem}
 .svc__soon p{font-family:var(--ff-d);font-size:1.1rem;line-height:1.3;color:var(--esp-2)}
 .svc__soon small{display:block;margin-top:.5rem;font-size:.56rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-ink)}
 /* eyeliner has no before/after in the doc: the slot keeps the grid, with the arch motif instead of a promise of a photo */
-.svc__orn{position:relative;background:var(--blush-soft)}
-.svc__orn::before{content:"";position:absolute;left:50%;bottom:0;width:34%;height:74%;transform:translateX(-50%);border:1px solid var(--gold-line);border-bottom:0;border-radius:999px 999px 0 0}
-.svc__orn span{position:absolute;left:50%;top:52%;width:6px;height:6px;background:var(--gold);transform:translate(-50%,-50%) rotate(45deg)}
 .svc__i h3{font-size:clamp(1.15rem,1.5vw,1.32rem);line-height:1.22;margin:1.05rem 0 .45rem}
 .svc__i p{font-size:.86rem;color:var(--esp-soft);line-height:1.7}
 .svc__hint{display:none;font-size:.62rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-ink);margin-top:.9rem}
@@ -209,6 +217,9 @@ h3.d{font-size:clamp(1.45rem,2.4vw,2rem);line-height:1.14;font-weight:600}
 .is-rail .svc{display:flex;width:max-content;gap:clamp(1rem,2vw,1.6rem);margin-top:0;
   will-change:transform;transform:translate3d(0,0,0)}
 .is-rail .svc__i{flex:0 0 clamp(17rem,23vw,21.5rem)}
+/* o trilho vive dentro de uma tela: em notebook baixo a foto encurta e corta um
+   pouco mais nas laterais, em vez de o cartao vazar por baixo do quadro */
+.is-rail .svc__ba,.is-rail .svc__soon{max-height:50svh}
 .is-rail .svc__drag{display:none}
 /* the nudge fades out over the last quarter of the rail, when there is nothing left to see */
 .is-rail .svc__scroll{display:block;margin-top:clamp(1.4rem,2.6vw,2rem);
@@ -463,55 +474,55 @@ strong{font-weight:600;color:var(--esp)}
     </div>
     <div class="svc" id="svcTrack">
       <article class="svc__i">
-        <div class="svc__ba">
-          <div class="svc__ph"><img src="assets/brows-before.webp" width="480" height="600" loading="lazy" decoding="async" alt="Eyebrows before nano brows treatment" /><span data-i18n="res.before">Before</span></div>
-          <div class="svc__ph"><img src="assets/brows-after.webp" width="480" height="600" loading="lazy" decoding="async" alt="Eyebrows after healed nano brows treatment" /><span data-i18n="res.after">After</span></div>
-        </div>
+        <div class="svc__ba"><img src="assets/svc-nano-brows.webp" srcset="assets/svc-nano-brows-420.webp 420w, assets/svc-nano-brows.webp 620w" sizes="(min-width:1041px) 22rem, (min-width:561px) 46vw, 80vw" width="620" height="775" loading="lazy" decoding="async" alt="Sparse light eyebrows above, and the same brows below after healed nano hair-stroke work" /><span data-i18n="res.ba">Before and after</span></div>
         <h3 class="d" data-i18n="svc.n1">Nano Brows</h3>
         <p data-i18n="svc.d1">Customized eyebrow enhancement with natural hair-stroke definition.</p>
       </article>
       <article class="svc__i">
-        <div class="svc__soon"><p data-i18n="res.ba">Before and after</p><small data-i18n="res.soon">Photo coming soon</small></div>
+        <div class="svc__ba"><img src="assets/svc-ombre-brows.webp" srcset="assets/svc-ombre-brows-420.webp 420w, assets/svc-ombre-brows.webp 620w" sizes="(min-width:1041px) 22rem, (min-width:561px) 46vw, 80vw" width="620" height="775" loading="lazy" decoding="async" alt="A thin natural eyebrow above, and the same brow below after healed ombre powder shading" /><span data-i18n="res.ba">Before and after</span></div>
         <h3 class="d" data-i18n="svc.n2">Ombre Brows</h3>
         <p data-i18n="svc.d2">Customized eyebrow enhancement with soft powder shading.</p>
       </article>
       <article class="svc__i">
-        <div class="svc__soon"><p data-i18n="res.ba">Before and after</p><small data-i18n="res.soon">Photo coming soon</small></div>
+        <div class="svc__ba"><img src="assets/svc-lip-blush.webp" srcset="assets/svc-lip-blush-420.webp 420w, assets/svc-lip-blush.webp 620w" sizes="(min-width:1041px) 22rem, (min-width:561px) 46vw, 80vw" width="620" height="775" loading="lazy" decoding="async" alt="Pale undefined lips above, and the same lips below after healed lip blush" /><span data-i18n="res.ba">Before and after</span></div>
         <h3 class="d" data-i18n="svc.n3">Lip Blush</h3>
         <p data-i18n="svc.d3">Natural color enhancement, definition, and neutralization for the lips.</p>
       </article>
       <article class="svc__i">
-        <div class="svc__soon"><p data-i18n="res.ba">Before and after</p><small data-i18n="res.soon">Photo coming soon</small></div>
+        <div class="svc__ba"><img src="assets/svc-lip-reconstruction.webp" srcset="assets/svc-lip-reconstruction-420.webp 420w, assets/svc-lip-reconstruction.webp 620w" sizes="(min-width:1041px) 22rem, (min-width:561px) 46vw, 80vw" width="620" height="775" loading="lazy" decoding="async" alt="Lips with an uneven border after cleft lip repair, and the same lips below rebuilt with restorative tattooing" /><span data-i18n="res.ba">Before and after</span></div>
         <h3 class="d" data-i18n="svc.n4">Cleft Lip Reconstruction</h3>
         <p data-i18n="svc.d4">Restorative lip tattooing that rebuilds symmetry and color after cleft lip repair.</p>
       </article>
       <article class="svc__i">
-        <div class="svc__orn" aria-hidden="true"><span></span></div>
+        <div class="svc__ba"><img src="assets/svc-eyeliner.webp" srcset="assets/svc-eyeliner-420.webp 420w, assets/svc-eyeliner.webp 620w" sizes="(min-width:1041px) 22rem, (min-width:561px) 46vw, 80vw" width="620" height="775" loading="lazy" decoding="async" alt="A faded blurred eyeliner tattoo above, and the same eye below after correction into a clean winged line" /><span data-i18n="res.ba">Before and after</span></div>
         <h3 class="d" data-i18n="svc.n5">Eyeliner Tattoo</h3>
         <p data-i18n="svc.d5">Lash Liner Tattoo, Wing Liner, Smokey Eyeliner, and Eyeliner Tattoo Correction.</p>
       </article>
       <article class="svc__i">
-        <div class="svc__soon"><p data-i18n="res.ba">Before and after</p><small data-i18n="res.soon">Photo coming soon</small></div>
+        <!-- clinica: desfocada ate o visitante pedir para ver. Ver .svc__ba--med -->
+        <div class="svc__ba svc__ba--med" id="svcAreola"><img src="assets/svc-areola.webp" srcset="assets/svc-areola-420.webp 420w, assets/svc-areola.webp 620w" sizes="(min-width:1041px) 22rem, (min-width:561px) 46vw, 80vw" width="620" height="775" loading="lazy" decoding="async" alt="Clinical before and after of areola restoration tattooing following breast reconstruction" /><span data-i18n="res.ba">Before and after</span><button class="svc__gate" type="button" aria-controls="svcAreola" aria-expanded="false"><b data-i18n="res.medT">Clinical photo</b><small data-i18n="res.medC">Tap to view</small></button></div>
         <h3 class="d" data-i18n="svc.n6">Areola Tattoo</h3>
         <p data-i18n="svc.d6">Realistic 3D restorative and aesthetic areola tattooing.</p>
       </article>
       <article class="svc__i">
+        <!-- unico servico sem foto: ela nao mandou par de estria em 30/09 -->
         <div class="svc__soon"><p data-i18n="res.ba">Before and after</p><small data-i18n="res.soon">Photo coming soon</small></div>
         <h3 class="d" data-i18n="svc.n7">Stretch Mark Camouflage</h3>
         <p data-i18n="svc.d7">Customized techniques designed to reduce the visible contrast of healed stretch marks.</p>
       </article>
       <article class="svc__i">
-        <div class="svc__soon"><p data-i18n="res.ba">Before and after</p><small data-i18n="res.soon">Photo coming soon</small></div>
+        <div class="svc__ba"><img src="assets/svc-scar-camouflage.webp" srcset="assets/svc-scar-camouflage-420.webp 420w, assets/svc-scar-camouflage.webp 620w" sizes="(min-width:1041px) 22rem, (min-width:561px) 46vw, 80vw" width="620" height="775" loading="lazy" decoding="async" alt="A healed tummy tuck scar above, and the same abdomen below after camouflage tattooing" /><span data-i18n="res.ba">Before and after</span></div>
         <h3 class="d" data-i18n="svc.n8">Scar Camouflage</h3>
         <p data-i18n="svc.d8">Customized paramedical tattoo solutions for eligible healed scars.</p>
       </article>
       <article class="svc__i">
-        <div class="svc__soon"><p data-i18n="res.ba">Before and after</p><small data-i18n="res.soon">Photo coming soon</small></div>
+        <div class="svc__ba"><img src="assets/svc-laser-removal.webp" srcset="assets/svc-laser-removal-420.webp 420w, assets/svc-laser-removal.webp 620w" sizes="(min-width:1041px) 22rem, (min-width:561px) 46vw, 80vw" width="620" height="775" loading="lazy" decoding="async" alt="A dark old brow tattoo under the laser handpiece above, and the same brow below after the pigment has lifted" /><span data-i18n="res.ba">Before and after</span></div>
         <h3 class="d" data-i18n="svc.n9">Laser Tattoo Removal &amp; Permanent Makeup Removal</h3>
         <p data-i18n="svc.d9">Customized lightening and removal plans for unwanted pigment.</p>
       </article>
       <article class="svc__i">
-        <div class="svc__soon"><p data-i18n="res.ba">Before and after</p><small data-i18n="res.soon">Photo coming soon</small></div>
+        <!-- piercing nao tem antes e depois: a legenda diz resultado -->
+        <div class="svc__ba"><img src="assets/svc-piercing.webp" srcset="assets/svc-piercing-420.webp 420w, assets/svc-piercing.webp 620w" sizes="(min-width:1041px) 22rem, (min-width:561px) 46vw, 80vw" width="620" height="775" loading="lazy" decoding="async" alt="A curated ear with several healed piercings and fine gold jewellery" /><span data-i18n="res.result">Result</span></div>
         <h3 class="d" data-i18n="svc.n10">Professional Piercing</h3>
       </article>
     </div>
@@ -531,7 +542,7 @@ strong{font-weight:600;color:var(--esp)}
   <div class="art">
     <div class="art__ph">
       <img src="assets/agata-portrait.webp"
-           srcset="assets/agata-portrait-700.webp 700w, assets/agata-portrait.webp 1100w"
+           srcset="assets/agata-portrait-700.webp 620w, assets/agata-portrait.webp 1100w"
            sizes="(max-width:860px) 100vw, 50vw" width="1100" height="1375" loading="lazy" decoding="async"
            alt="Master Agata Soldato, founder and master artist" />
     </div>
@@ -830,7 +841,7 @@ pt:{
 "hero.cta1":"Agendar",
 "intro.p1":"Na AMAesthetics, beleza é pessoal. Nosso trabalho combina técnicas avançadas de tatuagem cosmética, desenho facial detalhado, pigmentos premium e anos de prática para criar resultados polidos, equilibrados e só seus.",
 "srv.h2":"Serviços em destaque",
-"res.before":"Antes","res.after":"Depois","res.ba":"Antes e depois","res.soon":"Foto em breve","res.hint":"Arraste para ver mais","res.scroll":"Continue rolando para ver todos os serviços",
+"res.ba":"Antes e depois","res.result":"Resultado","res.soon":"Foto em breve","res.medT":"Foto clínica","res.medC":"Toque para ver","res.hint":"Arraste para ver mais","res.scroll":"Continue rolando para ver todos os serviços",
 "svc.n1":"Nano brows","svc.d1":"Sobrancelha personalizada com fio a fio natural.",
 "svc.n2":"Ombre brows","svc.d2":"Sobrancelha personalizada com esfumado suave em pó.",
 "svc.n3":"Lip blush","svc.d3":"Realce natural da cor, definição e neutralização dos lábios.",
@@ -913,7 +924,7 @@ es:{
 "hero.cta1":"Reservar",
 "intro.p1":"En AMAesthetics, la belleza es personal. Nuestro enfoque combina técnicas avanzadas de tatuaje cosmético, diseño facial detallado, pigmentos premium y años de experiencia práctica para crear resultados pulidos, equilibrados y únicamente tuyos.",
 "srv.h2":"Servicios destacados",
-"res.before":"Antes","res.after":"Después","res.ba":"Antes y después","res.soon":"Foto próximamente","res.hint":"Arrastra para ver más","res.scroll":"Sigue bajando para ver todos los servicios",
+"res.ba":"Antes y después","res.result":"Resultado","res.soon":"Foto próximamente","res.medT":"Foto clínica","res.medC":"Toca para ver","res.hint":"Arrastra para ver más","res.scroll":"Sigue bajando para ver todos los servicios",
 "svc.n1":"Nano brows","svc.d1":"Cejas personalizadas con pelo a pelo natural.",
 "svc.n2":"Ombre brows","svc.d2":"Cejas personalizadas con degradado suave en polvo.",
 "svc.n3":"Lip blush","svc.d3":"Realce natural del color, definición y neutralización de los labios.",
@@ -1099,6 +1110,14 @@ const io = new IntersectionObserver(es => es.forEach(e => {
   if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
 }), {rootMargin:'0px 0px -8% 0px'});
 $$('.rv').forEach(el => io.observe(el));
+
+
+/* clinical photo: blurred until the visitor asks for it. CSS does the blur, so
+   without JS the gate is just a label over a blurred photo and nothing breaks */
+$$('.svc__gate').forEach(gate => gate.addEventListener('click', () => {
+  gate.closest('.svc__ba').classList.add('is-open');
+  gate.setAttribute('aria-expanded', 'true');
+}));
 
 
 /* ============================================================

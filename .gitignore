@@ -1,2 +1,5 @@
 .DS_Store
 node_modules/
+
+# fotos de paciente: ficam fora do repositorio
+_tools/originais/

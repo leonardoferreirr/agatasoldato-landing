@@ -62,20 +62,57 @@ para a empresa nova.
    lançamento. Sem formulário no site, quem coleta telefone é o PatientNow, nos
    termos dele. Se um formulário voltar, o texto de consentimento está no documento.
 
-## Fotos que faltam
+## Fotos dos serviços (30/09)
 
-Cada serviço em destaque é um cartão com o slot de antes e depois em cima, porque
-o documento marca "(before and after picture)" em quase todos. Só o par de
-sobrancelha é real. Os outros estão como "photo coming soon", e é só trocar o
-`.svc__soon` por um `.svc__ba` igual ao da sobrancelha (duas fotos 4:5).
+Ela mandou o acervo pelo WhatsApp e **9 dos 10 cartões têm foto real**. Só falta
+**camuflagem de estrias**, que continua em `.svc__soon`.
 
-O **Eyeliner Tattoo** não tem foto no documento, então o slot dele leva o motivo
-do arco em vez de prometer uma foto. Se ela mandar um par de delineado, vira `.svc__ba`.
+**Uma foto por cartão, não duas.** Era para ser um par lado a lado, mas o material
+dela já vem montado: antes e depois empilhados no mesmo enquadramento, distância e
+luz, exatamente como o documento pede. As metades são deitadas (proporção de 1,1 a
+2,5), então cortar cada uma para um retrato 4:5 jogava fora justamente a comparação,
+sobrava um olho ou o dorso do nariz. O cartão mostra o composto inteiro num slot
+4:5, com a legenda "antes e depois" por cima. `.svc__ph` e `.svc__orn` saíram.
 
-| Onde | O que pedir |
-|---|---|
-| Serviços | Antes/depois de **ombre brows**, **lip blush**, **reconstrução de lábio leporino**, **aréola**, **estrias**, **cicatriz**, **remoção** e **piercing**, já cicatrizados |
-| Serviços | Pares no **mesmo enquadramento, distância e luz**, como o próprio documento dela pede |
+**A foto de aréola nasce desfocada** e só abre no clique, em `.svc__ba--med`. É
+foto clínica de reconstrução pós-mastectomia: o desfoque protege quem está rolando
+a página em público e mantém o domínio seguro para anúncio, sem esconder o trabalho
+dela. Sem JS o desfoque fica e nada quebra.
+
+**Piercing não é antes e depois**, a legenda dele diz "resultado".
+
+| Cartão | Foto | Observação |
+|---|---|---|
+| Nano brows | `svc-nano-brows` | trocou o par antigo, que era um recorte esticado com adesivo de medição no quadro |
+| Ombre brows | `svc-ombre-brows` | pele negra; corte em `cx 0,62` para a **mesma** sobrancelha aparecer nas duas metades |
+| Lip blush | `svc-lip-blush` | |
+| Reconstrução de lábio | `svc-lip-reconstruction` | ela chama de *Lip Shape Reconstruction* |
+| Delineado | `svc-eyeliner` | correção: traço falhado em cima, gatinho limpo embaixo |
+| Aréola | `svc-areola` | desfocada até o clique |
+| Estrias | — | **única que falta** |
+| Cicatriz | `svc-scar-camouflage` | abdominoplastia; a versão com a marca "posh" foi descartada |
+| Remoção a laser | `svc-laser-removal` | laser na sobrancelha tatuada em cima, pigmento levantado embaixo |
+| Piercing | `svc-piercing` | resultado, sem par |
+
+Para refazer um corte: `_tools/cortar-fotos.py`, que tem o ponto focal de cada
+foto e o porquê. Os originais são de paciente e ficam **fora do repositório**,
+em `_tools/originais/` (no `.gitignore`).
+
+### Sobrou material que não entrou
+
+Ela mandou serviços que o documento de 18/09 não lista como cartão, e fotos boas
+que não couberam. **Nada disso foi para o site sem ela pedir:**
+
+- **Brow Restoration / Brow Regrowth** — ela nomeou como serviço próprio e mandou
+  três pares. Hoje some dentro de nano e ombre brows. Se vira cartão, é decisão dela.
+- **Lip Neutralization**, **Smokey Eyeliner**, **Winged Eyeliner**, **Lash Liner**,
+  **Eyeliner Correction** — estão cobertos pela descrição dos cartões de lábio e
+  delineado, mas cada um tem foto própria.
+- Uma arte de **6 quadros da remoção a laser** (antes, laser, 1, 2, 3 e 4+ sessões),
+  pronta e legendada. Não cabe num slot 4:5, mas é o melhor material do acervo.
+- Fotos de bastidor do estúdio: pigmentos, máquina, paquímetro, luva.
+
+Se esse acervo for usar, o lugar é uma galeria de resultados própria, não o trilho.
 
 ## O que a cliente mudou depois do documento (21/09)
 
@@ -93,6 +130,7 @@ por ela no WhatsApp:
 | Telefone **(512) 502-5022** entrou como segundo botão do hero e no rodapé | `a[href^="tel:"]` |
 | **23/09:** o PatientNow saiu e os 16 CTAs passaram a ligar direto | ver "Para onde vão os botões" |
 | **23/09:** Featured Services virou trilho horizontal no desktop | `.svcrail`, ver abaixo |
+| **30/09:** chegaram as fotos de resultado, 9 dos 10 cartões preenchidos | ver "Fotos dos serviços" |
 
 As descrições dos quatro serviços separados não existem no documento: foram
 quebradas a partir da descrição combinada que ele traz, sem palavra nova.
