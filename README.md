@@ -232,8 +232,9 @@ entre 1041 e 1240px usa `cover`, e em ambos os casos só a cor chapada é cortad
 
 As duas logos mantêm alpha de verdade: `logo-as.webp` (original, vai no menu e na
 página de obrigado) e `logo-as-dark.webp` (a mesma com a linha "Permanent Makeup" em
-dourado claro, porque o vinho original some no rodapé escuro). Origem: `AS.png`
-transparente, 1774x887. O ícone da aba (`favicon-32/64.png`) e o `apple-touch-icon`
+dourado claro, porque o vinho original some no rodapé escuro). Origem: `AS-sem-acento.png`
+(o `AS.png` transparente de 1774x887 com o acento do "Á" apagado em 19/10: o nome é
+sem acento, "AGATA"). O ícone da aba (`favicon-32/64.png`) e o `apple-touch-icon`
 são só o monograma AS recortado dela; o `og-as.jpg` é o logo sobre marfim.
 
 ## Marca
