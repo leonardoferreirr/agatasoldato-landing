@@ -162,6 +162,7 @@ por ela no WhatsApp:
 | **30/09:** estrias saiu do ar até a foto chegar, comentado no HTML | seção SERVICES |
 | **30/09:** o trilho passou a andar 2x mais rápido que a rolagem | `PACE` no JS do trilho |
 | **19/10:** marca nova Agata Soldato Permanent Makeup: logo AS no menu e no rodapé, H1 "Agata Soldato / Permanent Makeup", nome trocado no parcelamento (EN/PT/ES), no rodapé e nas tags, ícone da aba com só o monograma AS | ver "Marca" no topo |
+| **19/10:** política de privacidade em `/privacy-policy` (`privacy-policy.html`), texto dela copiado sem mudança (empresa "Agata Posh", vigência 11/10/2026, bloco de SMS com STOP/HELP). Link no rodapé, traduzido em PT/ES; a página em si é só em inglês | rodapé `.foot__bot` |
 
 As descrições dos quatro serviços separados não existem no documento: foram
 quebradas a partir da descrição combinada que ele traz, sem palavra nova.
