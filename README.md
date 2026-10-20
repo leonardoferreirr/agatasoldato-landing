@@ -1,13 +1,16 @@
-# Agata Medical Aesthetics
+# Agata Soldato Permanent Makeup
 
 Site da nova marca da Agata Soldato. A fonte da verdade é o documento que ela
 mandou em 18/09 (`Agata_Medical_Aesthetics_Website.pdf`, "Website Content Master"),
 que substitui o `..._WITH_PACKAGES.docx`. A única mudança de texto entre os dois foi
 a saída da Lanie. **O site segue o documento seção por seção, na mesma ordem.**
 
-A marca **não** é mais "Agata Soldato". É **Agata Medical Aesthetics**, selo AMA,
-assinatura "Cosmetic & Paramedical Tattooing". A Agata aparece sozinha como
-fundadora e master artist. A Lanie Stein saiu do documento e do site.
+**Desde 19/10 a marca voltou a ser Agata Soldato Permanent Makeup**, logo do
+monograma AS vinho e dourado (`logo-as.webp`). O nome Agata Medical Aesthetics e o
+selo AMA, que vieram do documento de 18/09, saíram do site inteiro: menu, hero,
+parcelamento, rodapé, título, ícone da aba e imagem de compartilhamento. A Agata
+aparece sozinha como fundadora e master artist. A Lanie Stein saiu do documento e
+do site.
 
 - HTML/CSS/JS puro, arquivo único, sem framework
 - Idiomas EN (principal) / PT-BR / ES por bandeirinha, guardado no localStorage
@@ -151,13 +154,14 @@ por ela no WhatsApp:
 | Saíram o botão e o aviso "Results vary..." do bloco "Not Sure Which Package" | `.pkg__end` |
 | Saiu o box inteiro "Important Financing Policy", com o botão Explore Payment Options | seção FINANCING |
 | A foto dela passou a vir **acima** do texto no celular | `.art` na media query de 1040px |
-| O logo entrou acima do H1 do hero | `.hero__logo` |
+| O logo entrou acima do H1 do hero (**19/10:** saiu de novo, o menu já mostra o logo novo) | — |
 | Telefone **(512) 502-5022** entrou como segundo botão do hero e no rodapé | `a[href^="tel:"]` |
 | **23/09:** o PatientNow saiu e os 16 CTAs passaram a ligar direto | ver "Para onde vão os botões" |
 | **23/09:** Featured Services virou trilho horizontal no desktop | `.svcrail`, ver abaixo |
 | **30/09:** as legendas das fotos viraram a lista de serviços: 16 cartões, 15 com foto | ver "Serviços e fotos" |
 | **30/09:** estrias saiu do ar até a foto chegar, comentado no HTML | seção SERVICES |
 | **30/09:** o trilho passou a andar 2x mais rápido que a rolagem | `PACE` no JS do trilho |
+| **19/10:** marca nova Agata Soldato Permanent Makeup: logo AS no menu e no rodapé, H1 "Agata Soldato / Permanent Makeup", nome trocado no parcelamento (EN/PT/ES), no rodapé e nas tags, ícone da aba com só o monograma AS | ver "Marca" no topo |
 
 As descrições dos quatro serviços separados não existem no documento: foram
 quebradas a partir da descrição combinada que ele traz, sem palavra nova.
@@ -226,8 +230,11 @@ fios de cabelo) e um balanço quente leve só no sujeito. Os lados da imagem sã
 cor chapada de propósito: no celular a foto fica 128% mais larga que a coluna e
 entre 1041 e 1240px usa `cover`, e em ambos os casos só a cor chapada é cortada.
 
-As duas logos (`logo-ama.webp` vinho e `logo-ama-white.webp` branca) mantêm alpha
-de verdade e podem ir sobre qualquer fundo.
+As duas logos mantêm alpha de verdade: `logo-as.webp` (original, vai no menu e na
+página de obrigado) e `logo-as-dark.webp` (a mesma com a linha "Permanent Makeup" em
+dourado claro, porque o vinho original some no rodapé escuro). Origem: `AS.png`
+transparente, 1774x887. O ícone da aba (`favicon-32/64.png`) e o `apple-touch-icon`
+são só o monograma AS recortado dela; o `og-as.jpg` é o logo sobre marfim.
 
 ## Marca
 
@@ -305,8 +312,8 @@ retrato: na faixa larga ele entra sem zoom e pesa menos. O retrato que a cliente
 mandou continua disponível, mas fora do repositório.
 
 **O título do hero é o nome da marca.** A seção "Hero Section" do documento pede
-`AGATA MEDICAL AESTHETICS`, a frase e `BOOK NOW`, e é isso que está lá, em duas
-linhas ("Agata" / "Medical Aesthetics"). O H1 sugerido para SEO ("Permanent
+`AGATA MEDICAL AESTHETICS`, a frase e `BOOK NOW`. Desde 19/10 o nome é o da marca
+nova, em duas linhas ("Agata Soldato" / "Permanent Makeup"). O H1 sugerido para SEO ("Permanent
 Makeup & Cosmetic Tattooing in Austin, TX") ficou de fora do visual porque não
 cabe no hero sem virar texto que ela não pediu. O `<title>` e a meta description
 seguem o texto de SEO do documento, que é onde pesa mais.

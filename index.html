@@ -4,15 +4,16 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#F8F3EB" />
-<title>Permanent Makeup Austin | Agata Medical Aesthetics</title>
+<title>Permanent Makeup Austin | Agata Soldato</title>
 <meta name="description" content="Expert permanent makeup in Austin specializing in Nano Brows, Ombre Brows, Lip Blush, Eyeliner, PMU Correction, Scar Camouflage, Areola Tattooing &amp; Laser Removal." />
 <meta name="keywords" content="permanent makeup Austin, cosmetic tattoo Austin, nano brows Austin, ombre brows Austin, lip blush Austin, permanent eyeliner Austin, PMU removal Austin, scar camouflage Austin, stretch mark camouflage Austin, areola tattoo Austin, permanent makeup Bee Cave, permanent makeup Lakeway" />
 <link rel="canonical" href="https://agatasoldato.vercel.app/" />
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Agata Medical Aesthetics · Permanent Makeup, Austin TX" />
+<meta property="og:title" content="Agata Soldato · Permanent Makeup, Austin TX" />
 <meta property="og:description" content="Medical aesthetic tattooing designed to enhance your natural features with refined, personalized results. Bee Cave, Lakeway and greater Austin." />
-<meta property="og:image" content="assets/logo-ama.webp" />
-<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<meta property="og:image" content="assets/og-as.jpg" />
+<link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32" />
+<link rel="icon" href="assets/favicon-64.png" type="image/png" sizes="64x64" />
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
 <link rel="preload" as="image" href="assets/hero-lips.webp"
       imagesrcset="assets/hero-lips-1000.webp 1000w, assets/hero-lips.webp 1600w"
@@ -34,7 +35,7 @@
 @font-face{font-family:'Montserrat FB';src:local('Arial'),local('Helvetica');size-adjust:112.6%}
 
 /* ============================================================
-   AGATA MEDICAL AESTHETICS
+   AGATA SOLDATO PERMANENT MAKEUP
    Pomegranate, desert rose, antique gold, ivory. Cormorant
    display, Montserrat body. Single file. i18n EN / PT / ES.
    Palette and type follow the client brand document.
@@ -111,8 +112,8 @@ h3.d{font-size:clamp(1.45rem,2.4vw,2rem);line-height:1.14;font-weight:600}
 .nav{position:fixed;inset:0 0 auto;z-index:90;padding:.85rem 0;transition:background .4s,box-shadow .4s,padding .4s}
 .nav.is-stuck{background:rgba(248,243,235,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line-soft);padding:.5rem 0}
 .nav__in{display:flex;align-items:center;justify-content:space-between;gap:1rem}
-.nav__logo img{height:clamp(34px,4.4vw,46px);width:auto;transition:height .4s var(--ease)}
-.nav.is-stuck .nav__logo img{height:clamp(30px,3.6vw,38px)}
+.nav__logo img{height:clamp(42px,4.6vw,62px);width:auto;transition:height .4s var(--ease)}
+.nav.is-stuck .nav__logo img{height:clamp(36px,3.6vw,48px)}
 .nav__links{display:flex;align-items:center;gap:clamp(1rem,2.2vw,2rem)}
 .nav__links a{font-size:.68rem;font-weight:500;letter-spacing:.13em;text-transform:uppercase;color:var(--esp-2);transition:color .3s}
 .nav__links a:hover{color:var(--pom)}
@@ -145,7 +146,6 @@ h3.d{font-size:clamp(1.45rem,2.4vw,2rem);line-height:1.14;font-weight:600}
 .hero::after{content:"";position:absolute;inset:auto 0 0;height:1px;background:var(--gold-line)}
 .hero__in{position:relative;z-index:2;width:min(100% - (var(--pad) * 2),var(--maxw));margin-inline:auto}
 .hero__copy{max-width:min(50%,36rem)}
-.hero__logo{display:block;width:auto;height:clamp(52px,6.4vw,78px);margin:0 0 clamp(1.1rem,2vw,1.6rem)}
 .hero h1{margin:0 0 1.35rem;font-size:clamp(2.4rem,5.2vw,4.3rem);line-height:1.02}
 .hero .lead{max-width:31rem}
 .hero__cta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2.1rem}
@@ -397,8 +397,8 @@ strong{font-weight:600;color:var(--esp)}
 <!-- ===================== NAV ===================== -->
 <header class="nav" id="nav">
   <div class="wrap nav__in">
-    <a class="nav__logo" href="#top" aria-label="Agata Medical Aesthetics, home">
-      <img src="assets/logo-ama.webp" width="560" height="283" alt="Agata Medical Aesthetics" />
+    <a class="nav__logo" href="#top" aria-label="Agata Soldato Permanent Makeup, home">
+      <img src="assets/logo-as.webp" width="560" height="298" alt="Agata Soldato Permanent Makeup" />
     </a>
     <nav class="nav__links" id="navLinks" aria-label="Main">
       <a href="#services" data-i18n="nav.services">Services</a>
@@ -434,9 +434,7 @@ strong{font-weight:600;color:var(--esp)}
   <div class="hero__veil" aria-hidden="true"></div>
   <div class="hero__in">
     <div class="hero__copy">
-    <!-- decorative: the h1 right below already says the name, so the logo is alt="" -->
-    <img class="hero__logo" src="assets/logo-ama.webp" width="560" height="283" decoding="async" alt="" />
-    <h1 class="d">Agata<br/><em>Medical Aesthetics</em></h1>
+    <h1 class="d">Agata Soldato<br/><em>Permanent Makeup</em></h1>
     <p class="lead" data-i18n="hero.lead">Medical Aesthetic Tattooing designed to enhance your natural features with refined, personalized results.</p>
     <div class="hero__cta">
       <a class="btn btn--call" href="tel:+15125025022" data-cta="hero">
@@ -747,7 +745,7 @@ strong{font-weight:600;color:var(--esp)}
     <div class="head rv">
       <h2 class="d" data-i18n="fin.h2">Payment Plans &amp; Financing</h2>
       <p class="head__tag d" data-i18n="fin.tag">Beauty Now. <em>Flexible Payments.</em></p>
-      <p class="lead" data-i18n="fin.lead">Agata Medical Aesthetics offers payment plan options to help make services and multi-treatment plans more accessible. Clients can ask about available financing during their consultation and review eligibility, terms, and payment options before scheduling.</p>
+      <p class="lead" data-i18n="fin.lead">Agata Soldato Permanent Makeup offers payment plan options to help make services and multi-treatment plans more accessible. Clients can ask about available financing during their consultation and review eligibility, terms, and payment options before scheduling.</p>
       <p class="lead fin__lead2" data-i18n="fin.lead2">Financing can be especially helpful for clients combining multiple services or choosing a higher-value treatment plan.</p>
     </div>
     <div class="fin rv">
@@ -841,7 +839,7 @@ strong{font-weight:600;color:var(--esp)}
   <div class="wrap">
     <div class="foot__in">
       <div class="foot__brand">
-        <img src="assets/logo-ama-white.webp" width="560" height="284" loading="lazy" decoding="async" alt="Agata Medical Aesthetics" />
+        <img src="assets/logo-as-dark.webp" width="560" height="298" loading="lazy" decoding="async" alt="Agata Soldato Permanent Makeup" />
         <a class="foot__tel" href="tel:+15125025022">(512) 502-5022</a>
       </div>
       <nav class="foot__links" aria-label="Footer">
@@ -854,7 +852,7 @@ strong{font-weight:600;color:var(--esp)}
     </div>
     <div class="foot__bot">
       <span data-i18n="foot.note">Permanent Makeup • Paramedical Tattooing • Laser Tattoo Removal</span>
-      <span>© <span id="yr"></span> Agata Medical Aesthetics</span>
+      <span>© <span id="yr"></span> Agata Soldato Permanent Makeup</span>
     </div>
   </div>
 </footer>
@@ -937,7 +935,7 @@ pt:{
 "pkg.eh":"Não sabe qual pacote é o seu?","pkg.ep":"A gente ajuda você a escolher o melhor tratamento a partir da sua pele, do trabalho anterior e do resultado que você quer.",
 "faq.h2":"Perguntas frequentes",
 "fin.h2":"Parcelamento e financiamento","fin.tag":"Beleza agora. <em>Pagamento flexível.</em>",
-"fin.lead":"A Agata Medical Aesthetics oferece opções de parcelamento para tornar os serviços e os planos com vários procedimentos mais acessíveis. As clientes podem perguntar sobre o financiamento disponível na consulta e conferir elegibilidade, condições e formas de pagamento antes de agendar.",
+"fin.lead":"A Agata Soldato Permanent Makeup oferece opções de parcelamento para tornar os serviços e os planos com vários procedimentos mais acessíveis. As clientes podem perguntar sobre o financiamento disponível na consulta e conferir elegibilidade, condições e formas de pagamento antes de agendar.",
 "fin.lead2":"O financiamento ajuda principalmente quem combina vários serviços ou escolhe um plano de tratamento de valor mais alto.",
 "fin.how":"Como funciona",
 "fin.s1":"Escolha seu serviço ou seu plano de tratamento personalizado.",
@@ -1026,7 +1024,7 @@ es:{
 "pkg.eh":"¿No sabes cuál paquete es el adecuado para ti?","pkg.ep":"Te ayudamos a elegir el mejor tratamiento según tu piel, tu trabajo previo y el resultado que buscas.",
 "faq.h2":"Preguntas frecuentes",
 "fin.h2":"Planes de pago y financiación","fin.tag":"Belleza ahora. <em>Pagos flexibles.</em>",
-"fin.lead":"Agata Medical Aesthetics ofrece opciones de planes de pago para hacer más accesibles los servicios y los planes de varios tratamientos. Las clientas pueden preguntar por la financiación disponible durante su consulta y revisar la elegibilidad, las condiciones y las formas de pago antes de agendar.",
+"fin.lead":"Agata Soldato Permanent Makeup ofrece opciones de planes de pago para hacer más accesibles los servicios y los planes de varios tratamientos. Las clientas pueden preguntar por la financiación disponible durante su consulta y revisar la elegibilidad, las condiciones y las formas de pago antes de agendar.",
 "fin.lead2":"La financiación es especialmente útil para quienes combinan varios servicios o eligen un plan de tratamiento de mayor valor.",
 "fin.how":"Cómo funciona",
 "fin.s1":"Elige tu servicio o tu plan de tratamiento personalizado.",
